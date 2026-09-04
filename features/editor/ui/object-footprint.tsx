@@ -41,6 +41,7 @@ export function ObjectFootprint({
       x={object.positionMm.x}
       y={object.positionMm.y}
       rotation={object.rotationDeg}
+      listening={interactive}
       draggable={interactive && !object.locked}
       onMouseDown={handleSelect}
       onTap={handleSelect}

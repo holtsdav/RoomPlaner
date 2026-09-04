@@ -2,8 +2,8 @@
 
 A precise, blueprint-style 2D room planner for real furniture and devices. The
 first local-only editor kernel supports canvas navigation, exact object
-placement, selection, undo/redo and automatic IndexedDB saving. Room creation,
-openings, export and the full object catalog are still ahead.
+placement, polygonal room corners, selection, undo/redo and automatic IndexedDB
+saving. Openings, export and the full object catalog are still ahead.
 
 ## Technology direction
 
