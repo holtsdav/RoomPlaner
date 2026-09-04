@@ -13,7 +13,7 @@ type NumberFieldProps = {
   value: number;
   min?: number;
   suffix?: string;
-  onCommit: (value: number) => void;
+  onCommit: (value: number) => boolean | void;
 };
 
 function NumberField({
@@ -29,7 +29,9 @@ function NumberField({
       input.value = String(value);
       return;
     }
-    if (nextValue !== value) onCommit(nextValue);
+    if (nextValue !== value && onCommit(nextValue) === false) {
+      input.value = String(value);
+    }
   };
 
   return (
@@ -162,9 +164,59 @@ function SingleObjectProperties({ object }: { object: PlanObject }) {
   );
 }
 
+function CornerProperties({ cornerIndex }: { cornerIndex: number }) {
+  const document = usePlannerStore((state) => state.document);
+  const moveCorner = usePlannerStore((state) => state.moveCorner);
+  const deleteSelectedCorner = usePlannerStore(
+    (state) => state.deleteSelectedCorner,
+  );
+  const corner = document.room.boundary[cornerIndex];
+
+  if (!corner) return null;
+
+  return (
+    <>
+      <p className="text-sm font-semibold">Corner {cornerIndex + 1}</p>
+      <p className="mt-0.5 text-xs text-muted-foreground">
+        Exact position in the room
+      </p>
+      <Separator className="my-5" />
+      <div className="grid grid-cols-2 gap-3">
+        <NumberField
+          label="Corner X"
+          value={corner.x}
+          onCommit={(x) => moveCorner(cornerIndex, { ...corner, x })}
+        />
+        <NumberField
+          label="Corner Y"
+          value={corner.y}
+          onCommit={(y) => moveCorner(cornerIndex, { ...corner, y })}
+        />
+      </div>
+      <Button
+        variant="destructive"
+        size="sm"
+        className="mt-5 w-full"
+        disabled={document.room.boundary.length <= 3}
+        onClick={deleteSelectedCorner}
+      >
+        <Trash2 aria-hidden="true" />
+        Delete corner
+      </Button>
+      <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+        Add another corner with a + handle on any wall. Walls cannot cross and
+        must remain at least 100 mm long.
+      </p>
+    </>
+  );
+}
+
 export function PropertiesPanel() {
   const document = usePlannerStore((state) => state.document);
   const selectedIds = usePlannerStore((state) => state.selectedIds);
+  const selectedCornerIndex = usePlannerStore(
+    (state) => state.selectedCornerIndex,
+  );
   const duplicateSelection = usePlannerStore(
     (state) => state.duplicateSelection,
   );
@@ -173,6 +225,10 @@ export function PropertiesPanel() {
     selectedIds.includes(object.id),
   );
   const roomBounds = getRoomBounds(document.room);
+
+  if (selectedCornerIndex !== null) {
+    return <CornerProperties cornerIndex={selectedCornerIndex} />;
+  }
 
   if (selectedObjects.length === 1) {
     return <SingleObjectProperties object={selectedObjects[0]} />;
@@ -226,10 +282,16 @@ export function PropertiesPanel() {
             {document.room.wallThicknessMm} mm
           </dd>
         </div>
+        <div className="flex items-center justify-between">
+          <dt className="text-muted-foreground">Corners</dt>
+          <dd className="font-medium tabular-nums">
+            {document.room.boundary.length}
+          </dd>
+        </div>
       </dl>
       <div className="mt-6 rounded-xl border border-dashed bg-muted/35 p-4 text-xs leading-relaxed text-muted-foreground">
-        Select an object on the plan or in the object list to edit exact
-        dimensions.
+        Select an object to edit its dimensions, or choose the room-corner tool
+        on the canvas to reshape the room.
       </div>
     </>
   );

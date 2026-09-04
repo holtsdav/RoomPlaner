@@ -27,6 +27,7 @@ import { formatMillimetres } from '../domain/plan-document';
 import { usePlannerStore } from '../state/planner-store';
 import { PlannerCanvas } from './planner-canvas';
 import { PropertiesPanel } from './properties-panel';
+import { RoomSettingsDialog } from './room-settings-dialog';
 import { useLocalPlan } from './use-local-plan';
 
 const categoryIcon = {
@@ -101,6 +102,7 @@ export function PlannerWorkspace() {
             />
             {save.label}
           </output>
+          <RoomSettingsDialog />
           <Button
             render={<Link href="/" />}
             variant="ghost"

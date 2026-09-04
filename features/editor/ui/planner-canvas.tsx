@@ -10,15 +10,17 @@ import {
   Minus,
   MousePointer2,
   Plus,
+  Spline,
 } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Layer, Line, Rect, Stage, Text } from 'react-konva';
+import { Circle, Group, Layer, Line, Stage, Text } from 'react-konva';
 import { Button } from '@/components/ui/button';
 import {
   formatMillimetres,
   getRoomBounds,
   type PlanObject,
 } from '../domain/plan-document';
+import { midpoint } from '../domain/polygon';
 import { usePlannerStore } from '../state/planner-store';
 import { ObjectFootprint } from './object-footprint';
 
@@ -57,17 +59,29 @@ function useContainerSize() {
   return { ref, size };
 }
 
-function Grid({ width, height }: { width: number; height: number }) {
+function Grid({
+  minX,
+  minY,
+  maxX,
+  maxY,
+}: {
+  minX: number;
+  minY: number;
+  maxX: number;
+  maxY: number;
+}) {
   const lines = useMemo(() => {
     const result: React.ReactNode[] = [];
 
-    for (let x = GRID_MM; x < width; x += GRID_MM) {
+    const firstX = Math.ceil(minX / GRID_MM) * GRID_MM;
+    const firstY = Math.ceil(minY / GRID_MM) * GRID_MM;
+    for (let x = firstX; x < maxX; x += GRID_MM) {
       const major = x % 500 === 0;
       result.push(
         <Line
           key={`x-${x}`}
           listening={false}
-          points={[x, 0, x, height]}
+          points={[x, minY, x, maxY]}
           stroke={major ? '#b9cbe2' : '#d9e4f1'}
           strokeWidth={major ? 1.25 : 0.75}
           strokeScaleEnabled={false}
@@ -75,13 +89,13 @@ function Grid({ width, height }: { width: number; height: number }) {
       );
     }
 
-    for (let y = GRID_MM; y < height; y += GRID_MM) {
+    for (let y = firstY; y < maxY; y += GRID_MM) {
       const major = y % 500 === 0;
       result.push(
         <Line
           key={`y-${y}`}
           listening={false}
-          points={[0, y, width, y]}
+          points={[minX, y, maxX, y]}
           stroke={major ? '#b9cbe2' : '#d9e4f1'}
           strokeWidth={major ? 1.25 : 0.75}
           strokeScaleEnabled={false}
@@ -90,7 +104,7 @@ function Grid({ width, height }: { width: number; height: number }) {
     }
 
     return result;
-  }, [height, width]);
+  }, [maxX, maxY, minX, minY]);
 
   return <>{lines}</>;
 }
@@ -101,16 +115,26 @@ export function PlannerCanvas() {
   const hasFitted = useRef(false);
   const document = usePlannerStore((state) => state.document);
   const selectedIds = usePlannerStore((state) => state.selectedIds);
+  const selectedCornerIndex = usePlannerStore(
+    (state) => state.selectedCornerIndex,
+  );
   const tool = usePlannerStore((state) => state.tool);
   const setTool = usePlannerStore((state) => state.setTool);
   const selectObject = usePlannerStore((state) => state.selectObject);
   const clearSelection = usePlannerStore((state) => state.clearSelection);
+  const selectCorner = usePlannerStore((state) => state.selectCorner);
   const moveSelectionTo = usePlannerStore((state) => state.moveSelectionTo);
   const nudgeSelection = usePlannerStore((state) => state.nudgeSelection);
   const duplicateSelection = usePlannerStore(
     (state) => state.duplicateSelection,
   );
   const deleteSelection = usePlannerStore((state) => state.deleteSelection);
+  const moveCorner = usePlannerStore((state) => state.moveCorner);
+  const insertCorner = usePlannerStore((state) => state.insertCorner);
+  const deleteSelectedCorner = usePlannerStore(
+    (state) => state.deleteSelectedCorner,
+  );
+  const roomGeometryError = usePlannerStore((state) => state.roomGeometryError);
   const undo = usePlannerStore((state) => state.undo);
   const redo = usePlannerStore((state) => state.redo);
   const [viewport, setViewport] = useState<Viewport>({
@@ -225,16 +249,44 @@ export function PlannerCanvas() {
       const delta = nudges[event.key];
       if (delta) {
         event.preventDefault();
-        nudgeSelection(delta);
+        if (selectedCornerIndex !== null) {
+          const corner = document.room.boundary[selectedCornerIndex];
+          if (corner) {
+            moveCorner(selectedCornerIndex, {
+              x: corner.x + delta.x,
+              y: corner.y + delta.y,
+            });
+          }
+        } else {
+          nudgeSelection(delta);
+        }
         return;
       }
 
       if (event.key === 'Delete' || event.key === 'Backspace') {
         event.preventDefault();
-        deleteSelection();
+        if (selectedCornerIndex !== null) deleteSelectedCorner();
+        else deleteSelection();
+        return;
+      }
+
+      if (event.key === 'Escape' && tool === 'room') {
+        setTool('select');
       }
     },
-    [deleteSelection, duplicateSelection, nudgeSelection, redo, undo],
+    [
+      deleteSelectedCorner,
+      deleteSelection,
+      document.room.boundary,
+      duplicateSelection,
+      moveCorner,
+      nudgeSelection,
+      redo,
+      selectedCornerIndex,
+      setTool,
+      tool,
+      undo,
+    ],
   );
 
   useEffect(() => {
@@ -270,6 +322,12 @@ export function PlannerCanvas() {
 
   const isPanning = tool === 'pan' || spacePressed;
   const zoomPercent = Math.round((viewport.scale / 0.12) * 100);
+  const boundaryPoints = document.room.boundary.flatMap((point) => [
+    point.x,
+    point.y,
+  ]);
+  const cornerRadius = 10 / viewport.scale;
+  const midpointRadius = 8 / viewport.scale;
 
   return (
     <div
@@ -295,6 +353,15 @@ export function PlannerCanvas() {
           onClick={() => setTool('pan')}
         >
           <Hand aria-hidden="true" />
+        </Button>
+        <Button
+          variant={tool === 'room' ? 'secondary' : 'ghost'}
+          size="icon-sm"
+          aria-label="Edit room corners"
+          aria-pressed={tool === 'room'}
+          onClick={() => setTool('room')}
+        >
+          <Spline aria-hidden="true" />
         </Button>
       </div>
 
@@ -355,24 +422,38 @@ export function PlannerCanvas() {
           }}
         >
           <Layer listening={false}>
-            <Rect
-              x={bounds.minX}
-              y={bounds.minY}
-              width={bounds.width}
-              height={bounds.height}
+            <Line
+              points={boundaryPoints}
+              closed
               fill="#fbfdff"
               shadowColor="#17345f"
               shadowBlur={80}
               shadowOpacity={0.14}
             />
-            <Grid width={bounds.width} height={bounds.height} />
-            <Rect
-              x={bounds.minX}
-              y={bounds.minY}
-              width={bounds.width}
-              height={bounds.height}
+            <Group
+              clipFunc={(context) => {
+                const first = document.room.boundary[0];
+                context.beginPath();
+                context.moveTo(first.x, first.y);
+                for (const point of document.room.boundary.slice(1)) {
+                  context.lineTo(point.x, point.y);
+                }
+                context.closePath();
+              }}
+            >
+              <Grid
+                minX={bounds.minX}
+                minY={bounds.minY}
+                maxX={bounds.maxX}
+                maxY={bounds.maxY}
+              />
+            </Group>
+            <Line
+              points={boundaryPoints}
+              closed
               stroke="#183153"
               strokeWidth={document.room.wallThicknessMm}
+              lineJoin="miter"
             />
             <Text
               x={bounds.minX}
@@ -395,19 +476,125 @@ export function PlannerCanvas() {
             />
           </Layer>
           <Layer>{document.objects.map(renderObject)}</Layer>
+          {tool === 'room' && (
+            <Layer>
+              {document.room.boundary.map((point, index) => {
+                const next =
+                  document.room.boundary[
+                    (index + 1) % document.room.boundary.length
+                  ];
+                const centre = midpoint(point, next);
+                return (
+                  <Group
+                    key={`edge-${index}`}
+                    x={centre.x}
+                    y={centre.y}
+                    onClick={(event) => {
+                      event.cancelBubble = true;
+                      insertCorner(index);
+                    }}
+                    onTap={(event) => {
+                      event.cancelBubble = true;
+                      insertCorner(index);
+                    }}
+                  >
+                    <Circle
+                      radius={midpointRadius}
+                      fill="#ffffff"
+                      stroke="#64748b"
+                      strokeWidth={1.5}
+                      strokeScaleEnabled={false}
+                      hitStrokeWidth={20 / viewport.scale}
+                      opacity={0.94}
+                    />
+                    <Text
+                      listening={false}
+                      x={-midpointRadius}
+                      y={-midpointRadius}
+                      width={midpointRadius * 2}
+                      height={midpointRadius * 2}
+                      text="+"
+                      align="center"
+                      verticalAlign="middle"
+                      fontSize={14 / viewport.scale}
+                      fill="#334155"
+                    />
+                  </Group>
+                );
+              })}
+
+              {document.room.boundary.map((point, index) => (
+                <Circle
+                  key={`corner-${index}`}
+                  x={point.x}
+                  y={point.y}
+                  radius={
+                    selectedCornerIndex === index
+                      ? cornerRadius * 1.2
+                      : cornerRadius
+                  }
+                  fill={selectedCornerIndex === index ? '#2563eb' : '#ffffff'}
+                  stroke="#1d4ed8"
+                  strokeWidth={2}
+                  strokeScaleEnabled={false}
+                  hitStrokeWidth={24 / viewport.scale}
+                  shadowColor="#17345f"
+                  shadowBlur={selectedCornerIndex === index ? 12 : 5}
+                  shadowOpacity={0.24}
+                  draggable
+                  onMouseDown={(event) => {
+                    event.cancelBubble = true;
+                    selectCorner(index);
+                  }}
+                  onTap={(event) => {
+                    event.cancelBubble = true;
+                    selectCorner(index);
+                  }}
+                  onDragStart={(event) => {
+                    event.cancelBubble = true;
+                    selectCorner(index);
+                  }}
+                  onDragEnd={(event) => {
+                    event.cancelBubble = true;
+                    moveCorner(index, {
+                      x: event.target.x(),
+                      y: event.target.y(),
+                    });
+                  }}
+                />
+              ))}
+            </Layer>
+          )}
         </Stage>
       )}
 
+      {roomGeometryError && (
+        <output
+          aria-live="polite"
+          className="absolute left-1/2 top-4 z-20 max-w-md -translate-x-1/2 rounded-lg border border-destructive/30 bg-card/95 px-3 py-2 text-center text-xs text-destructive shadow-sm backdrop-blur"
+        >
+          {roomGeometryError}
+        </output>
+      )}
+
       <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center gap-3 rounded-full border bg-card/95 px-4 py-2 text-xs text-muted-foreground shadow-sm backdrop-blur">
-        <span className="flex items-center gap-1.5">
-          <Grid2X2 className="size-3.5" aria-hidden="true" />
-          100 mm grid
-        </span>
-        <span className="h-3 w-px bg-border" />
-        <span className="flex items-center gap-1.5">
-          <Crosshair className="size-3.5" aria-hidden="true" />
-          10 mm snap
-        </span>
+        {tool === 'room' ? (
+          <span>
+            Drag a corner · select + on a wall to add one · Delete removes
+          </span>
+        ) : (
+          <>
+            <span className="flex items-center gap-1.5">
+              <Grid2X2 className="size-3.5" aria-hidden="true" />
+              100 mm grid
+            </span>
+            <span className="h-3 w-px bg-border" />
+            <span className="flex items-center gap-1.5">
+              <Crosshair className="size-3.5" aria-hidden="true" />
+              10 mm snap
+            </span>
+          </>
+        )}
       </div>
     </div>
   );

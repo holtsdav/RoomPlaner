@@ -195,6 +195,8 @@ keyboard, undo every document mutation and refresh without console errors.
 ### Slice 2 — room setup and exact editing
 
 - Add a new-room dialog for width, depth, units and wall thickness.
+- Let users add, move and remove validated polygon corners for non-rectangular
+  rooms.
 - Make the inspector edit position, dimensions and rotation with validation.
 - Add configurable grid, object-edge and room-edge snapping with visible guides.
 - Add local autosave, recovery and document migrations.

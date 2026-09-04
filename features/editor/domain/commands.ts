@@ -52,6 +52,13 @@ export function updateObject(
   });
 }
 
+export function updateRoom(
+  document: PlanDocument,
+  room: PlanDocument['room'],
+): PlanDocument {
+  return touch({ ...document, room });
+}
+
 export function deleteObjects(
   document: PlanDocument,
   objectIds: string[],

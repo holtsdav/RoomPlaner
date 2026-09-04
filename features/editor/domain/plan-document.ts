@@ -22,7 +22,7 @@ export const roomSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
   wallThicknessMm: z.number().int().positive(),
-  boundary: z.array(pointMmSchema).min(4),
+  boundary: z.array(pointMmSchema).min(3),
 });
 
 export const planDocumentSchema = z.object({
