@@ -22,6 +22,13 @@ Use Tailwind CSS and the installed shadcn/Base UI primitives for controls, with
 Lucide icons. The visual direction is precise and architectural: cool neutral
 surfaces, restrained blue accents, clear hierarchy and dense but calm controls.
 
+The approved Libraries.dev effects are intentionally scoped. Border Beam marks
+the homepage's primary transition into the planner. Thinking Orbs and Image FX
+are reserved for product-extraction progress and generated product imagery.
+Liquid Gooey may support direct-manipulation feedback, while Metal FX may support
+a future device-focused showcase surface. These packages must be lazily imported
+when their feature arrives and must never determine canonical canvas geometry.
+
 ### Document model
 
 The canonical plan is plain, versioned TypeScript data. Store all lengths and
