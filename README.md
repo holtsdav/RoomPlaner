@@ -1,9 +1,9 @@
 # Room Planner
 
 A precise, blueprint-style 2D room planner for real furniture and devices. The
-project is in its foundation phase; the repository and visual workbench shell
-are ready, but editor interactions and the object catalog are not implemented
-yet.
+first local-only editor kernel supports canvas navigation, exact object
+placement, selection, undo/redo and automatic IndexedDB saving. Room creation,
+openings, export and the full object catalog are still ahead.
 
 ## Technology direction
 
@@ -12,7 +12,7 @@ yet.
 - A small Libraries.dev visual toolkit: Border Beam for the homepage transition;
   Liquid Gooey, Image FX, Thinking Orbs and Metal FX reserved for matching future
   interactions and loaded only where they are used
-- Konva/react-konva for the future interactive 2D editor
+- Konva/react-konva for the interactive 2D editor
 - A renderer-independent document model stored in millimetres
 - Zustand for editor state and command-based undo/redo
 - Zod at data boundaries and Dexie/IndexedDB for local autosave
