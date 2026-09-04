@@ -9,6 +9,7 @@ yet.
 
 - React, TypeScript, Vinext and Vite for the web application
 - Tailwind CSS and shadcn/Base UI primitives for a custom, accessible interface
+- Border Beam for the focused homepage-to-planner transition
 - Konva/react-konva for the future interactive 2D editor
 - A renderer-independent document model stored in millimetres
 - Zustand for editor state and command-based undo/redo
