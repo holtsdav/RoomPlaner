@@ -11,8 +11,9 @@
 6. Resolve review threads and wait for CI before merging.
 
 Do not push directly to `develop` or `main`. Release by opening a pull request
-from `develop` to `main`. Use squash merge for ordinary feature branches so the
-long-lived branches remain linear and readable.
+from `develop` to `main`. Squash ordinary feature branches into `develop`. Use
+a merge commit for `develop` to `main` releases, and when synchronizing `main`
+back into `develop`, so the ancestry of both long-lived branches stays intact.
 
 ## Engineering boundaries
 
