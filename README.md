@@ -9,7 +9,9 @@ yet.
 
 - React, TypeScript, Vinext and Vite for the web application
 - Tailwind CSS and shadcn/Base UI primitives for a custom, accessible interface
-- Border Beam for the focused homepage-to-planner transition
+- A small Libraries.dev visual toolkit: Border Beam for the homepage transition;
+  Liquid Gooey, Image FX, Thinking Orbs and Metal FX reserved for matching future
+  interactions and loaded only where they are used
 - Konva/react-konva for the future interactive 2D editor
 - A renderer-independent document model stored in millimetres
 - Zustand for editor state and command-based undo/redo
