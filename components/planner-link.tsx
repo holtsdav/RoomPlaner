@@ -9,17 +9,17 @@ export function PlannerLink() {
   return (
     <BorderBeam
       size="pulse-outside"
-      colorVariant="ocean"
-      strength={0.85}
-      brightness={1.55}
-      saturation={1.35}
-      theme="light"
+      colorVariant="mono"
+      strength={0.7}
+      brightness={1.35}
+      saturation={1}
+      theme="dark"
       borderRadius={14}
     >
       <Button
         render={<Link href="/planner" />}
         size="lg"
-        className="h-14 gap-3 rounded-[14px] border-2 border-cyan-300/80 px-7 text-base shadow-xl shadow-primary/20 hover:border-cyan-200"
+        className="h-14 gap-3 rounded-[14px] border-2 border-white/45 px-7 text-base shadow-xl shadow-primary/20 hover:border-white/70"
       >
         <Ruler className="size-4.5" aria-hidden="true" />
         Open Room Planner
