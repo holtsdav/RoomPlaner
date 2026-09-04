@@ -23,6 +23,8 @@ yet.
 
 The full rationale, boundaries and product-link ingestion approach are recorded
 in [the architecture decision](docs/architecture/0001-technology-stack.md).
+The intended editor behavior and its incremental delivery plan are described in
+the [workspace product plan](docs/product/workspace-plan.md).
 
 ## Local development
 

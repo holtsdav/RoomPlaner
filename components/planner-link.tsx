@@ -10,14 +10,16 @@ export function PlannerLink() {
     <BorderBeam
       size="pulse-outside"
       colorVariant="ocean"
-      strength={0.5}
+      strength={0.85}
+      brightness={1.55}
+      saturation={1.35}
       theme="light"
-      borderRadius={12}
+      borderRadius={14}
     >
       <Button
         render={<Link href="/planner" />}
         size="lg"
-        className="h-12 gap-2.5 rounded-xl px-5 text-base shadow-lg shadow-primary/15"
+        className="h-14 gap-3 rounded-[14px] border-2 border-cyan-300/80 px-7 text-base shadow-xl shadow-primary/20 hover:border-cyan-200"
       >
         <Ruler className="size-4.5" aria-hidden="true" />
         Open Room Planner
