@@ -102,44 +102,49 @@ it('keeps notched-room labels near exterior rails and consistently oriented thro
   }
 });
 
-it('moves continuously through collision thresholds without changing wall anchors', () => {
-  const room = createStarterPlan().room;
-  room.boundary = [
-    { x: 0, y: 0 },
-    { x: 5540, y: 0 },
-    { x: 5540, y: 200 },
-    { x: 5760, y: 200 },
-    { x: 5760, y: 1890 },
-    { x: 5575, y: 1890 },
-    { x: 5575, y: 3150 },
-    { x: 5290, y: 3150 },
-    { x: 5290, y: 3350 },
-    { x: 0, y: 3350 },
-  ];
-  for (const units of ['m', 'ft-in'] as const) {
-    for (let step = 0; step < 1500; step++) {
-      const scale = 0.02 + step * 0.001;
-      const nextScale = scale + 0.000001;
-      const before = layoutWallLabels(room, units, scale);
-      const after = layoutWallLabels(room, units, nextScale);
-      before.forEach((label, index) => {
-        const next = after[index];
-        expect(
-          Math.hypot(
-            next.center.x * nextScale - label.center.x * scale,
-            next.center.y * nextScale - label.center.y * scale,
-          ),
-        ).toBeLessThan(0.1);
-        expect(next.anchor).toEqual(label.anchor);
-        for (const other of before.slice(index + 1)) {
+// This correctness sweep evaluates 6,000 layouts; it is not a wall-clock benchmark.
+it(
+  'moves continuously through collision thresholds without changing wall anchors',
+  { timeout: 30_000 },
+  () => {
+    const room = createStarterPlan().room;
+    room.boundary = [
+      { x: 0, y: 0 },
+      { x: 5540, y: 0 },
+      { x: 5540, y: 200 },
+      { x: 5760, y: 200 },
+      { x: 5760, y: 1890 },
+      { x: 5575, y: 1890 },
+      { x: 5575, y: 3150 },
+      { x: 5290, y: 3150 },
+      { x: 5290, y: 3350 },
+      { x: 0, y: 3350 },
+    ];
+    for (const units of ['m', 'ft-in'] as const) {
+      for (let step = 0; step < 1500; step++) {
+        const scale = 0.02 + step * 0.001;
+        const nextScale = scale + 0.000001;
+        const before = layoutWallLabels(room, units, scale);
+        const after = layoutWallLabels(room, units, nextScale);
+        before.forEach((label, index) => {
+          const next = after[index];
           expect(
-            label.box.left < other.box.right &&
-              label.box.right > other.box.left &&
-              label.box.top < other.box.bottom &&
-              label.box.bottom > other.box.top,
-          ).toBe(false);
-        }
-      });
+            Math.hypot(
+              next.center.x * nextScale - label.center.x * scale,
+              next.center.y * nextScale - label.center.y * scale,
+            ),
+          ).toBeLessThan(0.1);
+          expect(next.anchor).toEqual(label.anchor);
+          for (const other of before.slice(index + 1)) {
+            expect(
+              label.box.left < other.box.right &&
+                label.box.right > other.box.left &&
+                label.box.top < other.box.bottom &&
+                label.box.bottom > other.box.top,
+            ).toBe(false);
+          }
+        });
+      }
     }
-  }
-});
+  },
+);
