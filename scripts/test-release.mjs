@@ -41,6 +41,7 @@ for (const target of ['production', 'develop']) {
         ...process.env,
         WRANGLER_SEND_METRICS: 'false',
         WRANGLER_WRITE_LOGS: 'false',
+        MINIFLARE_REGISTRY_PATH: join(state, 'registry'),
       },
     },
   );
@@ -101,7 +102,11 @@ for (const target of ['production', 'develop']) {
     throw error;
   } finally {
     try {
-      if (server.pid) process.kill(-server.pid, 'SIGTERM');
+      if (server.pid && server.exitCode === null) {
+        const stopped = once(server, 'exit');
+        process.kill(-server.pid, 'SIGTERM');
+        await stopped;
+      }
     } catch {
       /* Already stopped. */
     }
