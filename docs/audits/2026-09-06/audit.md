@@ -1,5 +1,7 @@
 # Room Planner consumer release audit — 6 September 2026
 
+This is the baseline audit of commit `9f7bba5`. See the [remediation record](remediation.md) for the subsequent fixes and regression coverage.
+
 **Release recommendation: HOLD.** The application builds and its ordinary editing flows work on desktop and mobile, but six major issues remain in storage resilience, environment separation, mobile controls, and keyboard accessibility. Passing the build and automated accessibility scans does not resolve these issues.
 
 Audited commit: `9f7bba59e77d56c9cb3d0a32626757e6e7b6351e`. The working tree was clean at the start. This audit adds documentation, test scripts, and evidence only; it does not fix application code or deploy a release. [Source hashes](evidence/source-manifest.json) identify the implementation reviewed.

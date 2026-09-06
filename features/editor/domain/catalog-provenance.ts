@@ -27,7 +27,7 @@ export function catalogProvenance(object: CatalogPreset | PlanObject) {
         : 'Custom dimensions',
     model: reference?.model,
     url: reference?.url,
-    checked: reference ? '5 September 2026' : undefined,
+    checked: reference?.checked,
     note: reference
       ? 'Reference outer dimensions, rounded to millimetres. Blueprint details are schematic. Your dimensions remain editable.'
       : 'A representative planning footprint. Measure your actual object before relying on the fit.',

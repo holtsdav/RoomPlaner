@@ -20,8 +20,8 @@ export function DimensionProvenance({
             className="underline underline-offset-2"
           >
             {source.model}
-          </a>{' '}
-          · Source checked {source.checked}
+          </a>
+          {source.checked && <> · Source checked {source.checked}</>}
         </p>
       )}
       <p>{source.note}</p>
