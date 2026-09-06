@@ -68,7 +68,7 @@ export function CanvasSpacingControls() {
             }}
             containerClassName="min-w-0 flex-1 lg:w-16 lg:flex-none"
             className="h-11 rounded-lg border-transparent bg-transparent px-2 pr-7 text-center font-mono text-xs shadow-none hover:bg-slate-100 lg:h-7"
-            suffixClassName="right-2 translate-y-0.5 text-[11px] leading-none"
+            suffixClassName="right-2 h-full text-[11px] leading-none"
           />
           <Button
             variant="ghost"
@@ -131,7 +131,7 @@ export function CanvasSpacingControls() {
             }}
             containerClassName="min-w-0 flex-1 lg:w-16 lg:flex-none"
             className="h-11 rounded-lg border-transparent bg-transparent px-2 pr-7 text-center font-mono text-xs shadow-none hover:bg-slate-100 lg:h-7"
-            suffixClassName="right-2 translate-y-0.5 text-[11px] leading-none"
+            suffixClassName="right-2 h-full text-[11px] leading-none"
           />
           <Button
             variant="ghost"
