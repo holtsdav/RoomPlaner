@@ -13,6 +13,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { isWallAttached } from '../domain/wall-attachment';
+import { DimensionProvenance } from './dimension-provenance';
 import { ObjectVariantMenu } from './object-variant-menu';
 import {
   getObjectDefaultSize,
@@ -104,7 +105,12 @@ export function ObjectFloatingToolbar({
                   widthMm: preset.widthMm,
                   depthMm: preset.depthMm,
                   heightMm: preset.heightMm,
-                  blueprintProfile: preset.blueprintProfile,
+                  blueprintProfile: {
+                    referenceWidthMm: preset.widthMm,
+                    referenceDepthMm: preset.depthMm,
+                    ...preset.blueprintProfile,
+                    presetId: preset.id,
+                  },
                   defaultSizeMm: {
                     widthMm: preset.widthMm,
                     depthMm: preset.depthMm,
@@ -359,6 +365,7 @@ export function ObjectFloatingToolbar({
             )}
             <ChevronDown className="ml-auto size-3" aria-hidden="true" />
           </summary>
+          <DimensionProvenance object={object} />
           <label className="mt-2 flex items-center gap-2 border-t border-slate-100 pt-2 text-xs text-slate-600">
             <span>Object height</span>
             <ScrubbableNumberInput

@@ -1,0 +1,1 @@
+PASS: authentication, CSRF, private assets, base paths, sessions, per-IP and global throttling

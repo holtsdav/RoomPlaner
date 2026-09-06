@@ -1,5 +1,6 @@
 'use client';
 
+import { DimensionProvenance } from './dimension-provenance';
 import { ObjectVariantMenu } from './object-variant-menu';
 import {
   catalogSearchText,
@@ -39,15 +40,32 @@ function LibraryItem({
       </span>
     </button>
   );
-  return presets.length > 1 ? (
-    <ObjectVariantMenu
-      presets={presets}
-      units={units}
-      trigger={card}
-      onChoose={onAdd}
-    />
-  ) : (
-    card
+  const item =
+    presets.length > 1 ? (
+      <ObjectVariantMenu
+        presets={presets}
+        units={units}
+        trigger={card}
+        onChoose={onAdd}
+      />
+    ) : (
+      card
+    );
+  return (
+    <div className="min-w-0">
+      {item}
+      <details className="mt-1">
+        <summary className="flex min-h-11 cursor-pointer items-center rounded px-1 text-[11px] text-slate-600 focus-visible:outline-2 focus-visible:outline-blue-600">
+          About dimensions
+        </summary>
+        {presets.map((entry) => (
+          <div key={entry.id}>
+            <p className="text-xs font-medium">{entry.name}</p>
+            <DimensionProvenance object={entry} />
+          </div>
+        ))}
+      </details>
+    </div>
   );
 }
 

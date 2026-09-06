@@ -422,7 +422,12 @@ export function objectFromPreset(
     category: preset.category,
     shape: preset.shape,
     blueprint: preset.blueprint,
-    blueprintProfile: preset.blueprintProfile,
+    blueprintProfile: {
+      referenceWidthMm: preset.widthMm,
+      referenceDepthMm: preset.depthMm,
+      ...preset.blueprintProfile,
+      presetId: preset.id,
+    },
     positionMm,
     rotationDeg: 0,
     widthMm: preset.widthMm,

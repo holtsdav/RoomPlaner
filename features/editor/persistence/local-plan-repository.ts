@@ -1,3 +1,8 @@
+import {
+  readPreference,
+  writePreference,
+  storageNamespace,
+} from './browser-storage';
 import Dexie, { type EntityTable } from 'dexie';
 import {
   LOCAL_PLAN_ID,
@@ -26,7 +31,7 @@ class RoomPlannerDatabase extends Dexie {
   plans!: EntityTable<StoredPlan, 'id'>;
 
   constructor() {
-    super('room-planner');
+    super(storageNamespace());
     this.version(1).stores({
       plans: 'id, updatedAt',
     });
@@ -41,9 +46,7 @@ function getDatabase() {
 }
 
 export async function loadLocalPlan(): Promise<PlanDocument | undefined> {
-  const activePlanId = globalThis.localStorage?.getItem(
-    ACTIVE_PLAN_STORAGE_KEY,
-  );
+  const activePlanId = readPreference(ACTIVE_PLAN_STORAGE_KEY);
   const stored =
     (activePlanId ? await getDatabase().plans.get(activePlanId) : undefined) ??
     (await getDatabase().plans.get(LOCAL_PLAN_ID)) ??
@@ -65,7 +68,7 @@ export async function saveLocalPlan(document: PlanDocument): Promise<void> {
     await db.plans.put({ ...validated, _revision: nextRevision });
   });
   knownRevisions.set(validated.id, nextRevision);
-  globalThis.localStorage?.setItem(ACTIVE_PLAN_STORAGE_KEY, validated.id);
+  writePreference(ACTIVE_PLAN_STORAGE_KEY, validated.id);
 }
 
 export async function listLocalPlans(): Promise<PlanDocument[]> {
@@ -91,8 +94,8 @@ export async function deleteLocalPlan(planId: string): Promise<void> {
     await db.plans.delete(planId);
   });
   // Retain the observed revision: any delayed save now conflicts with deletion.
-  if (globalThis.localStorage?.getItem(ACTIVE_PLAN_STORAGE_KEY) === planId) {
-    globalThis.localStorage.removeItem(ACTIVE_PLAN_STORAGE_KEY);
+  if (readPreference(ACTIVE_PLAN_STORAGE_KEY) === planId) {
+    writePreference(ACTIVE_PLAN_STORAGE_KEY, null);
   }
 }
 
@@ -115,7 +118,7 @@ export async function activateLocalPlan(planId: string): Promise<PlanDocument> {
   const stored = await getDatabase().plans.get(planId);
   const document = planDocumentSchema.parse(stored);
   knownRevisions.set(planId, revisionOf(stored));
-  globalThis.localStorage?.setItem(ACTIVE_PLAN_STORAGE_KEY, planId);
+  writePreference(ACTIVE_PLAN_STORAGE_KEY, planId);
   return document;
 }
 
@@ -137,6 +140,6 @@ export async function deleteAndActivateLocalPlan(
     return { document: validated, revision: revisionOf(successor) };
   });
   knownRevisions.set(nextId, next.revision);
-  globalThis.localStorage?.setItem(ACTIVE_PLAN_STORAGE_KEY, nextId);
+  writePreference(ACTIVE_PLAN_STORAGE_KEY, nextId);
   return next.document;
 }

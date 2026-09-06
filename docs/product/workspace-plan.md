@@ -59,7 +59,7 @@ it, not a prerequisite for a useful planner.
 ### Navigation
 
 - Wheel or trackpad pinch zooms around the pointer.
-- Space + drag, middle mouse drag or the pan tool moves the viewport.
+- Space + drag or middle mouse drag moves the viewport on desktop; dragging empty canvas pans on touch screens.
 - `0` fits the room in view; `+` and `-` step the zoom level.
 - Zoom is clamped to a useful range and does not modify document geometry.
 

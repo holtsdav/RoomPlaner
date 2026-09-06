@@ -33,13 +33,17 @@ import {
   formatMeasurement,
   getRoomBounds,
   planDocumentSchema,
+  roomSchema,
   type PlanDocument,
   type PlanObject,
   type PointMm,
 } from '../domain/plan-document';
-import { isSimplePolygon, midpoint } from '../domain/polygon';
+import { midpoint } from '../domain/polygon';
 import { findPresetPosition } from '../domain/placement';
-import { loadLocalPlan } from '../persistence/local-plan-repository';
+import {
+  loadLocalPlan,
+  saveLocalPlan,
+} from '../persistence/local-plan-repository';
 
 export type EditorTool = 'select' | 'room';
 export type SaveStatus = 'loading' | 'saving' | 'saved' | 'error';
@@ -77,6 +81,7 @@ type PlannerState = {
   tool: EditorTool;
   saveStatus: SaveStatus;
   saveError: string | null;
+  saveRecoveryOpen: boolean;
   roomOperationPending: boolean;
   hydrated: boolean;
   isHydrating: boolean;
@@ -179,8 +184,17 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
       });
       return;
     }
+    const parsed = planDocumentSchema.safeParse(nextDocument);
+    if (!parsed.success) {
+      set({
+        roomGeometryError:
+          parsed.error.issues[0]?.message ??
+          'That edit exceeds the plan limits.',
+      });
+      return;
+    }
     set({
-      document: validate(nextDocument),
+      document: validate(parsed.data),
       selectedIds: nextSelection,
       selectedCornerIndex: nextCornerIndex,
       past: [
@@ -205,6 +219,7 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
   return {
     editStart: null,
     saveError: null,
+    saveRecoveryOpen: true,
     editRecordsHistory: false,
     beginEdit: () => {
       if (!get().editStart)
@@ -281,12 +296,32 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
       set({ isHydrating: true, saveStatus: 'loading' });
 
       try {
-        const document = (await loadLocalPlan()) ?? createStarterPlan();
+        const stored = await loadLocalPlan();
+        const document = validate(stored ?? createStarterPlan());
+        // A fresh room is only labelled saved after its first durable commit.
+        if (!stored) {
+          // Distinct ids also make simultaneous first visits safe across tabs.
+          document.id = createId('plan');
+          try {
+            await saveLocalPlan(document);
+          } catch {
+            set({
+              document,
+              hydrated: true,
+              isHydrating: false,
+              saveStatus: 'error',
+              saveError:
+                'This room is only in memory. Local storage is unavailable. Retry or export a backup before leaving.',
+            });
+            return;
+          }
+        }
         set({
           document: validate(document),
           hydrated: true,
           isHydrating: false,
           saveStatus: 'saved',
+          saveError: null,
           past: [],
           future: [],
           selectedIds: [],
@@ -300,6 +335,8 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
             id: createId('recovery-plan'),
             room: { ...recovery.room, id: createId('room') },
           },
+          saveError:
+            'Local storage could not be opened. Existing data is preserved. This room is only in memory; export a backup before leaving.',
           roomGeometryError:
             'The saved room could not be opened. Its stored copy has been preserved. Any new edits will be saved separately.',
           hydrated: true,
@@ -309,7 +346,11 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
       }
     },
 
-    setSaveStatus: (saveStatus) => set({ saveStatus }),
+    setSaveStatus: (saveStatus) =>
+      set({
+        saveStatus,
+        ...(saveStatus === 'error' ? { saveRecoveryOpen: true } : {}),
+      }),
     setTool: (tool) =>
       selectState({
         tool,
@@ -377,17 +418,26 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
     addPreset: (preset) => {
       get().finishEdit();
       const { document } = get();
-      const position = isWallAttached(preset)
+      let rotationDeg = 0;
+      let position = isWallAttached(preset)
         ? document.room.boundary[0]
         : findPresetPosition(document, preset);
+      if (!position && !isWallAttached(preset)) {
+        position = findPresetPosition(document, {
+          ...preset,
+          widthMm: preset.depthMm,
+          depthMm: preset.widthMm,
+        });
+        rotationDeg = 90;
+      }
       if (!position) {
         set({
-          roomGeometryError: `${preset.name} does not fit inside this room at its current size. Enlarge the room or choose a smaller object.`,
+          roomGeometryError: `${preset.name} could not be placed automatically at its current size. Try a smaller object or adjust the room outline.`,
         });
         return;
       }
       const id = createId(preset.id);
-      const object = objectFromPreset(preset, id, position);
+      const object = { ...objectFromPreset(preset, id, position), rotationDeg };
       if (
         isWallAttached(object) &&
         !findWallAttachment(object, document.room)
@@ -613,9 +663,9 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
       const boundary = state.document.room.boundary.map((point, index) =>
         index === cornerIndex ? nextCorner : point,
       );
-      if (!isSimplePolygon(boundary)) {
+      if (!roomSchema.safeParse({ ...state.document.room, boundary }).success) {
         set({
-          roomGeometryError: `That position would cross a wall or create a wall shorter than ${formatMeasurement(100, state.document.units)}.`,
+          roomGeometryError: `That position would cross a wall, close the interior, or create a wall shorter than ${formatMeasurement(100, state.document.units)}.`,
         });
         return false;
       }
@@ -639,7 +689,7 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
         insertedIndex,
         corner,
       );
-      if (!isSimplePolygon(boundary)) {
+      if (!roomSchema.safeParse({ ...state.document.room, boundary }).success) {
         set({ roomGeometryError: 'This wall is too short to add a corner.' });
         return;
       }
@@ -661,7 +711,7 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
       const boundary = state.document.room.boundary.filter(
         (_, index) => index !== cornerIndex,
       );
-      if (!isSimplePolygon(boundary)) {
+      if (!roomSchema.safeParse({ ...state.document.room, boundary }).success) {
         set({
           roomGeometryError:
             'Removing that corner would create an invalid room outline.',
@@ -733,10 +783,17 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
               bounds.minY + ((point.y - bounds.minY) / bounds.height) * depthMm,
             ),
           }));
-      if (!boundary || !isSimplePolygon(boundary)) {
+      if (
+        !boundary ||
+        !roomSchema.safeParse({
+          ...state.document.room,
+          boundary,
+          wallThicknessMm,
+        }).success
+      ) {
         set({
           roomGeometryError:
-            'Those dimensions would make one or more walls too short.',
+            'Those dimensions must leave usable interior wall faces and stay within the planning limits.',
         });
         return false;
       }

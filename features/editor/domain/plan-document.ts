@@ -1,3 +1,4 @@
+import { hasUsableInterior } from './room-interior';
 import { snapWallMillimetres } from './wall-snap';
 import { blueprintProfileSchema } from './blueprint-profile';
 import { z } from 'zod';
@@ -7,31 +8,39 @@ import { isSimplePolygon } from './polygon';
 export const DEFAULT_GRID_SIZE_MM = 100;
 export const DEFAULT_SNAP_SIZE_MM = 50;
 
+export const MAX_PLAN_NAME_LENGTH = 120;
+export const MAX_ROOM_OBJECTS = 500;
+export const MAX_ROOM_CORNERS = 256;
+export const MAX_DIMENSION_MM = 1_000_000;
+const identifier = z.string().min(1).max(160);
+const name = z.string().trim().min(1).max(MAX_PLAN_NAME_LENGTH);
+const dimension = z.number().int().positive().max(MAX_DIMENSION_MM);
+
 export const pointMmSchema = z.object({
-  x: z.number().int(),
-  y: z.number().int(),
+  x: z.number().int().min(-MAX_DIMENSION_MM).max(MAX_DIMENSION_MM),
+  y: z.number().int().min(-MAX_DIMENSION_MM).max(MAX_DIMENSION_MM),
 });
 
 export const planObjectSchema = z.object({
-  id: z.string().min(1),
-  name: z.string().min(1),
+  id: identifier,
+  name,
   category: z.enum(['seating', 'table', 'device', 'custom']),
   blueprint: z.enum(blueprintKinds).optional(),
   blueprintProfile: blueprintProfileSchema.optional(),
   shape: z.enum(['rectangle', 'ellipse', 'triangle', 'polygon']),
   positionMm: pointMmSchema,
-  rotationDeg: z.number(),
-  widthMm: z.number().int().positive(),
-  depthMm: z.number().int().positive(),
-  heightMm: z.number().int().positive().optional(),
+  rotationDeg: z.number().min(-360_000).max(360_000),
+  widthMm: dimension,
+  depthMm: dimension,
+  heightMm: dimension.optional(),
   color: z
     .string()
     .regex(/^#[0-9a-fA-F]{6}$/)
     .optional(),
   defaultSizeMm: z
     .object({
-      widthMm: z.number().int().positive(),
-      depthMm: z.number().int().positive(),
+      widthMm: dimension,
+      depthMm: dimension,
     })
     .optional(),
   locked: z.boolean(),
@@ -40,39 +49,48 @@ export const planObjectSchema = z.object({
 });
 
 export const planGroupSchema = z.object({
-  id: z.string().min(1),
-  name: z.string().min(1),
-  objectIds: z.array(z.string().min(1)).min(2),
+  id: identifier,
+  name,
+  objectIds: z.array(identifier).min(2).max(MAX_ROOM_OBJECTS),
 });
 
-export const roomSchema = z.object({
-  id: z.string().min(1),
-  name: z.string().min(1),
-  wallThicknessMm: z.number().int().positive(),
-  boundary: z
-    .array(pointMmSchema)
-    .min(3)
-    .refine(
-      isSimplePolygon,
-      'Room walls must form a non-crossing outline with walls at least 10 cm long.',
-    ),
-});
+export const roomSchema = z
+  .object({
+    id: identifier,
+    name,
+    wallThicknessMm: dimension,
+    boundary: z
+      .array(pointMmSchema)
+      .min(3)
+      .max(MAX_ROOM_CORNERS)
+      .refine(
+        isSimplePolygon,
+        'Room walls must form a non-crossing outline with walls at least 10 cm long.',
+      ),
+  })
+  .refine(
+    hasUsableInterior,
+    'Wall thickness must leave a non-crossing interior with usable wall faces.',
+  );
 
 export const planDocumentSchema = z
   .object({
     schemaVersion: z.literal(1),
-    id: z.string().min(1),
-    name: z.string().min(1),
+    id: identifier,
+    name,
     units: z.enum(['mm', 'cm', 'm', 'in', 'ft-in']),
     gridEnabled: z.boolean().default(true),
     snapEnabled: z.boolean().default(true),
-    gridSizeMm: z.number().int().positive().default(DEFAULT_GRID_SIZE_MM),
-    snapSizeMm: z.number().int().positive().default(DEFAULT_SNAP_SIZE_MM),
+    gridSizeMm: dimension.default(DEFAULT_GRID_SIZE_MM),
+    snapSizeMm: dimension.default(DEFAULT_SNAP_SIZE_MM),
     room: roomSchema,
-    objects: z.array(planObjectSchema),
-    groups: z.array(planGroupSchema).default([]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
+    objects: z.array(planObjectSchema).max(MAX_ROOM_OBJECTS),
+    groups: z
+      .array(planGroupSchema)
+      .max(MAX_ROOM_OBJECTS / 2)
+      .default([]),
+    createdAt: z.string().max(64),
+    updatedAt: z.string().max(64),
   })
   .superRefine((plan, context) => {
     const objectIds = new Set<string>();

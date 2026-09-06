@@ -14,7 +14,7 @@ import {
   Trash2,
   Upload,
 } from 'lucide-react';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -46,9 +46,11 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { planDocumentSchema, type PlanDocument } from '../domain/plan-document';
+import { type PlanDocument } from '../domain/plan-document';
 import {
   parseRoomFile,
+  MAX_IMPORT_BYTES,
+  MAX_IMPORT_ROOMS,
   roomFileName,
   roomImageFileName,
   serializeRoom,
@@ -106,15 +108,8 @@ export function RoomActions() {
   const setMessage = useCallback((text: string | null) => {
     setNotice(text === null ? null : { text });
   }, []);
-  const errorNotice = useMemo(
-    () => ({ status: saveStatus, error: saveError }),
-    [saveStatus, saveError],
-  );
-  const [dismissedError, setDismissedError] = useState<
-    typeof errorNotice | null
-  >(null);
-  const errorNoticeVisible =
-    saveStatus === 'error' && dismissedError !== errorNotice;
+  const saveRecoveryOpen = usePlannerStore((state) => state.saveRecoveryOpen);
+  const errorNoticeVisible = saveStatus === 'error' && saveRecoveryOpen;
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -126,15 +121,6 @@ export function RoomActions() {
     );
     return () => window.clearTimeout(timeout);
   }, [notice, saveStatus]);
-
-  useEffect(() => {
-    if (errorNotice.status !== 'error') return;
-    const timeout = window.setTimeout(
-      () => setDismissedError(errorNotice),
-      8000,
-    );
-    return () => window.clearTimeout(timeout);
-  }, [errorNotice]);
 
   const refreshRooms = useCallback(async () => {
     try {
@@ -245,16 +231,23 @@ export function RoomActions() {
   const importRooms = async (files: FileList | null) => {
     if (!files?.length) return;
     try {
-      const imported = (
-        await Promise.all(
-          Array.from(files, async (file) => parseRoomFile(await file.text())),
-        )
-      ).flat();
+      const selectedFiles = Array.from(files);
+      if (
+        selectedFiles.length > MAX_IMPORT_ROOMS ||
+        selectedFiles.reduce((size, file) => size + file.size, 0) >
+          MAX_IMPORT_BYTES
+      )
+        throw new Error('Import up to 20 rooms and 5 MB at a time.');
+      const imported: PlanDocument[] = [];
+      for (const file of selectedFiles) {
+        imported.push(...parseRoomFile(await file.text()));
+        if (imported.length > MAX_IMPORT_ROOMS)
+          throw new Error('Import up to 20 rooms at a time.');
+      }
       const uniqueRooms = Array.from(
         new Map(
           imported.map((room) => {
-            const validated = planDocumentSchema.parse(room);
-            return [validated.id, validated] as const;
+            return [room.id, room] as const;
           }),
         ).values(),
       );
@@ -268,7 +261,7 @@ export function RoomActions() {
       await refreshRooms();
     } catch {
       setMessage(
-        'Import failed. Choose a Room Planner JSON file with a valid room outline and unique objects, and check that local storage is available.',
+        'Import failed. Limits: 5 MB total, 20 rooms, 500 objects and 256 corners per room. Names are limited to 120 characters. Choose a Room Planner JSON file with a valid room outline and unique objects, and check that local storage is available.',
       );
     } finally {
       if (fileInputRef.current) fileInputRef.current.value = '';
@@ -410,13 +403,14 @@ export function RoomActions() {
               <DialogTitle>Create a new room</DialogTitle>
               <DialogDescription>
                 Your current room stays saved locally. The new room starts with
-                an empty 4.8 × 3.6 metre outline.
+                an empty room measuring 4.68 × 3.48 metres inside the walls.
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-1.5 py-1">
               <Label htmlFor="new-room-name">Room name</Label>
               <Input
                 id="new-room-name"
+                maxLength={120}
                 value={newRoomName}
                 onChange={(event) => setNewRoomName(event.target.value)}
               />
@@ -446,6 +440,7 @@ export function RoomActions() {
             <Label htmlFor="rename-room">Room name</Label>
             <Input
               id="rename-room"
+              maxLength={120}
               value={renameDraft}
               onChange={(event) => setRenameDraft(event.target.value)}
             />
@@ -581,7 +576,7 @@ export function RoomActions() {
       />
 
       {(message || errorNoticeVisible) && (
-        <output className="fixed inset-x-3 bottom-24 z-50 mx-auto flex max-w-xl flex-wrap items-center gap-2 rounded-lg border bg-background p-3 text-sm shadow-lg">
+        <output className="fixed max-h-[calc(100dvh-6rem)] overflow-y-auto inset-x-3 bottom-3 z-50 mx-auto flex max-w-xl flex-wrap items-center gap-2 rounded-lg border bg-background p-3 text-sm shadow-lg">
           <p className="min-w-0 flex-1">
             {saveStatus === 'error'
               ? (saveError ??
@@ -640,7 +635,7 @@ export function RoomActions() {
             className="h-11"
             onClick={() => {
               setMessage(null);
-              setDismissedError(errorNotice);
+              usePlannerStore.setState({ saveRecoveryOpen: false });
             }}
           >
             Dismiss

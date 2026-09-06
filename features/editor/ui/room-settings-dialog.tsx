@@ -1,5 +1,6 @@
 'use client';
 
+import { RoomOutlineEditor } from './room-outline-editor';
 import { ScanLine } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -180,6 +181,7 @@ export function RoomSettingsDialog({
           </p>
         </div>
 
+        <RoomOutlineEditor />
         <DialogFooter showCloseButton />
       </DialogContent>
     </Dialog>

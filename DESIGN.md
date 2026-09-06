@@ -277,7 +277,7 @@ The selection toolbar is a 448px contextual surface when space allows, capped to
 
 ## Measurement and object conventions
 
-Room walls are measured along their centrelines, explicitly labelled in the canvas,
+Room dimensions measure the inside wall faces, explicitly labelled in the canvas,
 room setup, and PNG legend. Wall labels use a 12px screen font across zoom levels.
 Selected objects show their full physical envelope. Height and mounting elevation
 use the active measurement system and remain separate from top-down depth.
@@ -287,5 +287,5 @@ previews, and PNG exports; group and multiple-selection changes skip locked obje
 Interactive control ink uses the semantic primary token. Drafting geometry and
 user colors retain explicit light-canvas inks; this editor does not claim a dark theme.
 Closed library sections mount their contents on expansion, and the collapsed tray
-is inert. Touch users can select the pan tool; floating controls remain within the
+is inert. Touch users can drag empty canvas to pan; floating controls remain within the
 canvas and scroll on unusually short viewports.

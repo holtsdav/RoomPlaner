@@ -1,14 +1,7 @@
-import {
-  edgeLength,
-  intersectLines,
-  isSimplePolygon,
-  signedPolygonArea,
-} from './polygon';
-import {
-  getRoomBounds,
-  type PointMm,
-  type PlanDocument,
-} from './plan-document';
+import { offsetBoundary } from './room-interior';
+export { offsetBoundary } from './room-interior';
+import { edgeLength, isSimplePolygon } from './polygon';
+import { getRoomBounds, type PlanDocument } from './plan-document';
 
 /** Only axis-aligned rectangles have an inside width/depth from these bounds. */
 export function rectangularInsideSize(room: PlanDocument['room']) {
@@ -25,37 +18,6 @@ export function rectangularInsideSize(room: PlanDocument['room']) {
   const width = bounds.width - room.wallThicknessMm;
   const depth = bounds.height - room.wallThicknessMm;
   return width > 0 && depth > 0 ? { width, depth } : null;
-}
-
-/** Miter intersections of wall faces. Positive distance offsets into the room. */
-export function offsetBoundary(points: PointMm[], distance: number): PointMm[] {
-  const sign = signedPolygonArea(points) >= 0 ? 1 : -1;
-  const edges = points.map((start, index) => {
-    const end = points[(index + 1) % points.length];
-    const length = edgeLength(start, end);
-    const direction = {
-      x: (end.x - start.x) / length,
-      y: (end.y - start.y) / length,
-    };
-    return {
-      direction,
-      start: {
-        x: start.x - direction.y * distance * sign,
-        y: start.y + direction.x * distance * sign,
-      },
-    };
-  });
-  return edges.map((edge, index) => {
-    const previous = edges[(index + edges.length - 1) % edges.length];
-    return (
-      intersectLines(
-        previous.start,
-        previous.direction,
-        edge.start,
-        edge.direction,
-      ) ?? edge.start
-    );
-  });
 }
 
 export function insideRoomBounds(room: PlanDocument['room']) {

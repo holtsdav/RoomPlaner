@@ -2,7 +2,14 @@ import handler from 'vinext/server/fetch-handler';
 export { LoginGuard } from './login-guard';
 
 const COOKIE = '__Secure-roomplaner-dev';
+const securityHeaders = {
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'DENY',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+};
 const privateHeaders = {
+  ...securityHeaders,
   'Cache-Control': 'private, no-store',
   'X-Robots-Tag': 'noindex, nofollow, noarchive',
   'X-Content-Type-Options': 'nosniff',
@@ -34,7 +41,10 @@ export default {
     const url = new URL(request.url);
     const base = env.APP_BASE_PATH;
     if (url.pathname !== base && !url.pathname.startsWith(`${base}/`))
-      return new Response('Not found', { status: 404 });
+      return new Response('Not found', {
+        status: 404,
+        headers: securityHeaders,
+      });
     const isDev = env.DEPLOYMENT === 'develop';
     if (isDev) {
       if (!env.DEV_PASSWORD || !env.LOGIN_GUARD)
@@ -113,10 +123,39 @@ export default {
     }
     const response =
       asset.status !== 404 ? asset : await handler.fetch(request, env, ctx);
-    if (!isDev) return response;
     const secured = new Response(response.body, response);
-    for (const [name, value] of Object.entries(privateHeaders))
+    for (const [name, value] of Object.entries(
+      isDev ? privateHeaders : securityHeaders,
+    ))
       secured.headers.set(name, value);
-    return secured;
+    if (!secured.headers.get('Content-Type')?.includes('text/html'))
+      return secured;
+    const nonce = crypto.randomUUID().replaceAll('-', '');
+    secured.headers.set(
+      'Content-Security-Policy',
+      [
+        "default-src 'self'",
+        `script-src 'self' 'nonce-${nonce}'`,
+        "style-src 'self' 'unsafe-inline'",
+        "img-src 'self' data: blob:",
+        "connect-src 'self'",
+        "font-src 'self'",
+        "object-src 'none'",
+        "base-uri 'self'",
+        "form-action 'self'",
+        "frame-ancestors 'none'",
+      ].join('; '),
+    );
+    // Nonces and their HTML must travel together; compiled assets remain cacheable.
+    secured.headers.set('Cache-Control', 'private, no-store');
+    secured.headers.delete('ETag');
+    secured.headers.delete('Content-Length');
+    return new HTMLRewriter()
+      .on('script', {
+        element(element) {
+          element.setAttribute('nonce', nonce);
+        },
+      })
+      .transform(secured);
   },
 } satisfies ExportedHandler<Cloudflare.Env>;

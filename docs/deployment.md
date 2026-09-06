@@ -58,3 +58,29 @@ For the deployed development configuration:
 Production uses `npm run build:production` followed by `npm run deploy:production`.
 Always build the matching environment immediately before deploying. Never run the
 production deploy command against an existing development build or vice versa.
+
+## Storage isolation and browser verification
+
+The consumer path retains the existing `room-planner` IndexedDB database and
+preference keys. `/dev/RoomPlaner` uses `room-planner-develop`; local editing at `/`
+uses `room-planner-local`. Development does not import, migrate, or delete the
+consumer database. These names prevent accidental mixing; they are not a security
+boundary between scripts on the same origin. Separate origins would provide that
+boundary. Export JSON from the old environment to transfer rooms deliberately.
+
+`npm run dev` uses Vinext's Node RSC development server when there are no local
+Cloudflare storage bindings. This avoids the Worker dev middleware intercepting
+CSS and browser-module requests. Actual Worker behavior is verified separately.
+
+Run `npx playwright install chromium`, then `npm run test:browser` for the local
+app and `npm run test:release` for both compiled deployments. The release command
+builds each target, starts isolated local Workers on port 8791, checks authentication
+and security headers, and runs desktop/mobile regressions. Its temporary development
+password and Durable Object state are removed afterward. It does not deploy.
+`PLAYWRIGHT_EXECUTABLE_PATH` may select a locally installed Chromium executable.
+
+CI requires unit tests, formatting, lint, type checking, the local browser suite,
+both compiled Worker suites, and the production dependency audit. HTML responses
+use a per-response script nonce, prohibit framing and caching, and restrict sources;
+static assets keep their normal caching policy. SSR hydration and PNG/JSON export
+are exercised with that policy enabled.

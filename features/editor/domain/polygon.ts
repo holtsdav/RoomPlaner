@@ -54,12 +54,16 @@ export function edgeLength(a: PointMm, b: PointMm) {
   return Math.hypot(b.x - a.x, b.y - a.y);
 }
 
-export function isSimplePolygon(points: PointMm[]) {
-  if (points.length < 3) return false;
+export function isSimplePolygon(
+  points: PointMm[],
+  minEdge = MIN_EDGE_LENGTH_MM,
+  minArea = MIN_AREA_SQUARE_MM,
+) {
+  if (points.length < 3 || points.length > 256) return false;
 
   for (let index = 0; index < points.length; index += 1) {
     const nextIndex = (index + 1) % points.length;
-    if (edgeLength(points[index], points[nextIndex]) < MIN_EDGE_LENGTH_MM) {
+    if (edgeLength(points[index], points[nextIndex]) < minEdge) {
       return false;
     }
 
@@ -88,7 +92,7 @@ export function isSimplePolygon(points: PointMm[]) {
     }
   }
 
-  return polygonArea(points) >= MIN_AREA_SQUARE_MM;
+  return polygonArea(points) >= minArea;
 }
 
 export function midpoint(a: PointMm, b: PointMm): PointMm {

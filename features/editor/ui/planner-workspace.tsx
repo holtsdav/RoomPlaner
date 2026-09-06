@@ -1,5 +1,9 @@
 'use client';
 
+import {
+  readPreference,
+  writePreference,
+} from '../persistence/browser-storage';
 import { LazyDetails } from './lazy-details';
 import { BlueprintLibrary } from './blueprint-library';
 
@@ -85,7 +89,9 @@ const PlacedObjectRow = memo(function PlacedObjectRow({
   units,
   selectObject,
   onChoose,
+  multiple,
 }: {
+  multiple: boolean;
   object: PlanObject;
   selected: boolean;
   units: PlanDocument['units'];
@@ -97,7 +103,8 @@ const PlacedObjectRow = memo(function PlacedObjectRow({
       type="button"
       aria-pressed={selected}
       onClick={(event) => {
-        selectObject(object.id, event.shiftKey);
+        selectObject(object.id, multiple || event.shiftKey);
+        if (multiple) return;
         onChoose?.();
         requestAnimationFrame(() =>
           globalThis.document
@@ -159,6 +166,7 @@ function ObjectLibrary({
   onCollapse?: () => void;
 }) {
   const categoryGroupName = useId();
+  const [multiple, setMultiple] = useState(false);
   const normalizedQuery = query.trim().toLowerCase();
   const isSearching = normalizedQuery.length > 0;
   const addPreset = usePlannerStore((state) => state.addPreset);
@@ -317,9 +325,30 @@ function ObjectLibrary({
           </span>
         </summary>
         <div className="mt-1 space-y-1">
+          {objects.length > 1 && (
+            <div className="flex flex-wrap items-center gap-2 px-2 py-1">
+              <Button
+                variant="outline"
+                className="min-h-11"
+                aria-pressed={multiple}
+                onClick={() => {
+                  setMultiple(!multiple);
+                  if (multiple) onChoose?.();
+                }}
+              >
+                {multiple ? 'Done selecting' : 'Select multiple'}
+              </Button>
+              {multiple && (
+                <span className="text-xs text-slate-600" aria-live="polite">
+                  {selectedIds.length} selected
+                </span>
+              )}
+            </div>
+          )}
           {objects.map((object) => (
             <PlacedObjectRow
               key={object.id}
+              multiple={multiple}
               object={object}
               selected={selectedIds.includes(object.id)}
               units={units}
@@ -352,9 +381,7 @@ export function PlannerWorkspace() {
   const [clearDialogOpen, setClearDialogOpen] = useState(false);
   const [sidebarShortcut, setSidebarShortcut] = useState(() => {
     if (typeof window === 'undefined') return DEFAULT_SIDEBAR_SHORTCUT;
-    const storedShortcut = window.localStorage.getItem(
-      SIDEBAR_SHORTCUT_STORAGE_KEY,
-    );
+    const storedShortcut = readPreference(SIDEBAR_SHORTCUT_STORAGE_KEY);
     return storedShortcut && isValidSidebarShortcut(storedShortcut)
       ? storedShortcut
       : DEFAULT_SIDEBAR_SHORTCUT;
@@ -381,7 +408,7 @@ export function PlannerWorkspace() {
 
   const updateSidebarShortcut = useCallback((shortcut: string) => {
     setSidebarShortcut(shortcut);
-    window.localStorage.setItem(SIDEBAR_SHORTCUT_STORAGE_KEY, shortcut);
+    writePreference(SIDEBAR_SHORTCUT_STORAGE_KEY, shortcut);
   }, []);
 
   useEffect(() => {
@@ -452,7 +479,19 @@ export function PlannerWorkspace() {
               className={`size-3.5 ${saveStatus === 'saving' || saveStatus === 'loading' ? 'animate-spin' : ''}`}
               aria-hidden="true"
             />
-            {save.label}
+            {saveStatus === 'error' ? (
+              <button
+                type="button"
+                className="min-h-11 underline underline-offset-2"
+                onClick={() =>
+                  usePlannerStore.setState({ saveRecoveryOpen: true })
+                }
+              >
+                Local save unavailable · Recovery options
+              </button>
+            ) : (
+              save.label
+            )}
           </output>
           <Sheet open={mobileLibraryOpen} onOpenChange={setMobileLibraryOpen}>
             <SheetTrigger
@@ -553,7 +592,17 @@ export function PlannerWorkspace() {
 
       <output className="flex min-h-6 shrink-0 items-center gap-2 border-b px-3 text-xs text-slate-600 xl:hidden">
         <SaveIcon className="size-3" aria-hidden="true" />
-        {save.label}
+        {saveStatus === 'error' ? (
+          <button
+            type="button"
+            className="min-h-11 underline underline-offset-2"
+            onClick={() => usePlannerStore.setState({ saveRecoveryOpen: true })}
+          >
+            Local save unavailable · Recovery options
+          </button>
+        ) : (
+          save.label
+        )}
       </output>
       <div
         inert={!hydrated || roomOperationPending}
