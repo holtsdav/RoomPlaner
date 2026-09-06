@@ -1,5 +1,5 @@
-import { PlannerWorkspace } from '@/features/editor/ui/planner-workspace';
+import { redirect } from 'next/navigation';
 
 export default function PlannerPage() {
-  return <PlannerWorkspace />;
+  redirect('/');
 }

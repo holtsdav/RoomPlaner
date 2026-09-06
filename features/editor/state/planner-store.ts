@@ -1,16 +1,36 @@
+import { snapWallCorner, snapWallMillimetres } from '../domain/wall-snap';
+import { resizeInsideRoom } from '../domain/room-measurements';
+import {
+  constrainWindows,
+  isWallAttached,
+  findWallAttachment,
+} from '../domain/wall-attachment';
 import { create } from 'zustand';
-import { objectFromPreset, type CatalogPreset } from '../domain/catalog';
+import {
+  objectFromPreset,
+  getBlueprintProfile,
+  type CatalogPreset,
+} from '../domain/catalog';
 import {
   addObject as addObjectCommand,
+  createObjectGroup as createObjectGroupCommand,
   deleteObjects as deleteObjectsCommand,
   duplicateObjects as duplicateObjectsCommand,
+  mirrorObjects as mirrorObjectsCommand,
   moveObjects as moveObjectsCommand,
+  positionOverlappingObjects as positionOverlappingObjectsCommand,
+  rotateObjects as rotateObjectsCommand,
+  scaleObjects as scaleObjectsCommand,
+  setObjectsLocked as setObjectsLockedCommand,
+  ungroupObjects as ungroupObjectsCommand,
   updateObject as updateObjectCommand,
   updateRoom as updateRoomCommand,
+  type ObjectPositionAction,
 } from '../domain/commands';
 import {
   createId,
   createStarterPlan,
+  formatMeasurement,
   getRoomBounds,
   planDocumentSchema,
   type PlanDocument,
@@ -18,26 +38,46 @@ import {
   type PointMm,
 } from '../domain/plan-document';
 import { isSimplePolygon, midpoint } from '../domain/polygon';
+import { findPresetPosition } from '../domain/placement';
 import { loadLocalPlan } from '../persistence/local-plan-repository';
 
-export type EditorTool = 'select' | 'pan' | 'room';
+export type EditorTool = 'select' | 'room';
 export type SaveStatus = 'loading' | 'saving' | 'saved' | 'error';
 
 type ObjectPatch = Partial<
   Pick<
     PlanObject,
-    'name' | 'positionMm' | 'rotationDeg' | 'widthMm' | 'depthMm' | 'locked'
+    | 'name'
+    | 'positionMm'
+    | 'rotationDeg'
+    | 'widthMm'
+    | 'depthMm'
+    | 'heightMm'
+    | 'color'
+    | 'defaultSizeMm'
+    | 'blueprintProfile'
+    | 'shape'
+    | 'locked'
+    | 'mirroredHorizontally'
+    | 'mirroredVertically'
   >
 >;
 
 type PlannerState = {
   document: PlanDocument;
+  editStart: PlanDocument | null;
+  editRecordsHistory: boolean;
+  beginEdit: () => void;
+  finishEdit: () => void;
+  cancelEdit: () => void;
   selectedIds: string[];
   selectedCornerIndex: number | null;
   past: PlanDocument[];
   future: PlanDocument[];
   tool: EditorTool;
   saveStatus: SaveStatus;
+  saveError: string | null;
+  roomOperationPending: boolean;
   hydrated: boolean;
   isHydrating: boolean;
   roomGeometryError: string | null;
@@ -45,23 +85,44 @@ type PlannerState = {
   setSaveStatus: (saveStatus: SaveStatus) => void;
   setTool: (tool: EditorTool) => void;
   selectObject: (objectId: string, additive?: boolean) => void;
+  selectObjects: (objectIds: string[], additive?: boolean) => void;
   selectCorner: (cornerIndex: number) => void;
   clearSelection: () => void;
   addPreset: (preset: CatalogPreset) => void;
   moveSelectionTo: (anchorId: string, positionMm: PointMm) => void;
   nudgeSelection: (deltaMm: PointMm) => void;
   updateSelectedObject: (patch: ObjectPatch) => void;
+  setSelectionColor: (color: string | undefined) => void;
   duplicateSelection: () => void;
+  positionSelection: (action: ObjectPositionAction) => void;
+  scaleSelection: (factor: number, baseline?: PlanObject[]) => void;
+  rotateSelection: (deltaDeg: number, baseline?: PlanObject[]) => void;
+  mirrorSelection: (axis: 'horizontal' | 'vertical') => void;
+  setSelectionLocked: (locked: boolean) => void;
+  groupSelection: () => void;
+  ungroupSelection: () => void;
   deleteSelection: () => void;
+  clearCanvas: () => void;
   moveCorner: (cornerIndex: number, positionMm: PointMm) => boolean;
   insertCorner: (edgeStartIndex: number) => void;
   deleteSelectedCorner: () => void;
+  updatePlannerSettings: (settings: {
+    units: 'm' | 'ft-in';
+    gridSizeMm: number;
+    snapSizeMm: number;
+    gridEnabled?: boolean;
+    snapEnabled?: boolean;
+  }) => void;
   updateRoomSettings: (settings: {
     name: string;
     widthMm: number;
     depthMm: number;
     wallThicknessMm: number;
+    inside?: boolean;
   }) => boolean;
+  createNewRoom: (name?: string) => void;
+  renameRoom: (name: string) => void;
+  openRoom: (document: PlanDocument) => void;
   undo: () => void;
   redo: () => void;
 };
@@ -69,7 +130,32 @@ type PlannerState = {
 const MAX_HISTORY_LENGTH = 50;
 
 function validate(document: PlanDocument): PlanDocument {
-  return planDocumentSchema.parse(document);
+  const parsed = planDocumentSchema.parse(document);
+  return constrainWindows({
+    ...parsed,
+    objects: parsed.objects.map((object) => {
+      const profile =
+        object.blueprint && !object.blueprintProfile
+          ? getBlueprintProfile(object)
+          : undefined;
+      return profile ? { ...object, blueprintProfile: profile } : object;
+    }),
+  });
+}
+
+function expandGroupedObjectIds(
+  document: PlanDocument,
+  objectIds: string[],
+): string[] {
+  const ids = new Set(objectIds);
+  for (const group of document.groups) {
+    if (group.objectIds.some((id) => ids.has(id))) {
+      for (const id of group.objectIds) ids.add(id);
+    }
+  }
+  return document.objects
+    .map((object) => object.id)
+    .filter((id) => ids.has(id));
 }
 
 export const usePlannerStore = create<PlannerState>()((set, get) => {
@@ -79,6 +165,20 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
     nextCornerIndex = get().selectedCornerIndex,
   ): void => {
     const current = get();
+    if (nextDocument === current.document) return;
+    nextDocument = constrainWindows(nextDocument, current.document);
+    if (current.editStart) {
+      // Commands create immutable, constrained previews. Validate once on commit.
+      set({
+        document: nextDocument,
+        selectedIds: nextSelection,
+        selectedCornerIndex: nextCornerIndex,
+        editRecordsHistory: true,
+        saveStatus: 'saving',
+        roomGeometryError: null,
+      });
+      return;
+    }
     set({
       document: validate(nextDocument),
       selectedIds: nextSelection,
@@ -93,7 +193,77 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
     });
   };
 
+  const selectState = (
+    patch:
+      | Partial<PlannerState>
+      | ((state: PlannerState) => Partial<PlannerState>),
+  ) => {
+    get().finishEdit();
+    set(patch);
+  };
+
   return {
+    editStart: null,
+    saveError: null,
+    editRecordsHistory: false,
+    beginEdit: () => {
+      if (!get().editStart)
+        set({ editStart: get().document, editRecordsHistory: false });
+    },
+    finishEdit: () => {
+      const state = get();
+      if (!state.editStart) return;
+      const changed = state.document !== state.editStart;
+      const result = changed
+        ? planDocumentSchema.safeParse(state.document)
+        : null;
+      if (result && !result.success) {
+        set({
+          document: state.editStart,
+          editStart: null,
+          editRecordsHistory: false,
+          roomGeometryError:
+            'That value would create an invalid plan. The previous value was restored.',
+        });
+        return;
+      }
+      const applyPreferences = (document: PlanDocument): PlanDocument => ({
+        ...document,
+        units: state.document.units,
+        gridEnabled: state.document.gridEnabled,
+        snapEnabled: state.document.snapEnabled,
+        gridSizeMm: state.document.gridSizeMm,
+        snapSizeMm: state.document.snapSizeMm,
+      });
+      set({
+        document: result?.success ? result.data : state.document,
+        editStart: null,
+        editRecordsHistory: false,
+        past:
+          changed && state.editRecordsHistory
+            ? [...state.past.slice(-(MAX_HISTORY_LENGTH - 1)), state.editStart]
+            : changed
+              ? state.past.map(applyPreferences)
+              : state.past,
+        future:
+          changed && state.editRecordsHistory
+            ? []
+            : changed
+              ? state.future.map(applyPreferences)
+              : state.future,
+        saveStatus: changed ? 'saving' : state.saveStatus,
+      });
+    },
+    cancelEdit: () => {
+      const state = get();
+      if (state.editStart)
+        set({
+          document: state.editStart,
+          editStart: null,
+          editRecordsHistory: false,
+          roomGeometryError: null,
+        });
+    },
     document: createStarterPlan(),
     selectedIds: [],
     selectedCornerIndex: null,
@@ -101,6 +271,7 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
     future: [],
     tool: 'select',
     saveStatus: 'loading',
+    roomOperationPending: false,
     hydrated: false,
     isHydrating: false,
     roomGeometryError: null,
@@ -112,7 +283,7 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
       try {
         const document = (await loadLocalPlan()) ?? createStarterPlan();
         set({
-          document,
+          document: validate(document),
           hydrated: true,
           isHydrating: false,
           saveStatus: 'saved',
@@ -122,7 +293,15 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
           selectedCornerIndex: null,
         });
       } catch {
+        const recovery = createStarterPlan();
         set({
+          document: {
+            ...recovery,
+            id: createId('recovery-plan'),
+            room: { ...recovery.room, id: createId('room') },
+          },
+          roomGeometryError:
+            'The saved room could not be opened. Its stored copy has been preserved. Any new edits will be saved separately.',
           hydrated: true,
           isHydrating: false,
           saveStatus: 'error',
@@ -132,7 +311,7 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
 
     setSaveStatus: (saveStatus) => set({ saveStatus }),
     setTool: (tool) =>
-      set({
+      selectState({
         tool,
         selectedIds: tool === 'room' ? [] : get().selectedIds,
         selectedCornerIndex: tool === 'room' ? get().selectedCornerIndex : null,
@@ -140,25 +319,48 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
       }),
 
     selectObject: (objectId, additive = false) =>
-      set((state) => {
+      selectState((state) => {
+        const targetIds = expandGroupedObjectIds(state.document, [objectId]);
         if (!additive) {
           return {
-            selectedIds: [objectId],
+            selectedIds: targetIds,
             selectedCornerIndex: null,
             tool: 'select' as const,
           };
         }
+        const targetIsSelected = targetIds.every((id) =>
+          state.selectedIds.includes(id),
+        );
         return {
-          selectedIds: state.selectedIds.includes(objectId)
-            ? state.selectedIds.filter((id) => id !== objectId)
-            : [...state.selectedIds, objectId],
+          selectedIds: targetIsSelected
+            ? state.selectedIds.filter((id) => !targetIds.includes(id))
+            : [...new Set([...state.selectedIds, ...targetIds])],
           selectedCornerIndex: null,
           tool: 'select' as const,
         };
       }),
 
+    selectObjects: (objectIds, additive = false) =>
+      selectState((state) => {
+        const existingIds = new Set(
+          state.document.objects.map((object) => object.id),
+        );
+        const validIds = expandGroupedObjectIds(
+          state.document,
+          objectIds.filter((id) => existingIds.has(id)),
+        );
+        return {
+          selectedIds: additive
+            ? [...new Set([...state.selectedIds, ...validIds])]
+            : validIds,
+          selectedCornerIndex: null,
+          tool: 'select' as const,
+          roomGeometryError: null,
+        };
+      }),
+
     selectCorner: (selectedCornerIndex) =>
-      set({
+      selectState({
         selectedCornerIndex,
         selectedIds: [],
         tool: 'room',
@@ -166,21 +368,35 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
       }),
 
     clearSelection: () =>
-      set({
+      selectState({
         selectedIds: [],
         selectedCornerIndex: null,
         roomGeometryError: null,
       }),
 
     addPreset: (preset) => {
+      get().finishEdit();
       const { document } = get();
-      const bounds = getRoomBounds(document.room);
+      const position = isWallAttached(preset)
+        ? document.room.boundary[0]
+        : findPresetPosition(document, preset);
+      if (!position) {
+        set({
+          roomGeometryError: `${preset.name} does not fit inside this room at its current size. Enlarge the room or choose a smaller object.`,
+        });
+        return;
+      }
       const id = createId(preset.id);
-      const offset = document.objects.length * 80;
-      const object = objectFromPreset(preset, id, {
-        x: Math.round(bounds.minX + bounds.width / 2 + offset),
-        y: Math.round(bounds.minY + bounds.height / 2 + offset),
-      });
+      const object = objectFromPreset(preset, id, position);
+      if (
+        isWallAttached(object) &&
+        !findWallAttachment(object, document.room)
+      ) {
+        set({
+          roomGeometryError: `${preset.name} cannot fit a mounting wall at its real size. Choose a smaller variant or enlarge the room.`,
+        });
+        return;
+      }
       commit(addObjectCommand(document, object), [id], null);
     },
 
@@ -206,7 +422,14 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
 
     nudgeSelection: (deltaMm) => {
       const state = get();
-      if (state.selectedIds.length === 0) return;
+      if (
+        state.selectedIds.length === 0 ||
+        (deltaMm.x === 0 && deltaMm.y === 0) ||
+        !state.document.objects.some(
+          (object) => state.selectedIds.includes(object.id) && !object.locked,
+        )
+      )
+        return;
       commit(moveObjectsCommand(state.document, state.selectedIds, deltaMm));
     },
 
@@ -225,6 +448,26 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
       commit(updateObjectCommand(state.document, state.selectedIds[0], patch));
     },
 
+    setSelectionColor: (color) => {
+      const state = get();
+      if (color !== undefined && !/^#[0-9a-fA-F]{6}$/.test(color)) return;
+      const ids = new Set(state.selectedIds);
+      if (
+        !state.document.objects.some(
+          (object) =>
+            ids.has(object.id) && !object.locked && object.color !== color,
+        )
+      )
+        return;
+      commit({
+        ...state.document,
+        updatedAt: new Date().toISOString(),
+        objects: state.document.objects.map((object) =>
+          ids.has(object.id) && !object.locked ? { ...object, color } : object,
+        ),
+      });
+    },
+
     duplicateSelection: () => {
       const state = get();
       if (state.selectedIds.length === 0) return;
@@ -232,8 +475,97 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
         state.document,
         state.selectedIds,
         (object) => createId(object.category),
+        () => createId('group'),
       );
       commit(result.document, result.duplicatedIds);
+    },
+
+    positionSelection: (action) => {
+      const state = get();
+      if (state.selectedIds.length === 0) return;
+      const nextDocument = positionOverlappingObjectsCommand(
+        state.document,
+        state.selectedIds,
+        action,
+      );
+      if (nextDocument !== state.document) commit(nextDocument);
+    },
+
+    scaleSelection: (factor, baseline) => {
+      const state = get();
+      if (
+        state.selectedIds.length < 2 ||
+        factor <= 0 ||
+        (factor === 1 && !baseline)
+      )
+        return;
+      const nextDocument = scaleObjectsCommand(
+        state.document,
+        state.selectedIds,
+        factor,
+        baseline,
+      );
+      if (nextDocument !== state.document) commit(nextDocument);
+    },
+
+    rotateSelection: (deltaDeg, baseline) => {
+      const state = get();
+      if (state.selectedIds.length < 2 || (deltaDeg === 0 && !baseline)) return;
+      const nextDocument = rotateObjectsCommand(
+        state.document,
+        state.selectedIds,
+        deltaDeg,
+        baseline,
+      );
+      if (nextDocument !== state.document) commit(nextDocument);
+    },
+
+    mirrorSelection: (axis) => {
+      const state = get();
+      if (state.selectedIds.length < 2) return;
+      const nextDocument = mirrorObjectsCommand(
+        state.document,
+        state.selectedIds,
+        axis,
+      );
+      if (nextDocument !== state.document) commit(nextDocument);
+    },
+
+    setSelectionLocked: (locked) => {
+      const state = get();
+      if (state.selectedIds.length === 0) return;
+      commit(
+        setObjectsLockedCommand(state.document, state.selectedIds, locked),
+      );
+    },
+
+    groupSelection: () => {
+      const state = get();
+      if (state.selectedIds.length < 2) return;
+      const groupNumber = state.document.groups.length + 1;
+      const nextDocument = createObjectGroupCommand(
+        state.document,
+        state.selectedIds,
+        createId('group'),
+        `Group ${groupNumber}`,
+      );
+      if (nextDocument !== state.document) {
+        const groupedIds = expandGroupedObjectIds(
+          nextDocument,
+          state.selectedIds,
+        );
+        commit(nextDocument, groupedIds, null);
+      }
+    },
+
+    ungroupSelection: () => {
+      const state = get();
+      if (state.selectedIds.length === 0) return;
+      const nextDocument = ungroupObjectsCommand(
+        state.document,
+        state.selectedIds,
+      );
+      if (nextDocument !== state.document) commit(nextDocument);
     },
 
     deleteSelection: () => {
@@ -242,14 +574,36 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
       commit(deleteObjectsCommand(state.document, state.selectedIds), [], null);
     },
 
+    clearCanvas: () => {
+      const state = get();
+      const starter = createStarterPlan();
+      commit(
+        {
+          ...state.document,
+          room: {
+            ...starter.room,
+            id: state.document.room.id,
+            name: state.document.room.name,
+          },
+          objects: [],
+          groups: [],
+          updatedAt: new Date().toISOString(),
+        },
+        [],
+        null,
+      );
+      set({ tool: 'select' });
+    },
+
     moveCorner: (cornerIndex, positionMm) => {
       const state = get();
       const currentCorner = state.document.room.boundary[cornerIndex];
       if (!currentCorner) return false;
-      const nextCorner = {
-        x: Math.round(positionMm.x / 10) * 10,
-        y: Math.round(positionMm.y / 10) * 10,
-      };
+      const nextCorner = snapWallCorner(
+        state.document.room,
+        cornerIndex,
+        positionMm,
+      );
       if (
         nextCorner.x === currentCorner.x &&
         nextCorner.y === currentCorner.y
@@ -261,8 +615,7 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
       );
       if (!isSimplePolygon(boundary)) {
         set({
-          roomGeometryError:
-            'That position would cross a wall or create a wall shorter than 100 mm.',
+          roomGeometryError: `That position would cross a wall or create a wall shorter than ${formatMeasurement(100, state.document.units)}.`,
         });
         return false;
       }
@@ -281,6 +634,11 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
       const corner = midpoint(boundary[edgeStartIndex], boundary[nextIndex]);
       const insertedIndex = edgeStartIndex + 1;
       boundary.splice(insertedIndex, 0, corner);
+      boundary[insertedIndex] = snapWallCorner(
+        { ...state.document.room, boundary },
+        insertedIndex,
+        corner,
+      );
       if (!isSimplePolygon(boundary)) {
         set({ roomGeometryError: 'This wall is too short to add a corner.' });
         return;
@@ -317,18 +675,65 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
       );
     },
 
-    updateRoomSettings: ({ name, widthMm, depthMm, wallThicknessMm }) => {
+    updatePlannerSettings: ({
+      units,
+      gridSizeMm,
+      snapSizeMm,
+      gridEnabled,
+      snapEnabled,
+    }) => {
+      const state = get();
+      const nextSettings = {
+        units,
+        gridSizeMm: Math.max(1, Math.round(gridSizeMm)),
+        snapSizeMm: Math.max(1, Math.round(snapSizeMm)),
+        gridEnabled: gridEnabled ?? state.document.gridEnabled,
+        snapEnabled: snapEnabled ?? state.document.snapEnabled,
+      };
+      const applySettings = (document: PlanDocument): PlanDocument => ({
+        ...document,
+        ...nextSettings,
+      });
+      set({
+        document: validate({
+          ...applySettings(state.document),
+          updatedAt: new Date().toISOString(),
+        }),
+        past: state.editStart ? state.past : state.past.map(applySettings),
+        future: state.editStart
+          ? state.future
+          : state.future.map(applySettings),
+        saveStatus: 'saving',
+      });
+    },
+
+    updateRoomSettings: ({
+      name,
+      widthMm,
+      depthMm,
+      wallThicknessMm,
+      inside,
+    }) => {
+      widthMm = snapWallMillimetres(widthMm);
+      depthMm = snapWallMillimetres(depthMm);
       const state = get();
       const bounds = getRoomBounds(state.document.room);
-      const boundary = state.document.room.boundary.map((point) => ({
-        x: Math.round(
-          bounds.minX + ((point.x - bounds.minX) / bounds.width) * widthMm,
-        ),
-        y: Math.round(
-          bounds.minY + ((point.y - bounds.minY) / bounds.height) * depthMm,
-        ),
-      }));
-      if (!isSimplePolygon(boundary)) {
+      const boundary = inside
+        ? resizeInsideRoom(
+            state.document.room,
+            widthMm,
+            depthMm,
+            wallThicknessMm,
+          )
+        : state.document.room.boundary.map((point) => ({
+            x: Math.round(
+              bounds.minX + ((point.x - bounds.minX) / bounds.width) * widthMm,
+            ),
+            y: Math.round(
+              bounds.minY + ((point.y - bounds.minY) / bounds.height) * depthMm,
+            ),
+          }));
+      if (!boundary || !isSimplePolygon(boundary)) {
         set({
           roomGeometryError:
             'Those dimensions would make one or more walls too short.',
@@ -348,7 +753,69 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
       return true;
     },
 
+    createNewRoom: (name = 'Untitled room') => {
+      const current = get().document;
+      const starter = createStarterPlan();
+      const now = new Date().toISOString();
+      const trimmedName = name.trim() || 'Untitled room';
+      set({
+        document: validate({
+          ...starter,
+          id: createId('plan'),
+          name: trimmedName,
+          units: current.units,
+          gridEnabled: current.gridEnabled,
+          snapEnabled: current.snapEnabled,
+          gridSizeMm: current.gridSizeMm,
+          snapSizeMm: current.snapSizeMm,
+          room: {
+            ...starter.room,
+            id: createId('room'),
+            name: trimmedName,
+          },
+          objects: [],
+          createdAt: now,
+          updatedAt: now,
+        }),
+        selectedIds: [],
+        selectedCornerIndex: null,
+        past: [],
+        future: [],
+        tool: 'select',
+        saveStatus: 'saving',
+        roomGeometryError: null,
+      });
+    },
+
+    renameRoom: (name) => {
+      const state = get();
+      const trimmedName = name.trim();
+      if (!trimmedName || trimmedName === state.document.room.name) return;
+      commit({
+        ...state.document,
+        name: trimmedName,
+        room: { ...state.document.room, name: trimmedName },
+        updatedAt: new Date().toISOString(),
+      });
+    },
+
+    openRoom: (document) => {
+      set({
+        editStart: null,
+        editRecordsHistory: false,
+        document: validate(document),
+        selectedIds: [],
+        selectedCornerIndex: null,
+        past: [],
+        future: [],
+        tool: 'select',
+        saveStatus: 'saved',
+        roomGeometryError: null,
+      });
+    },
+
     undo: () => {
+      get().finishEdit();
       const state = get();
       const previous = state.past.at(-1);
       if (!previous) return;
@@ -363,6 +830,7 @@ export const usePlannerStore = create<PlannerState>()((set, get) => {
     },
 
     redo: () => {
+      get().finishEdit();
       const state = get();
       const next = state.future[0];
       if (!next) return;
