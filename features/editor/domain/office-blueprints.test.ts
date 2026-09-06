@@ -26,7 +26,7 @@ describe('Home Office footprints', () => {
     }
     expect(
       homeOfficeCatalog.find((preset) => preset.blueprint === 'mac-mini'),
-    ).toMatchObject({ widthMm: 127, depthMm: 127, heightMm: 50 });
+    ).toMatchObject({ widthMm: 127, depthMm: 127 });
   });
 
   it('keeps all path geometry finite and inside the footprint at extreme resize ratios', () => {

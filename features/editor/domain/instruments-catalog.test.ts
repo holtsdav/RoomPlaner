@@ -32,21 +32,17 @@ it('mounts pictures and the wall guitar without changing their physical dimensio
     expect(mounted).not.toBeNull();
     expect(mounted?.widthMm).toBe(preset.widthMm);
     expect(mounted?.depthMm).toBe(preset.depthMm);
-    expect(mounted?.heightMm).toBe(preset.heightMm);
     expect(mounted?.positionMm).not.toEqual(object.positionMm);
   }
   const stand = instrumentsCatalog.find((p) => p.blueprint === 'guitar-stand')!;
   expect(isWallAttached(stand)).toBe(false);
 });
 
-it('uses frame width and thickness for the footprint, and centers every size at 150 cm elevation', () => {
+it('uses frame width and thickness for the footprint', () => {
   expect(pictureCatalog).toHaveLength(8);
   for (const picture of pictureCatalog) {
     expect(picture.depthMm).toBe(30);
-    expect(picture.heightMm).toBeGreaterThan(picture.depthMm);
-    expect(
-      picture.blueprintProfile!.mountingHeightMm! + picture.heightMm! / 2,
-    ).toBe(1500);
+    expect(picture.widthMm).toBeGreaterThan(picture.depthMm);
   }
 });
 

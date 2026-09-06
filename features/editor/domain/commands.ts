@@ -313,7 +313,6 @@ export function updateObject(
       | 'rotationDeg'
       | 'widthMm'
       | 'depthMm'
-      | 'heightMm'
       | 'color'
       | 'defaultSizeMm'
       | 'blueprintProfile'

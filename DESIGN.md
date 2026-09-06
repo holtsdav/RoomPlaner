@@ -279,8 +279,8 @@ The selection toolbar is a 448px contextual surface when space allows, capped to
 
 Room dimensions measure the inside wall faces, explicitly labelled in the canvas,
 room setup, and PNG legend. Wall labels use a 12px screen font across zoom levels.
-Selected objects show their full physical envelope. Height and mounting elevation
-use the active measurement system and remain separate from top-down depth.
+Selected objects show their 2D footprint width and depth in the active measurement
+system. The planner has no object height or mounting elevation controls.
 
 Color choices are optional per object. One shared palette supplies canvas, SVG
 previews, and PNG exports; group and multiple-selection changes skip locked objects.

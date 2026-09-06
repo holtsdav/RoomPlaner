@@ -34,9 +34,6 @@ function LibraryItem({
       <span className="my-1 font-mono text-[10px] tabular-nums text-slate-600">
         {formatMeasurement(preset.widthMm, units)} ×{' '}
         {formatMeasurement(preset.depthMm, units)}
-        {preset.heightMm !== undefined && (
-          <> × {formatMeasurement(preset.heightMm, units)} H</>
-        )}
       </span>
     </button>
   );
