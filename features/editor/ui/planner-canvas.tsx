@@ -284,12 +284,32 @@ export function PlannerCanvas({
       MIN_SCALE,
       MAX_SCALE,
     );
+    const labels = layoutWallLabels(document.room, document.units, scale);
+    // Include asymmetric dimension rails when centering a fitted room.
+    const left = Math.min(
+      roomBounds.minX * scale,
+      ...labels.map((label) => label.box.left),
+    );
+    const right = Math.max(
+      (roomBounds.minX + roomBounds.width) * scale,
+      ...labels.map((label) => label.box.right),
+    );
+    const top = Math.min(
+      roomBounds.minY * scale,
+      ...labels.map((label) => label.box.top),
+    );
+    const bottom = Math.max(
+      (roomBounds.minY + roomBounds.height) * scale,
+      ...labels.map((label) => label.box.bottom),
+    );
     setViewport({
       scale,
-      x: size.width / 2 - (roomBounds.minX + roomBounds.width / 2) * scale,
-      y: size.height / 2 - (roomBounds.minY + roomBounds.height / 2) * scale,
+      x: (size.width - left - right) / 2,
+      y: (size.height - top - bottom) / 2,
     });
   }, [
+    document.room,
+    document.units,
     roomBounds.height,
     roomBounds.minX,
     roomBounds.minY,
