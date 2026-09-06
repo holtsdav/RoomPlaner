@@ -1,5 +1,5 @@
+import { createPopulatedPlan } from '../../../tests/fixtures/populated-plan';
 import { beforeEach, expect, it, vi } from 'vitest';
-import { createStarterPlan } from '../domain/plan-document';
 import { usePlannerStore } from '../state/planner-store';
 
 const { save } = vi.hoisted(() => ({ save: vi.fn() }));
@@ -12,7 +12,7 @@ import { flushLocalPlan, runRoomOperation } from './use-local-plan';
 beforeEach(() => {
   save.mockReset().mockResolvedValue(undefined);
   usePlannerStore.setState({
-    document: createStarterPlan(),
+    document: createPopulatedPlan(),
     hydrated: true,
     editStart: null,
     editRecordsHistory: false,

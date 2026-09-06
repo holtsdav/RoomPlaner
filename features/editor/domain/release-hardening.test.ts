@@ -1,5 +1,6 @@
+import { createPopulatedPlan } from '../../../tests/fixtures/populated-plan';
 import { beforeEach, expect, it } from 'vitest';
-import { createStarterPlan, planDocumentSchema } from './plan-document';
+import { planDocumentSchema } from './plan-document';
 import {
   parseRoomFile,
   MAX_IMPORT_BYTES,
@@ -12,7 +13,7 @@ import { usePlannerStore } from '../state/planner-store';
 
 beforeEach(() =>
   usePlannerStore.setState({
-    document: createStarterPlan(),
+    document: createPopulatedPlan(),
     editStart: null,
     past: [],
     future: [],
@@ -22,7 +23,7 @@ beforeEach(() =>
 );
 it('rejects oversized input before parsing and excessive outline complexity before intersection checks', () => {
   expect(() => parseRoomFile(' '.repeat(MAX_IMPORT_BYTES + 1))).toThrow('5 MB');
-  const plan = createStarterPlan();
+  const plan = createPopulatedPlan();
   plan.room.boundary = Array.from({ length: 30000 }, (_, i) => ({
     x: i,
     y: i,
@@ -30,37 +31,37 @@ it('rejects oversized input before parsing and excessive outline complexity befo
   expect(() => parseRoomFile(JSON.stringify(plan))).toThrow();
   expect(() =>
     parseRoomFile(
-      JSON.stringify(Array.from({ length: 21 }, createStarterPlan)),
+      JSON.stringify(Array.from({ length: 21 }, createPopulatedPlan)),
     ),
   ).toThrow('20 rooms');
 });
 it('bounds strings, coordinate values, profiles and object counts', () => {
   for (const change of [
-    (plan: ReturnType<typeof createStarterPlan>) => {
+    (plan: ReturnType<typeof createPopulatedPlan>) => {
       plan.name = 'x'.repeat(121);
     },
-    (plan: ReturnType<typeof createStarterPlan>) => {
+    (plan: ReturnType<typeof createPopulatedPlan>) => {
       plan.objects[0].positionMm.x = Number.MAX_SAFE_INTEGER;
     },
-    (plan: ReturnType<typeof createStarterPlan>) => {
+    (plan: ReturnType<typeof createPopulatedPlan>) => {
       plan.objects = Array.from({ length: 501 }, (_, i) => ({
         ...plan.objects[0],
         id: `item-${i}`,
       }));
     },
   ]) {
-    const plan = createStarterPlan();
+    const plan = createPopulatedPlan();
     change(plan);
     expect(planDocumentSchema.safeParse(plan).success).toBe(false);
   }
-  const plan = createStarterPlan();
+  const plan = createPopulatedPlan();
   plan.room.name = 'x'.repeat(120);
   expect(planDocumentSchema.safeParse(copyImportedRoom(plan)).success).toBe(
     true,
   );
 });
 it('rejects collapsed and inverted wall interiors while retaining short valid inside faces', () => {
-  const plan = createStarterPlan();
+  const plan = createPopulatedPlan();
   plan.room.wallThicknessMm = 10000;
   expect(planDocumentSchema.safeParse(plan).success).toBe(false);
   plan.room.wallThicknessMm = 120;
@@ -76,7 +77,7 @@ it('rejects collapsed and inverted wall interiors while retaining short valid in
   expect(planDocumentSchema.safeParse(plan).success).toBe(false);
 });
 it('places an exact interior fit and rotates a preset to fit a narrow room', () => {
-  const plan = createStarterPlan();
+  const plan = createPopulatedPlan();
   plan.objects = [];
   plan.room.boundary = [
     { x: 0, y: 0 },
