@@ -1,0 +1,98 @@
+{
+  "tvBefore": 2234,
+  "tvAfter": 2234,
+  "tvProfile": {
+    "referenceWidthMm": 2234,
+    "referenceDepthMm": 70,
+    "presetId": "tv-tv-100-wall-mounted",
+    "panelDepthMm": 60,
+    "imageDiagonalIn": 100,
+    "imageWidthMm": 2214,
+    "imageHeightMm": 1245,
+    "mounting": "wall",
+    "mountingHeightMm": 1100
+  },
+  "panelAtCorner": {
+    "id": "panel",
+    "name": "Acoustic Wall Panel",
+    "category": "custom",
+    "shape": "rectangle",
+    "blueprint": "acoustic-panel",
+    "blueprintProfile": {
+      "referenceWidthMm": 600,
+      "referenceDepthMm": 100,
+      "presetId": "acoustic-panel-acoustic-wall-panel",
+      "mounting": "wall",
+      "mountingHeightMm": 600
+    },
+    "positionMm": {
+      "x": 360,
+      "y": 110
+    },
+    "rotationDeg": 0,
+    "widthMm": 600,
+    "depthMm": 100,
+    "heightMm": 1200,
+    "defaultSizeMm": {
+      "widthMm": 600,
+      "depthMm": 100
+    },
+    "locked": false,
+    "mirroredHorizontally": false,
+    "mirroredVertically": false
+  },
+  "formatSmall": [
+    [1, "0.04″"],
+    [3, "0.12″"],
+    [10, "0.39″"],
+    [13, "0.51″"],
+    [127, "5″"],
+    [313, "1′0.32″"]
+  ],
+  "horizontalMirror": [
+    {
+      "id": "tri",
+      "name": "Triangle",
+      "category": "custom",
+      "shape": "triangle",
+      "positionMm": {
+        "x": 2500,
+        "y": 1000
+      },
+      "rotationDeg": 0,
+      "widthMm": 1000,
+      "depthMm": 1000,
+      "defaultSizeMm": {
+        "widthMm": 1000,
+        "depthMm": 1000
+      },
+      "locked": false,
+      "mirroredHorizontally": true,
+      "mirroredVertically": false
+    },
+    {
+      "id": "square",
+      "name": "Square",
+      "category": "custom",
+      "shape": "rectangle",
+      "positionMm": {
+        "x": 1000,
+        "y": 1000
+      },
+      "rotationDeg": 0,
+      "widthMm": 1000,
+      "depthMm": 1000,
+      "defaultSizeMm": {
+        "widthMm": 1000,
+        "depthMm": 1000
+      },
+      "locked": false,
+      "mirroredHorizontally": true,
+      "mirroredVertically": false
+    }
+  ],
+  "exactCorner": {
+    "x": 123,
+    "y": 177
+  }
+}

@@ -1,9 +1,18 @@
 # Room Planner
 
 A precise, blueprint-style 2D room planner for real furniture and devices. The
-first local-only editor kernel supports canvas navigation, exact object
-placement, polygonal room corners, selection, undo/redo and automatic IndexedDB
-saving. Openings, export and the full object catalog are still ahead.
+local editor supports polygonal rooms, 184 object presets, openings, exact
+footprint dimensions and height, groups, object colors, undo/redo, and multiple
+rooms saved in IndexedDB. Standing and wall-mounted TVs have separate library
+entries. PNG exports include an optional grid and wall dimensions plus a scale
+legend; JSON backups remain editable.
+
+Geometry is stored in integer millimetres. Room boundaries and wall labels use
+wall centrelines; furniture retains its real dimensions even when it cannot fit.
+Metric labels retain millimetre precision and imperial labels use decimal inches.
+Competing tab writes are detected; “Save a copy” preserves conflicting edits.
+The canvas supports keyboard navigation, a touch pan tool, and responsive object
+controls. Room-corner editing still starts on the canvas.
 
 ## Technology direction
 
@@ -19,7 +28,7 @@ saving. Openings, export and the full object catalog are still ahead.
 - Cloudflare Workers for server APIs; D1/R2/Queues can be added when persistence,
   assets and background product ingestion are needed
 - Vitest for unit tests and Playwright for interaction and visual regression
-  tests once editor behavior lands
+  checks in `docs/audits/2026-09-05/scripts`
 
 The full rationale, boundaries and product-link ingestion approach are recorded
 in [the architecture decision](docs/architecture/0001-technology-stack.md).

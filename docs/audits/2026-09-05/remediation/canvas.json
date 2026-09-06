@@ -1,0 +1,4970 @@
+[
+  {
+    "name": "Square",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 999.9999999999993,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Triangle",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 999.9999999999993,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Rectangle",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 800,
+    "widthMm": 1200,
+    "depthMm": 800
+  },
+  {
+    "name": "Circle",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 999.9999999999993,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Oval",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 800,
+    "widthMm": 1200,
+    "depthMm": 800
+  },
+  {
+    "name": "Polygon",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 999.9999999999993,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Straight Stairs",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 2999.999999999999,
+    "widthMm": 1000,
+    "depthMm": 3000
+  },
+  {
+    "name": "Corner Stairs",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 2500,
+    "renderedDepthMm": 2499.999999999999,
+    "widthMm": 2500,
+    "depthMm": 2500
+  },
+  {
+    "name": "U-shaped Stairs",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 2200,
+    "renderedDepthMm": 3199.999999999999,
+    "widthMm": 2200,
+    "depthMm": 3200
+  },
+  {
+    "name": "Door",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 900,
+    "renderedDepthMm": 899.9999999999993,
+    "widthMm": 900,
+    "depthMm": 900
+  },
+  {
+    "name": "Double Door",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1600,
+    "renderedDepthMm": 800,
+    "widthMm": 1600,
+    "depthMm": 800
+  },
+  {
+    "name": "Window",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 120.00000000000028,
+    "widthMm": 1200,
+    "depthMm": 120
+  },
+  {
+    "name": "Base Cabinet / Worktop · Straight",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Base Cabinet / Worktop · Corner",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 1000,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Wall Cabinet",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 350,
+    "widthMm": 600,
+    "depthMm": 350
+  },
+  {
+    "name": "Tall Pantry Cabinet",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Kitchen Island",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1800,
+    "renderedDepthMm": 900,
+    "widthMm": 1800,
+    "depthMm": 900
+  },
+  {
+    "name": "Kitchen Sink",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 500,
+    "widthMm": 600,
+    "depthMm": 500
+  },
+  {
+    "name": "Oven",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 550,
+    "widthMm": 600,
+    "depthMm": 550
+  },
+  {
+    "name": "Cooker / Range",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Refrigerator · Standard",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 650,
+    "widthMm": 600,
+    "depthMm": 650
+  },
+  {
+    "name": "Refrigerator · Side-by-side",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 910.0000000000023,
+    "renderedDepthMm": 719.9999999999989,
+    "widthMm": 910,
+    "depthMm": 720
+  },
+  {
+    "name": "Dishwasher",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Microwave",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 489.9999999999977,
+    "renderedDepthMm": 380.00000000000114,
+    "widthMm": 490,
+    "depthMm": 380
+  },
+  {
+    "name": "Coffee Machine",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 250,
+    "renderedDepthMm": 400,
+    "widthMm": 250,
+    "depthMm": 400
+  },
+  {
+    "name": "Kettle",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 220.00000000000455,
+    "renderedDepthMm": 239.99999999999773,
+    "widthMm": 220,
+    "depthMm": 240
+  },
+  {
+    "name": "Toaster",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 300,
+    "renderedDepthMm": 180.00000000000114,
+    "widthMm": 300,
+    "depthMm": 180
+  },
+  {
+    "name": "Waste Bin",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 300,
+    "renderedDepthMm": 350,
+    "widthMm": 300,
+    "depthMm": 350
+  },
+  {
+    "name": "Bar Stool",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 420.00000000000455,
+    "renderedDepthMm": 419.99999999999886,
+    "widthMm": 420,
+    "depthMm": 420
+  },
+  {
+    "name": "Toilet",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 379.99999999999545,
+    "renderedDepthMm": 669.9999999999989,
+    "widthMm": 380,
+    "depthMm": 670
+  },
+  {
+    "name": "Sink",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 500,
+    "widthMm": 800,
+    "depthMm": 500
+  },
+  {
+    "name": "Bathtub",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 750,
+    "renderedDepthMm": 1700,
+    "widthMm": 750,
+    "depthMm": 1700
+  },
+  {
+    "name": "Shower",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 900,
+    "renderedDepthMm": 900,
+    "widthMm": 900,
+    "depthMm": 900
+  },
+  {
+    "name": "Bidet",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 360.0000000000023,
+    "renderedDepthMm": 550,
+    "widthMm": 360,
+    "depthMm": 550
+  },
+  {
+    "name": "Bathroom Storage Cabinet",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 400,
+    "renderedDepthMm": 350,
+    "widthMm": 400,
+    "depthMm": 350
+  },
+  {
+    "name": "Washing Machine",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Tumble Dryer",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 650,
+    "widthMm": 600,
+    "depthMm": 650
+  },
+  {
+    "name": "Towel Rail",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 500,
+    "renderedDepthMm": 100,
+    "widthMm": 500,
+    "depthMm": 100
+  },
+  {
+    "name": "Sofa · Straight",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 2100,
+    "renderedDepthMm": 900,
+    "widthMm": 2100,
+    "depthMm": 900
+  },
+  {
+    "name": "Sofa · L-shaped",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 2800,
+    "renderedDepthMm": 1800,
+    "widthMm": 2800,
+    "depthMm": 1800
+  },
+  {
+    "name": "Sofa · U-shaped",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 3400,
+    "renderedDepthMm": 2000,
+    "widthMm": 3400,
+    "depthMm": 2000
+  },
+  {
+    "name": "Armchair",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 850,
+    "renderedDepthMm": 900,
+    "widthMm": 850,
+    "depthMm": 900
+  },
+  {
+    "name": "Coffee Table · Rectangular",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1100,
+    "renderedDepthMm": 600,
+    "widthMm": 1100,
+    "depthMm": 600
+  },
+  {
+    "name": "Coffee Table · Round",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 1000,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Side Table",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 450,
+    "renderedDepthMm": 450,
+    "widthMm": 450,
+    "depthMm": 450
+  },
+  {
+    "name": "TV with Stand · 32″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 727.9999999999973,
+    "renderedDepthMm": 244.00000000000546,
+    "widthMm": 728,
+    "depthMm": 244
+  },
+  {
+    "name": "Wall-mounted TV · 32″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 727.9999999999973,
+    "renderedDepthMm": 70.00000000000028,
+    "widthMm": 728,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 43″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 972.0000000000027,
+    "renderedDepthMm": 265.9999999999968,
+    "widthMm": 972,
+    "depthMm": 266
+  },
+  {
+    "name": "Wall-mounted TV · 43″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 972.0000000000027,
+    "renderedDepthMm": 70.00000000000028,
+    "widthMm": 972,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 50″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1126.9999999999982,
+    "renderedDepthMm": 279.99999999999545,
+    "widthMm": 1127,
+    "depthMm": 280
+  },
+  {
+    "name": "Wall-mounted TV · 50″",
+    "scale": 0.04,
+    "rotation": -90,
+    "renderedWidthMm": 69.99999999999886,
+    "renderedDepthMm": 1126.9999999999982,
+    "widthMm": 1127,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 55″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1237.9999999999995,
+    "renderedDepthMm": 289.9999999999977,
+    "widthMm": 1238,
+    "depthMm": 290
+  },
+  {
+    "name": "Wall-mounted TV · 55″",
+    "scale": 0.04,
+    "rotation": -90,
+    "renderedWidthMm": 69.99999999999886,
+    "renderedDepthMm": 1237.9999999999995,
+    "widthMm": 1238,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 65″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1459.0000000000002,
+    "renderedDepthMm": 310.0000000000023,
+    "widthMm": 1459,
+    "depthMm": 310
+  },
+  {
+    "name": "Wall-mounted TV · 65″",
+    "scale": 0.04,
+    "rotation": -90,
+    "renderedWidthMm": 69.99999999999886,
+    "renderedDepthMm": 1459.0000000000032,
+    "widthMm": 1459,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 75″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1679.9999999999955,
+    "renderedDepthMm": 329.99999999999545,
+    "widthMm": 1680,
+    "depthMm": 330
+  },
+  {
+    "name": "Wall-mounted TV · 75″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1679.9999999999955,
+    "renderedDepthMm": 70.00000000000028,
+    "widthMm": 1680,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 85″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1901.9999999999982,
+    "renderedDepthMm": 350,
+    "widthMm": 1902,
+    "depthMm": 350
+  },
+  {
+    "name": "Wall-mounted TV · 85″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1901.9999999999982,
+    "renderedDepthMm": 70.00000000000028,
+    "widthMm": 1902,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 98″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 2190.000000000009,
+    "renderedDepthMm": 375.9999999999991,
+    "widthMm": 2190,
+    "depthMm": 376
+  },
+  {
+    "name": "Wall-mounted TV · 98″",
+    "scale": 0.04,
+    "rotation": -90,
+    "renderedWidthMm": 69.99999999999886,
+    "renderedDepthMm": 2189.9999999999977,
+    "widthMm": 2190,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 100″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 2233.9999999999973,
+    "renderedDepthMm": 379.99999999999545,
+    "widthMm": 2234,
+    "depthMm": 380
+  },
+  {
+    "name": "Wall-mounted TV · 100″",
+    "scale": 0.04,
+    "rotation": -90,
+    "renderedWidthMm": 69.99999999999886,
+    "renderedDepthMm": 2234.000000000003,
+    "widthMm": 2234,
+    "depthMm": 70
+  },
+  {
+    "name": "TV / Media Cabinet",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1800,
+    "renderedDepthMm": 400,
+    "widthMm": 1800,
+    "depthMm": 400
+  },
+  {
+    "name": "Sideboard",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1600,
+    "renderedDepthMm": 450,
+    "widthMm": 1600,
+    "depthMm": 450
+  },
+  {
+    "name": "Bookcase",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 300,
+    "widthMm": 800,
+    "depthMm": 300
+  },
+  {
+    "name": "Display Cabinet",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 400,
+    "widthMm": 800,
+    "depthMm": 400
+  },
+  {
+    "name": "Floor Lamp",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 450,
+    "renderedDepthMm": 450,
+    "widthMm": 450,
+    "depthMm": 450
+  },
+  {
+    "name": "Plant · Desk Succulent",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 160.00000000000227,
+    "renderedDepthMm": 160.00000000000227,
+    "widthMm": 160,
+    "depthMm": 160
+  },
+  {
+    "name": "Plant · Small Desk Plant",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 240.0000000000091,
+    "renderedDepthMm": 239.99999999999773,
+    "widthMm": 240,
+    "depthMm": 240
+  },
+  {
+    "name": "Plant · Compact Floor Plant",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 400,
+    "renderedDepthMm": 400,
+    "widthMm": 400,
+    "depthMm": 400
+  },
+  {
+    "name": "Plant · Large Leafy Plant",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Plant · Small Palm",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 800,
+    "widthMm": 800,
+    "depthMm": 800
+  },
+  {
+    "name": "Plant · Large Palm",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 1200,
+    "widthMm": 1200,
+    "depthMm": 1200
+  },
+  {
+    "name": "Dining Table · Rectangular",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1800,
+    "renderedDepthMm": 900,
+    "widthMm": 1800,
+    "depthMm": 900
+  },
+  {
+    "name": "Dining Table · Round",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 1200,
+    "widthMm": 1200,
+    "depthMm": 1200
+  },
+  {
+    "name": "Dining Chair",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 479.99999999999545,
+    "renderedDepthMm": 539.9999999999977,
+    "widthMm": 480,
+    "depthMm": 540
+  },
+  {
+    "name": "Bed · Twin",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1064.9999999999977,
+    "renderedDepthMm": 2054.9999999999955,
+    "widthMm": 1065,
+    "depthMm": 2055
+  },
+  {
+    "name": "Bed · Twin XL",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1064.9999999999977,
+    "renderedDepthMm": 2182.000000000005,
+    "widthMm": 1065,
+    "depthMm": 2182
+  },
+  {
+    "name": "Bed · Full / Double",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1446.0000000000036,
+    "renderedDepthMm": 2054.9999999999955,
+    "widthMm": 1446,
+    "depthMm": 2055
+  },
+  {
+    "name": "Bed · Queen",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1624.000000000001,
+    "renderedDepthMm": 2182.000000000005,
+    "widthMm": 1624,
+    "depthMm": 2182
+  },
+  {
+    "name": "Bed · King",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 2030.0000000000011,
+    "renderedDepthMm": 2182.000000000005,
+    "widthMm": 2030,
+    "depthMm": 2182
+  },
+  {
+    "name": "Bed · California King",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1929.000000000002,
+    "renderedDepthMm": 2284.000000000003,
+    "widthMm": 1929,
+    "depthMm": 2284
+  },
+  {
+    "name": "Bedside Table",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 400,
+    "renderedDepthMm": 479.99999999999545,
+    "widthMm": 400,
+    "depthMm": 480
+  },
+  {
+    "name": "Wardrobe",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1170.0000000000045,
+    "renderedDepthMm": 550,
+    "widthMm": 1170,
+    "depthMm": 550
+  },
+  {
+    "name": "Chest of Drawers",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 479.99999999999545,
+    "widthMm": 800,
+    "depthMm": 480
+  },
+  {
+    "name": "Dresser / Vanity",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 500,
+    "widthMm": 1000,
+    "depthMm": 500
+  },
+  {
+    "name": "Stool / Pouf",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 450,
+    "renderedDepthMm": 450,
+    "widthMm": 450,
+    "depthMm": 450
+  },
+  {
+    "name": "Bedroom Bench",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 400,
+    "widthMm": 1200,
+    "depthMm": 400
+  },
+  {
+    "name": "Bedside Lamp",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 250,
+    "renderedDepthMm": 250,
+    "widthMm": 250,
+    "depthMm": 250
+  },
+  {
+    "name": "Rug",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1600,
+    "renderedDepthMm": 2300,
+    "widthMm": 1600,
+    "depthMm": 2300
+  },
+  {
+    "name": "Laundry Basket",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 400,
+    "renderedDepthMm": 300,
+    "widthMm": 400,
+    "depthMm": 300
+  },
+  {
+    "name": "Clothes Rail",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 989.9999999999977,
+    "renderedDepthMm": 459.9999999999966,
+    "widthMm": 990,
+    "depthMm": 460
+  },
+  {
+    "name": "Table · 120 × 60 cm",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 600,
+    "widthMm": 1200,
+    "depthMm": 600
+  },
+  {
+    "name": "Table · 140 × 70 cm",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1400,
+    "renderedDepthMm": 700,
+    "widthMm": 1400,
+    "depthMm": 700
+  },
+  {
+    "name": "Table · 160 × 80 cm",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1600,
+    "renderedDepthMm": 800,
+    "widthMm": 1600,
+    "depthMm": 800
+  },
+  {
+    "name": "Table · 180 × 80 cm",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1800,
+    "renderedDepthMm": 800,
+    "widthMm": 1800,
+    "depthMm": 800
+  },
+  {
+    "name": "Table · 200 × 80 cm",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 2000,
+    "renderedDepthMm": 800,
+    "widthMm": 2000,
+    "depthMm": 800
+  },
+  {
+    "name": "Ergonomic Chair",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 700,
+    "renderedDepthMm": 700,
+    "widthMm": 700,
+    "depthMm": 700
+  },
+  {
+    "name": "Normal Chair",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 390.0000000000091,
+    "renderedDepthMm": 470.00000000000455,
+    "widthMm": 390,
+    "depthMm": 470
+  },
+  {
+    "name": "Desk Lamp",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 180.00000000000114,
+    "renderedDepthMm": 279.99999999999545,
+    "widthMm": 180,
+    "depthMm": 280
+  },
+  {
+    "name": "Keyboard · Compact 60%",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 293.0000000000007,
+    "renderedDepthMm": 102.99999999999727,
+    "widthMm": 293,
+    "depthMm": 103
+  },
+  {
+    "name": "Keyboard · 75%",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 312.99999999999955,
+    "renderedDepthMm": 123.00000000000182,
+    "widthMm": 313,
+    "depthMm": 123
+  },
+  {
+    "name": "Keyboard · Tenkeyless",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 358.9999999999975,
+    "renderedDepthMm": 126.99999999999818,
+    "widthMm": 359,
+    "depthMm": 127
+  },
+  {
+    "name": "Keyboard · Full size",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 436.00000000000136,
+    "renderedDepthMm": 129.99999999999545,
+    "widthMm": 436,
+    "depthMm": 130
+  },
+  {
+    "name": "Monitor · 19″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 445.00000000000455,
+    "renderedDepthMm": 171.00000000000364,
+    "widthMm": 445,
+    "depthMm": 171
+  },
+  {
+    "name": "Monitor · 22″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 487.00000000000045,
+    "renderedDepthMm": 179.99999999999545,
+    "widthMm": 487,
+    "depthMm": 180
+  },
+  {
+    "name": "Monitor · 24″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 537.9999999999995,
+    "renderedDepthMm": 179.99999999999545,
+    "widthMm": 538,
+    "depthMm": 180
+  },
+  {
+    "name": "Monitor · 25″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 567.999999999995,
+    "renderedDepthMm": 184.9999999999909,
+    "widthMm": 568,
+    "depthMm": 185
+  },
+  {
+    "name": "Monitor · 27″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 609.9999999999909,
+    "renderedDepthMm": 190.0000000000091,
+    "widthMm": 610,
+    "depthMm": 190
+  },
+  {
+    "name": "Monitor · 28″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 638.9999999999986,
+    "renderedDepthMm": 250.9999999999991,
+    "widthMm": 639,
+    "depthMm": 251
+  },
+  {
+    "name": "Monitor · 32″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 712.9999999999995,
+    "renderedDepthMm": 232.99999999999272,
+    "widthMm": 713,
+    "depthMm": 233
+  },
+  {
+    "name": "Monitor · 43″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 967.0000000000016,
+    "renderedDepthMm": 255.99999999999454,
+    "widthMm": 967,
+    "depthMm": 256
+  },
+  {
+    "name": "Ultrawide Monitor · 29″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 688.9999999999986,
+    "renderedDepthMm": 224.0000000000009,
+    "widthMm": 689,
+    "depthMm": 224
+  },
+  {
+    "name": "Ultrawide Monitor · 30″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 702.9999999999973,
+    "renderedDepthMm": 286.9999999999891,
+    "widthMm": 703,
+    "depthMm": 287
+  },
+  {
+    "name": "Ultrawide Monitor · 34″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 808.0000000000041,
+    "renderedDepthMm": 238.0000000000109,
+    "widthMm": 808,
+    "depthMm": 238
+  },
+  {
+    "name": "Ultrawide Monitor · 35″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 832.000000000005,
+    "renderedDepthMm": 250.9999999999991,
+    "widthMm": 832,
+    "depthMm": 251
+  },
+  {
+    "name": "Ultrawide Monitor · 38″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 894.0000000000055,
+    "renderedDepthMm": 250.9999999999991,
+    "widthMm": 894,
+    "depthMm": 251
+  },
+  {
+    "name": "Ultrawide Monitor · 39″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 887.9999999999995,
+    "renderedDepthMm": 309.9999999999909,
+    "widthMm": 888,
+    "depthMm": 310
+  },
+  {
+    "name": "Ultrawide Monitor · 40″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 947.0000000000027,
+    "renderedDepthMm": 252.99999999999727,
+    "widthMm": 947,
+    "depthMm": 253
+  },
+  {
+    "name": "Ultrawide Monitor · 45″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 993.0000000000007,
+    "renderedDepthMm": 334.9999999999909,
+    "widthMm": 993,
+    "depthMm": 335
+  },
+  {
+    "name": "Ultrawide Monitor · 49″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1148.0000000000018,
+    "renderedDepthMm": 421.00000000000364,
+    "widthMm": 1148,
+    "depthMm": 421
+  },
+  {
+    "name": "Ultrawide Monitor · 57″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1327.9999999999973,
+    "renderedDepthMm": 500,
+    "widthMm": 1328,
+    "depthMm": 500
+  },
+  {
+    "name": "Mouse",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 60.000000000002274,
+    "renderedDepthMm": 99.00000000000091,
+    "widthMm": 60,
+    "depthMm": 99
+  },
+  {
+    "name": "Deskmat · Small",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 300,
+    "renderedDepthMm": 250,
+    "widthMm": 300,
+    "depthMm": 250
+  },
+  {
+    "name": "Deskmat · Medium",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 450,
+    "renderedDepthMm": 400,
+    "widthMm": 450,
+    "depthMm": 400
+  },
+  {
+    "name": "Deskmat · Large",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 300,
+    "widthMm": 800,
+    "depthMm": 300
+  },
+  {
+    "name": "Deskmat · XL",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 900,
+    "renderedDepthMm": 400,
+    "widthMm": 900,
+    "depthMm": 400
+  },
+  {
+    "name": "Deskmat · XXL",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 500,
+    "widthMm": 1000,
+    "depthMm": 500
+  },
+  {
+    "name": "Deskmat · Full desk",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 600,
+    "widthMm": 1200,
+    "depthMm": 600
+  },
+  {
+    "name": "Desktop PC · SFF / Mini-ITX",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 184.99999999999943,
+    "renderedDepthMm": 375.9999999999991,
+    "widthMm": 185,
+    "depthMm": 376
+  },
+  {
+    "name": "Desktop PC · Mini tower / mATX",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 214.99999999999773,
+    "renderedDepthMm": 431.99999999999363,
+    "widthMm": 215,
+    "depthMm": 432
+  },
+  {
+    "name": "Desktop PC · Mid tower / ATX",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 214.99999999999773,
+    "renderedDepthMm": 474.0000000000009,
+    "widthMm": 215,
+    "depthMm": 474
+  },
+  {
+    "name": "Desktop PC · Full tower",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 239.99999999999773,
+    "renderedDepthMm": 600,
+    "widthMm": 240,
+    "depthMm": 600
+  },
+  {
+    "name": "Desktop Speaker · Small",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 85.00000000000227,
+    "renderedDepthMm": 104.99999999999545,
+    "widthMm": 85,
+    "depthMm": 105
+  },
+  {
+    "name": "Desktop Speaker · Bookshelf",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 146.00000000000364,
+    "renderedDepthMm": 196.00000000000364,
+    "widthMm": 146,
+    "depthMm": 196
+  },
+  {
+    "name": "Desktop Speaker · Studio 5″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 170.00000000000455,
+    "renderedDepthMm": 222.00000000000273,
+    "widthMm": 170,
+    "depthMm": 222
+  },
+  {
+    "name": "Desktop Speaker · Studio 6.5″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 210.00000000000227,
+    "renderedDepthMm": 283.9999999999918,
+    "widthMm": 210,
+    "depthMm": 284
+  },
+  {
+    "name": "Desktop Speaker · Studio 8″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 250,
+    "renderedDepthMm": 333.9999999999918,
+    "widthMm": 250,
+    "depthMm": 334
+  },
+  {
+    "name": "Apple Laptop · Closed 14″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 313.0000000000109,
+    "renderedDepthMm": 221.00000000000364,
+    "widthMm": 313,
+    "depthMm": 221
+  },
+  {
+    "name": "Apple Laptop · Closed 16″",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 356.0000000000002,
+    "renderedDepthMm": 248.00000000000182,
+    "widthMm": 356,
+    "depthMm": 248
+  },
+  {
+    "name": "Apple Mac mini",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 126.99999999999818,
+    "renderedDepthMm": 126.99999999999818,
+    "widthMm": 127,
+    "depthMm": 127
+  },
+  {
+    "name": "Projector Screen · 80″ Fixed frame",
+    "scale": 0.04,
+    "rotation": -90,
+    "renderedWidthMm": 50,
+    "renderedDepthMm": 1871.0000000000036,
+    "widthMm": 1871,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 80″ Retractable",
+    "scale": 0.04,
+    "rotation": -90,
+    "renderedWidthMm": 109.99999999999943,
+    "renderedDepthMm": 1930.9999999999945,
+    "widthMm": 1931,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 92″ Fixed frame",
+    "scale": 0.04,
+    "rotation": -90,
+    "renderedWidthMm": 50,
+    "renderedDepthMm": 2136.999999999989,
+    "widthMm": 2137,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 92″ Retractable",
+    "scale": 0.04,
+    "rotation": 180,
+    "renderedWidthMm": 2197.0000000000027,
+    "renderedDepthMm": 109.9999999999909,
+    "widthMm": 2197,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 100″ Fixed frame",
+    "scale": 0.04,
+    "rotation": 180,
+    "renderedWidthMm": 2313.9999999999986,
+    "renderedDepthMm": 50,
+    "widthMm": 2314,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 100″ Retractable",
+    "scale": 0.04,
+    "rotation": 180,
+    "renderedWidthMm": 2374.000000000001,
+    "renderedDepthMm": 109.9999999999909,
+    "widthMm": 2374,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 110″ Fixed frame",
+    "scale": 0.04,
+    "rotation": 180,
+    "renderedWidthMm": 2534.9999999999964,
+    "renderedDepthMm": 50,
+    "widthMm": 2535,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 110″ Retractable",
+    "scale": 0.04,
+    "rotation": 180,
+    "renderedWidthMm": 2595.0000000000045,
+    "renderedDepthMm": 109.9999999999909,
+    "widthMm": 2595,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 120″ Fixed frame",
+    "scale": 0.04,
+    "rotation": -90,
+    "renderedWidthMm": 50,
+    "renderedDepthMm": 2756.9999999999936,
+    "widthMm": 2757,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 120″ Retractable",
+    "scale": 0.04,
+    "rotation": -90,
+    "renderedWidthMm": 109.99999999999943,
+    "renderedDepthMm": 2817.0000000000073,
+    "widthMm": 2817,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 135″ Fixed frame",
+    "scale": 0.04,
+    "rotation": -90,
+    "renderedWidthMm": 50,
+    "renderedDepthMm": 3089.00000000001,
+    "widthMm": 3089,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 135″ Retractable",
+    "scale": 0.04,
+    "rotation": -90,
+    "renderedWidthMm": 109.99999999999943,
+    "renderedDepthMm": 3149.000000000001,
+    "widthMm": 3149,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 150″ Fixed frame",
+    "scale": 0.04,
+    "rotation": 180,
+    "renderedWidthMm": 3421.0000000000036,
+    "renderedDepthMm": 50,
+    "widthMm": 3421,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 150″ Retractable",
+    "scale": 0.04,
+    "rotation": 180,
+    "renderedWidthMm": 3480.9999999999945,
+    "renderedDepthMm": 109.9999999999909,
+    "widthMm": 3481,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 180″ Fixed frame",
+    "scale": 0.04,
+    "rotation": 180,
+    "renderedWidthMm": 4085.0000000000023,
+    "renderedDepthMm": 50,
+    "widthMm": 4085,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 180″ Retractable",
+    "scale": 0.04,
+    "rotation": 180,
+    "renderedWidthMm": 4145.000000000005,
+    "renderedDepthMm": 109.9999999999909,
+    "widthMm": 4145,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 200″ Fixed frame",
+    "scale": 0.04,
+    "rotation": 180,
+    "renderedWidthMm": 4527.999999999997,
+    "renderedDepthMm": 50,
+    "widthMm": 4528,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 200″ Retractable",
+    "scale": 0.04,
+    "rotation": 180,
+    "renderedWidthMm": 4588.000000000011,
+    "renderedDepthMm": 109.9999999999909,
+    "widthMm": 4588,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector · Standard throw",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 409.99999999999943,
+    "renderedDepthMm": 309.9999999999909,
+    "widthMm": 410,
+    "depthMm": 310
+  },
+  {
+    "name": "Projector · Ultra-short throw",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 550,
+    "renderedDepthMm": 350,
+    "widthMm": 550,
+    "depthMm": 350
+  },
+  {
+    "name": "Floorstanding Speaker",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 250,
+    "renderedDepthMm": 350,
+    "widthMm": 250,
+    "depthMm": 350
+  },
+  {
+    "name": "Centre Speaker",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 500,
+    "renderedDepthMm": 250,
+    "widthMm": 500,
+    "depthMm": 250
+  },
+  {
+    "name": "AV Receiver",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 435.0000000000023,
+    "renderedDepthMm": 379.99999999999545,
+    "widthMm": 435,
+    "depthMm": 380
+  },
+  {
+    "name": "Speaker Stand",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 300,
+    "renderedDepthMm": 300,
+    "widthMm": 300,
+    "depthMm": 300
+  },
+  {
+    "name": "Cinema Seat",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 950,
+    "renderedDepthMm": 1000,
+    "widthMm": 950,
+    "depthMm": 1000
+  },
+  {
+    "name": "Acoustic Wall Panel",
+    "scale": 0.04,
+    "rotation": 180,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 100,
+    "widthMm": 600,
+    "depthMm": 100
+  },
+  {
+    "name": "Corner Bass Trap",
+    "scale": 0.04,
+    "rotation": -90,
+    "renderedWidthMm": 400,
+    "renderedDepthMm": 400,
+    "widthMm": 400,
+    "depthMm": 400
+  },
+  {
+    "name": "Sonos Soundbar · Arc Ultra",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 1177.9999999999973,
+    "renderedDepthMm": 110.99999999999,
+    "widthMm": 1178,
+    "depthMm": 111
+  },
+  {
+    "name": "Sonos Soundbar · Beam Ultra",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 750,
+    "renderedDepthMm": 104.99999999999545,
+    "widthMm": 750,
+    "depthMm": 105
+  },
+  {
+    "name": "Sonos Soundbar · Beam Gen 2",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 650.9999999999991,
+    "renderedDepthMm": 100,
+    "widthMm": 651,
+    "depthMm": 100
+  },
+  {
+    "name": "Sonos Soundbar · Ray",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 558.9999999999975,
+    "renderedDepthMm": 95.00000000000455,
+    "widthMm": 559,
+    "depthMm": 95
+  },
+  {
+    "name": "Sonos Speaker · Era 100",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 119.99999999999886,
+    "renderedDepthMm": 130.99999999999454,
+    "widthMm": 120,
+    "depthMm": 131
+  },
+  {
+    "name": "Sonos Speaker · Era 300",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 260.0000000000023,
+    "renderedDepthMm": 184.9999999999909,
+    "widthMm": 260,
+    "depthMm": 185
+  },
+  {
+    "name": "Sonos Speaker · Five",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 363.99999999999864,
+    "renderedDepthMm": 153.99999999999636,
+    "widthMm": 364,
+    "depthMm": 154
+  },
+  {
+    "name": "Sonos Speaker · Move 2",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 160.00000000000227,
+    "renderedDepthMm": 125.99999999999909,
+    "widthMm": 160,
+    "depthMm": 126
+  },
+  {
+    "name": "Sonos Speaker · Sonos Play",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 112.99999999999955,
+    "renderedDepthMm": 76.99999999999818,
+    "widthMm": 113,
+    "depthMm": 77
+  },
+  {
+    "name": "Sonos Speaker · Roam 2",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 62.000000000000455,
+    "renderedDepthMm": 59.999999999990905,
+    "widthMm": 62,
+    "depthMm": 60
+  },
+  {
+    "name": "Sonos Subwoofer · Sub 4",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 401.9999999999982,
+    "renderedDepthMm": 157.99999999999272,
+    "widthMm": 402,
+    "depthMm": 158
+  },
+  {
+    "name": "Sonos Subwoofer · Sub Mini",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 230.00000000000114,
+    "renderedDepthMm": 229.99999999999545,
+    "widthMm": 230,
+    "depthMm": 230
+  },
+  {
+    "name": "Sonos Component · Amp",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 217.0000000000016,
+    "renderedDepthMm": 217.00000000000728,
+    "widthMm": 217,
+    "depthMm": 217
+  },
+  {
+    "name": "Sonos Component · Amp Multi",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 437.00000000000045,
+    "renderedDepthMm": 265.0000000000091,
+    "widthMm": 437,
+    "depthMm": 265
+  },
+  {
+    "name": "Sonos Component · Port",
+    "scale": 0.04,
+    "rotation": 0,
+    "renderedWidthMm": 137.99999999999955,
+    "renderedDepthMm": 138.0000000000109,
+    "widthMm": 138,
+    "depthMm": 138
+  },
+  {
+    "name": "Square",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 1000,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Triangle",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 1000,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Rectangle",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 800,
+    "widthMm": 1200,
+    "depthMm": 800
+  },
+  {
+    "name": "Circle",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 1000,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Oval",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 800,
+    "widthMm": 1200,
+    "depthMm": 800
+  },
+  {
+    "name": "Polygon",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 1000,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Straight Stairs",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 3000,
+    "widthMm": 1000,
+    "depthMm": 3000
+  },
+  {
+    "name": "Corner Stairs",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 2500,
+    "renderedDepthMm": 2500,
+    "widthMm": 2500,
+    "depthMm": 2500
+  },
+  {
+    "name": "U-shaped Stairs",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 2200,
+    "renderedDepthMm": 3200,
+    "widthMm": 2200,
+    "depthMm": 3200
+  },
+  {
+    "name": "Door",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 900,
+    "renderedDepthMm": 900,
+    "widthMm": 900,
+    "depthMm": 900
+  },
+  {
+    "name": "Double Door",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1600,
+    "renderedDepthMm": 800,
+    "widthMm": 1600,
+    "depthMm": 800
+  },
+  {
+    "name": "Window",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 120.00000000000006,
+    "widthMm": 1200,
+    "depthMm": 120
+  },
+  {
+    "name": "Base Cabinet / Worktop · Straight",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Base Cabinet / Worktop · Corner",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 1000,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Wall Cabinet",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 350,
+    "widthMm": 600,
+    "depthMm": 350
+  },
+  {
+    "name": "Tall Pantry Cabinet",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Kitchen Island",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1800,
+    "renderedDepthMm": 900,
+    "widthMm": 1800,
+    "depthMm": 900
+  },
+  {
+    "name": "Kitchen Sink",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 500,
+    "widthMm": 600,
+    "depthMm": 500
+  },
+  {
+    "name": "Oven",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 550,
+    "widthMm": 600,
+    "depthMm": 550
+  },
+  {
+    "name": "Cooker / Range",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Refrigerator · Standard",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 650,
+    "widthMm": 600,
+    "depthMm": 650
+  },
+  {
+    "name": "Refrigerator · Side-by-side",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 909.9999999999985,
+    "renderedDepthMm": 720.0000000000008,
+    "widthMm": 910,
+    "depthMm": 720
+  },
+  {
+    "name": "Dishwasher",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Microwave",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 490.00000000000153,
+    "renderedDepthMm": 379.99999999999926,
+    "widthMm": 490,
+    "depthMm": 380
+  },
+  {
+    "name": "Coffee Machine",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 250,
+    "renderedDepthMm": 400,
+    "widthMm": 250,
+    "depthMm": 400
+  },
+  {
+    "name": "Kettle",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 219.999999999997,
+    "renderedDepthMm": 240.00000000000153,
+    "widthMm": 220,
+    "depthMm": 240
+  },
+  {
+    "name": "Toaster",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 300,
+    "renderedDepthMm": 179.99999999999926,
+    "widthMm": 300,
+    "depthMm": 180
+  },
+  {
+    "name": "Waste Bin",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 300,
+    "renderedDepthMm": 350,
+    "widthMm": 300,
+    "depthMm": 350
+  },
+  {
+    "name": "Bar Stool",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 419.999999999997,
+    "renderedDepthMm": 420.0000000000008,
+    "widthMm": 420,
+    "depthMm": 420
+  },
+  {
+    "name": "Toilet",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 380.00000000000307,
+    "renderedDepthMm": 670.0000000000008,
+    "widthMm": 380,
+    "depthMm": 670
+  },
+  {
+    "name": "Sink",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 500,
+    "widthMm": 800,
+    "depthMm": 500
+  },
+  {
+    "name": "Bathtub",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 750,
+    "renderedDepthMm": 1700,
+    "widthMm": 750,
+    "depthMm": 1700
+  },
+  {
+    "name": "Shower",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 900,
+    "renderedDepthMm": 900,
+    "widthMm": 900,
+    "depthMm": 900
+  },
+  {
+    "name": "Bidet",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 359.9999999999985,
+    "renderedDepthMm": 550,
+    "widthMm": 360,
+    "depthMm": 550
+  },
+  {
+    "name": "Bathroom Storage Cabinet",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 400,
+    "renderedDepthMm": 350,
+    "widthMm": 400,
+    "depthMm": 350
+  },
+  {
+    "name": "Washing Machine",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Tumble Dryer",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 650,
+    "widthMm": 600,
+    "depthMm": 650
+  },
+  {
+    "name": "Towel Rail",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 500,
+    "renderedDepthMm": 100,
+    "widthMm": 500,
+    "depthMm": 100
+  },
+  {
+    "name": "Sofa · Straight",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 2100,
+    "renderedDepthMm": 900,
+    "widthMm": 2100,
+    "depthMm": 900
+  },
+  {
+    "name": "Sofa · L-shaped",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 2800,
+    "renderedDepthMm": 1800,
+    "widthMm": 2800,
+    "depthMm": 1800
+  },
+  {
+    "name": "Sofa · U-shaped",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 3400,
+    "renderedDepthMm": 2000,
+    "widthMm": 3400,
+    "depthMm": 2000
+  },
+  {
+    "name": "Armchair",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 850,
+    "renderedDepthMm": 900,
+    "widthMm": 850,
+    "depthMm": 900
+  },
+  {
+    "name": "Coffee Table · Rectangular",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1100,
+    "renderedDepthMm": 600,
+    "widthMm": 1100,
+    "depthMm": 600
+  },
+  {
+    "name": "Coffee Table · Round",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 1000,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Side Table",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 450,
+    "renderedDepthMm": 450,
+    "widthMm": 450,
+    "depthMm": 450
+  },
+  {
+    "name": "TV with Stand · 32″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 727.9999999999973,
+    "renderedDepthMm": 243.9999999999979,
+    "widthMm": 728,
+    "depthMm": 244
+  },
+  {
+    "name": "Wall-mounted TV · 32″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 728.0000000000049,
+    "renderedDepthMm": 69.99999999999993,
+    "widthMm": 728,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 43″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 971.9999999999952,
+    "renderedDepthMm": 266.0000000000006,
+    "widthMm": 972,
+    "depthMm": 266
+  },
+  {
+    "name": "Wall-mounted TV · 43″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 971.9999999999952,
+    "renderedDepthMm": 69.99999999999993,
+    "widthMm": 972,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 50″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1126.9999999999982,
+    "renderedDepthMm": 280.00000000000307,
+    "widthMm": 1127,
+    "depthMm": 280
+  },
+  {
+    "name": "Wall-mounted TV · 50″",
+    "scale": 0.12,
+    "rotation": -90,
+    "renderedWidthMm": 69.99999999999982,
+    "renderedDepthMm": 1126.9999999999982,
+    "widthMm": 1127,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 55″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1237.9999999999995,
+    "renderedDepthMm": 290.00000000000153,
+    "widthMm": 1238,
+    "depthMm": 290
+  },
+  {
+    "name": "Wall-mounted TV · 55″",
+    "scale": 0.12,
+    "rotation": -90,
+    "renderedWidthMm": 69.99999999999982,
+    "renderedDepthMm": 1238.0000000000034,
+    "widthMm": 1238,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 65″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1458.9999999999995,
+    "renderedDepthMm": 309.9999999999985,
+    "widthMm": 1459,
+    "depthMm": 310
+  },
+  {
+    "name": "Wall-mounted TV · 65″",
+    "scale": 0.12,
+    "rotation": -90,
+    "renderedWidthMm": 69.99999999999982,
+    "renderedDepthMm": 1458.9999999999995,
+    "widthMm": 1459,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 75″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1680.0000000000032,
+    "renderedDepthMm": 330.00000000000307,
+    "widthMm": 1680,
+    "depthMm": 330
+  },
+  {
+    "name": "Wall-mounted TV · 75″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1680.0000000000032,
+    "renderedDepthMm": 69.99999999999993,
+    "widthMm": 1680,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 85″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1901.9999999999982,
+    "renderedDepthMm": 350,
+    "widthMm": 1902,
+    "depthMm": 350
+  },
+  {
+    "name": "Wall-mounted TV · 85″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1901.9999999999982,
+    "renderedDepthMm": 69.99999999999993,
+    "widthMm": 1902,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 98″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 2189.999999999994,
+    "renderedDepthMm": 375.9999999999991,
+    "widthMm": 2190,
+    "depthMm": 376
+  },
+  {
+    "name": "Wall-mounted TV · 98″",
+    "scale": 0.12,
+    "rotation": -90,
+    "renderedWidthMm": 69.99999999999982,
+    "renderedDepthMm": 2189.9999999999977,
+    "widthMm": 2190,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 100″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 2233.9999999999995,
+    "renderedDepthMm": 380.00000000000307,
+    "widthMm": 2234,
+    "depthMm": 380
+  },
+  {
+    "name": "Wall-mounted TV · 100″",
+    "scale": 0.12,
+    "rotation": -90,
+    "renderedWidthMm": 69.99999999999982,
+    "renderedDepthMm": 2233.9999999999995,
+    "widthMm": 2234,
+    "depthMm": 70
+  },
+  {
+    "name": "TV / Media Cabinet",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1800,
+    "renderedDepthMm": 400,
+    "widthMm": 1800,
+    "depthMm": 400
+  },
+  {
+    "name": "Sideboard",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1600,
+    "renderedDepthMm": 450,
+    "widthMm": 1600,
+    "depthMm": 450
+  },
+  {
+    "name": "Bookcase",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 300,
+    "widthMm": 800,
+    "depthMm": 300
+  },
+  {
+    "name": "Display Cabinet",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 400,
+    "widthMm": 800,
+    "depthMm": 400
+  },
+  {
+    "name": "Floor Lamp",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 450,
+    "renderedDepthMm": 450,
+    "widthMm": 450,
+    "depthMm": 450
+  },
+  {
+    "name": "Plant · Desk Succulent",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 160.00000000000608,
+    "renderedDepthMm": 159.9999999999985,
+    "widthMm": 160,
+    "depthMm": 160
+  },
+  {
+    "name": "Plant · Small Desk Plant",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 239.99999999999395,
+    "renderedDepthMm": 240.00000000000153,
+    "widthMm": 240,
+    "depthMm": 240
+  },
+  {
+    "name": "Plant · Compact Floor Plant",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 400,
+    "renderedDepthMm": 400,
+    "widthMm": 400,
+    "depthMm": 400
+  },
+  {
+    "name": "Plant · Large Leafy Plant",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Plant · Small Palm",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 800,
+    "widthMm": 800,
+    "depthMm": 800
+  },
+  {
+    "name": "Plant · Large Palm",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 1200,
+    "widthMm": 1200,
+    "depthMm": 1200
+  },
+  {
+    "name": "Dining Table · Rectangular",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1800,
+    "renderedDepthMm": 900,
+    "widthMm": 1800,
+    "depthMm": 900
+  },
+  {
+    "name": "Dining Table · Round",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 1200,
+    "widthMm": 1200,
+    "depthMm": 1200
+  },
+  {
+    "name": "Dining Chair",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 480.00000000000307,
+    "renderedDepthMm": 539.999999999994,
+    "widthMm": 480,
+    "depthMm": 540
+  },
+  {
+    "name": "Bed · Twin",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1064.999999999994,
+    "renderedDepthMm": 2055.000000000003,
+    "widthMm": 1065,
+    "depthMm": 2055
+  },
+  {
+    "name": "Bed · Twin XL",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1064.999999999994,
+    "renderedDepthMm": 2182.0000000000014,
+    "widthMm": 1065,
+    "depthMm": 2182
+  },
+  {
+    "name": "Bed · Full / Double",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1446.0000000000036,
+    "renderedDepthMm": 2055.000000000003,
+    "widthMm": 1446,
+    "depthMm": 2055
+  },
+  {
+    "name": "Bed · Queen",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1624.000000000001,
+    "renderedDepthMm": 2182.0000000000014,
+    "widthMm": 1624,
+    "depthMm": 2182
+  },
+  {
+    "name": "Bed · King",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 2029.9999999999993,
+    "renderedDepthMm": 2182.0000000000014,
+    "widthMm": 2030,
+    "depthMm": 2182
+  },
+  {
+    "name": "Bed · California King",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1929.0000000000002,
+    "renderedDepthMm": 2283.9999999999995,
+    "widthMm": 1929,
+    "depthMm": 2284
+  },
+  {
+    "name": "Bedside Table",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 400,
+    "renderedDepthMm": 480.00000000000307,
+    "widthMm": 400,
+    "depthMm": 480
+  },
+  {
+    "name": "Wardrobe",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1169.999999999997,
+    "renderedDepthMm": 550,
+    "widthMm": 1170,
+    "depthMm": 550
+  },
+  {
+    "name": "Chest of Drawers",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 480.00000000000307,
+    "widthMm": 800,
+    "depthMm": 480
+  },
+  {
+    "name": "Dresser / Vanity",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 500,
+    "widthMm": 1000,
+    "depthMm": 500
+  },
+  {
+    "name": "Stool / Pouf",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 450,
+    "renderedDepthMm": 450,
+    "widthMm": 450,
+    "depthMm": 450
+  },
+  {
+    "name": "Bedroom Bench",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 400,
+    "widthMm": 1200,
+    "depthMm": 400
+  },
+  {
+    "name": "Bedside Lamp",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 250,
+    "renderedDepthMm": 250,
+    "widthMm": 250,
+    "depthMm": 250
+  },
+  {
+    "name": "Rug",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1600,
+    "renderedDepthMm": 2300,
+    "widthMm": 1600,
+    "depthMm": 2300
+  },
+  {
+    "name": "Laundry Basket",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 400,
+    "renderedDepthMm": 300,
+    "widthMm": 400,
+    "depthMm": 300
+  },
+  {
+    "name": "Clothes Rail",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 990.0000000000016,
+    "renderedDepthMm": 460.0000000000061,
+    "widthMm": 990,
+    "depthMm": 460
+  },
+  {
+    "name": "Table · 120 × 60 cm",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 600,
+    "widthMm": 1200,
+    "depthMm": 600
+  },
+  {
+    "name": "Table · 140 × 70 cm",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1400,
+    "renderedDepthMm": 700,
+    "widthMm": 1400,
+    "depthMm": 700
+  },
+  {
+    "name": "Table · 160 × 80 cm",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1600,
+    "renderedDepthMm": 800,
+    "widthMm": 1600,
+    "depthMm": 800
+  },
+  {
+    "name": "Table · 180 × 80 cm",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1800,
+    "renderedDepthMm": 800,
+    "widthMm": 1800,
+    "depthMm": 800
+  },
+  {
+    "name": "Table · 200 × 80 cm",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 2000,
+    "renderedDepthMm": 800,
+    "widthMm": 2000,
+    "depthMm": 800
+  },
+  {
+    "name": "Ergonomic Chair",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 700,
+    "renderedDepthMm": 700,
+    "widthMm": 700,
+    "depthMm": 700
+  },
+  {
+    "name": "Normal Chair",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 389.999999999994,
+    "renderedDepthMm": 469.999999999997,
+    "widthMm": 390,
+    "depthMm": 470
+  },
+  {
+    "name": "Desk Lamp",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 179.99999999999926,
+    "renderedDepthMm": 280.00000000000307,
+    "widthMm": 180,
+    "depthMm": 280
+  },
+  {
+    "name": "Keyboard · Compact 60%",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 292.9999999999988,
+    "renderedDepthMm": 103.00000000000486,
+    "widthMm": 293,
+    "depthMm": 103
+  },
+  {
+    "name": "Keyboard · 75%",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 312.99999999999955,
+    "renderedDepthMm": 123.00000000000182,
+    "widthMm": 313,
+    "depthMm": 123
+  },
+  {
+    "name": "Keyboard · Tenkeyless",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 358.99999999999943,
+    "renderedDepthMm": 126.99999999999818,
+    "widthMm": 359,
+    "depthMm": 127
+  },
+  {
+    "name": "Keyboard · Full size",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 435.9999999999976,
+    "renderedDepthMm": 130.00000000000304,
+    "widthMm": 436,
+    "depthMm": 130
+  },
+  {
+    "name": "Monitor · 19″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 444.999999999997,
+    "renderedDepthMm": 171.00000000000364,
+    "widthMm": 445,
+    "depthMm": 171
+  },
+  {
+    "name": "Monitor · 22″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 487.00000000000426,
+    "renderedDepthMm": 180.00000000000304,
+    "widthMm": 487,
+    "depthMm": 180
+  },
+  {
+    "name": "Monitor · 24″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 537.9999999999958,
+    "renderedDepthMm": 180.00000000000304,
+    "widthMm": 538,
+    "depthMm": 180
+  },
+  {
+    "name": "Monitor · 25″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 567.9999999999989,
+    "renderedDepthMm": 185.00000000000608,
+    "widthMm": 568,
+    "depthMm": 185
+  },
+  {
+    "name": "Monitor · 27″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 610.0000000000061,
+    "renderedDepthMm": 189.99999999999395,
+    "widthMm": 610,
+    "depthMm": 190
+  },
+  {
+    "name": "Monitor · 28″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 639.0000000000006,
+    "renderedDepthMm": 251.00000000000668,
+    "widthMm": 639,
+    "depthMm": 251
+  },
+  {
+    "name": "Monitor · 32″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 712.9999999999995,
+    "renderedDepthMm": 232.99999999999272,
+    "widthMm": 713,
+    "depthMm": 233
+  },
+  {
+    "name": "Monitor · 43″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 966.9999999999998,
+    "renderedDepthMm": 255.99999999999454,
+    "widthMm": 967,
+    "depthMm": 256
+  },
+  {
+    "name": "Ultrawide Monitor · 29″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 689.0000000000025,
+    "renderedDepthMm": 223.99999999999335,
+    "widthMm": 689,
+    "depthMm": 224
+  },
+  {
+    "name": "Ultrawide Monitor · 30″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 702.9999999999973,
+    "renderedDepthMm": 287.00000000000426,
+    "widthMm": 703,
+    "depthMm": 287
+  },
+  {
+    "name": "Ultrawide Monitor · 34″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 808.0000000000003,
+    "renderedDepthMm": 237.99999999999577,
+    "widthMm": 808,
+    "depthMm": 238
+  },
+  {
+    "name": "Ultrawide Monitor · 35″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 832.0000000000013,
+    "renderedDepthMm": 251.00000000000668,
+    "widthMm": 832,
+    "depthMm": 251
+  },
+  {
+    "name": "Ultrawide Monitor · 38″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 894.0000000000055,
+    "renderedDepthMm": 251.00000000000668,
+    "widthMm": 894,
+    "depthMm": 251
+  },
+  {
+    "name": "Ultrawide Monitor · 39″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 887.9999999999958,
+    "renderedDepthMm": 310.0000000000061,
+    "widthMm": 888,
+    "depthMm": 310
+  },
+  {
+    "name": "Ultrawide Monitor · 40″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 946.9999999999952,
+    "renderedDepthMm": 253.00000000000486,
+    "widthMm": 947,
+    "depthMm": 253
+  },
+  {
+    "name": "Ultrawide Monitor · 45″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 993.0000000000007,
+    "renderedDepthMm": 335.0000000000061,
+    "widthMm": 993,
+    "depthMm": 335
+  },
+  {
+    "name": "Ultrawide Monitor · 49″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1148.0000000000018,
+    "renderedDepthMm": 421.00000000000364,
+    "widthMm": 1148,
+    "depthMm": 421
+  },
+  {
+    "name": "Ultrawide Monitor · 57″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1328.0000000000011,
+    "renderedDepthMm": 500,
+    "widthMm": 1328,
+    "depthMm": 500
+  },
+  {
+    "name": "Mouse",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 59.99999999999849,
+    "renderedDepthMm": 98.99999999999334,
+    "widthMm": 60,
+    "depthMm": 99
+  },
+  {
+    "name": "Deskmat · Small",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 300,
+    "renderedDepthMm": 250,
+    "widthMm": 300,
+    "depthMm": 250
+  },
+  {
+    "name": "Deskmat · Medium",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 450,
+    "renderedDepthMm": 400,
+    "widthMm": 450,
+    "depthMm": 400
+  },
+  {
+    "name": "Deskmat · Large",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 300,
+    "widthMm": 800,
+    "depthMm": 300
+  },
+  {
+    "name": "Deskmat · XL",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 900,
+    "renderedDepthMm": 400,
+    "widthMm": 900,
+    "depthMm": 400
+  },
+  {
+    "name": "Deskmat · XXL",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 500,
+    "widthMm": 1000,
+    "depthMm": 500
+  },
+  {
+    "name": "Deskmat · Full desk",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 600,
+    "widthMm": 1200,
+    "depthMm": 600
+  },
+  {
+    "name": "Desktop PC · SFF / Mini-ITX",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 185.0000000000004,
+    "renderedDepthMm": 375.99999999999153,
+    "widthMm": 185,
+    "depthMm": 376
+  },
+  {
+    "name": "Desktop PC · Mini tower / mATX",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 215.00000000000153,
+    "renderedDepthMm": 432.00000000000125,
+    "widthMm": 215,
+    "depthMm": 432
+  },
+  {
+    "name": "Desktop PC · Mid tower / ATX",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 215.00000000000153,
+    "renderedDepthMm": 474.0000000000085,
+    "widthMm": 215,
+    "depthMm": 474
+  },
+  {
+    "name": "Desktop PC · Full tower",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 240.00000000000153,
+    "renderedDepthMm": 600,
+    "widthMm": 240,
+    "depthMm": 600
+  },
+  {
+    "name": "Desktop Speaker · Small",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 84.9999999999985,
+    "renderedDepthMm": 104.99999999998788,
+    "widthMm": 85,
+    "depthMm": 105
+  },
+  {
+    "name": "Desktop Speaker · Bookshelf",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 146.00000000000364,
+    "renderedDepthMm": 196.00000000000364,
+    "widthMm": 146,
+    "depthMm": 196
+  },
+  {
+    "name": "Desktop Speaker · Studio 5″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 169.999999999997,
+    "renderedDepthMm": 221.99999999999517,
+    "widthMm": 170,
+    "depthMm": 222
+  },
+  {
+    "name": "Desktop Speaker · Studio 6.5″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 210.00000000000608,
+    "renderedDepthMm": 284.00000000001455,
+    "widthMm": 210,
+    "depthMm": 284
+  },
+  {
+    "name": "Desktop Speaker · Studio 8″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 250,
+    "renderedDepthMm": 334.00000000001455,
+    "widthMm": 250,
+    "depthMm": 334
+  },
+  {
+    "name": "Apple Laptop · Closed 14″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 312.9999999999958,
+    "renderedDepthMm": 221.00000000000364,
+    "widthMm": 313,
+    "depthMm": 221
+  },
+  {
+    "name": "Apple Laptop · Closed 16″",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 356.0000000000002,
+    "renderedDepthMm": 247.99999999998667,
+    "widthMm": 356,
+    "depthMm": 248
+  },
+  {
+    "name": "Apple Mac mini",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 126.99999999999818,
+    "renderedDepthMm": 127.00000000001334,
+    "widthMm": 127,
+    "depthMm": 127
+  },
+  {
+    "name": "Projector Screen · 80″ Fixed frame",
+    "scale": 0.12,
+    "rotation": -90,
+    "renderedWidthMm": 50,
+    "renderedDepthMm": 1871.0000000000036,
+    "widthMm": 1871,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 80″ Retractable",
+    "scale": 0.12,
+    "rotation": -90,
+    "renderedWidthMm": 110.00000000000038,
+    "renderedDepthMm": 1931.0000000000098,
+    "widthMm": 1931,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 92″ Fixed frame",
+    "scale": 0.12,
+    "rotation": -90,
+    "renderedWidthMm": 50,
+    "renderedDepthMm": 2136.999999999989,
+    "widthMm": 2137,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 92″ Retractable",
+    "scale": 0.12,
+    "rotation": 180,
+    "renderedWidthMm": 2197.0000000000027,
+    "renderedDepthMm": 110.00000000000607,
+    "widthMm": 2197,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 100″ Fixed frame",
+    "scale": 0.12,
+    "rotation": 180,
+    "renderedWidthMm": 2314.0000000000027,
+    "renderedDepthMm": 50,
+    "widthMm": 2314,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 100″ Retractable",
+    "scale": 0.12,
+    "rotation": 180,
+    "renderedWidthMm": 2373.9999999999936,
+    "renderedDepthMm": 110.00000000000607,
+    "widthMm": 2374,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 110″ Fixed frame",
+    "scale": 0.12,
+    "rotation": 180,
+    "renderedWidthMm": 2535.0000000000064,
+    "renderedDepthMm": 50,
+    "widthMm": 2535,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 110″ Retractable",
+    "scale": 0.12,
+    "rotation": 180,
+    "renderedWidthMm": 2594.9999999999973,
+    "renderedDepthMm": 110.00000000000607,
+    "widthMm": 2595,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 120″ Fixed frame",
+    "scale": 0.12,
+    "rotation": -90,
+    "renderedWidthMm": 50,
+    "renderedDepthMm": 2757.0000000000014,
+    "widthMm": 2757,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 120″ Retractable",
+    "scale": 0.12,
+    "rotation": -90,
+    "renderedWidthMm": 110.00000000000038,
+    "renderedDepthMm": 2817.0000000000073,
+    "widthMm": 2817,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 135″ Fixed frame",
+    "scale": 0.12,
+    "rotation": -90,
+    "renderedWidthMm": 50,
+    "renderedDepthMm": 3089.0000000000027,
+    "widthMm": 3089,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 135″ Retractable",
+    "scale": 0.12,
+    "rotation": -90,
+    "renderedWidthMm": 110.00000000000038,
+    "renderedDepthMm": 3149.0000000000086,
+    "widthMm": 3149,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 150″ Fixed frame",
+    "scale": 0.12,
+    "rotation": 180,
+    "renderedWidthMm": 3421.0000000000036,
+    "renderedDepthMm": 50,
+    "widthMm": 3421,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 150″ Retractable",
+    "scale": 0.12,
+    "rotation": 180,
+    "renderedWidthMm": 3481.0000000000023,
+    "renderedDepthMm": 110.00000000000607,
+    "widthMm": 3481,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 180″ Fixed frame",
+    "scale": 0.12,
+    "rotation": 180,
+    "renderedWidthMm": 4085.0000000000023,
+    "renderedDepthMm": 50,
+    "widthMm": 4085,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 180″ Retractable",
+    "scale": 0.12,
+    "rotation": 180,
+    "renderedWidthMm": 4144.999999999997,
+    "renderedDepthMm": 110.00000000000607,
+    "widthMm": 4145,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 200″ Fixed frame",
+    "scale": 0.12,
+    "rotation": 180,
+    "renderedWidthMm": 4528.0000000000055,
+    "renderedDepthMm": 50,
+    "widthMm": 4528,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 200″ Retractable",
+    "scale": 0.12,
+    "rotation": 180,
+    "renderedWidthMm": 4587.999999999996,
+    "renderedDepthMm": 110.00000000000607,
+    "widthMm": 4588,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector · Standard throw",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 410.0000000000004,
+    "renderedDepthMm": 310.0000000000061,
+    "widthMm": 410,
+    "depthMm": 310
+  },
+  {
+    "name": "Projector · Ultra-short throw",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 550,
+    "renderedDepthMm": 350,
+    "widthMm": 550,
+    "depthMm": 350
+  },
+  {
+    "name": "Floorstanding Speaker",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 250,
+    "renderedDepthMm": 350,
+    "widthMm": 250,
+    "depthMm": 350
+  },
+  {
+    "name": "Centre Speaker",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 500,
+    "renderedDepthMm": 250,
+    "widthMm": 500,
+    "depthMm": 250
+  },
+  {
+    "name": "AV Receiver",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 434.9999999999985,
+    "renderedDepthMm": 379.9999999999879,
+    "widthMm": 435,
+    "depthMm": 380
+  },
+  {
+    "name": "Speaker Stand",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 300,
+    "renderedDepthMm": 300,
+    "widthMm": 300,
+    "depthMm": 300
+  },
+  {
+    "name": "Cinema Seat",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 950,
+    "renderedDepthMm": 1000,
+    "widthMm": 950,
+    "depthMm": 1000
+  },
+  {
+    "name": "Acoustic Wall Panel",
+    "scale": 0.12,
+    "rotation": 180,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 100,
+    "widthMm": 600,
+    "depthMm": 100
+  },
+  {
+    "name": "Corner Bass Trap",
+    "scale": 0.12,
+    "rotation": -90,
+    "renderedWidthMm": 400,
+    "renderedDepthMm": 400,
+    "widthMm": 400,
+    "depthMm": 400
+  },
+  {
+    "name": "Sonos Soundbar · Arc Ultra",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 1178.000000000005,
+    "renderedDepthMm": 110.99999999999758,
+    "widthMm": 1178,
+    "depthMm": 111
+  },
+  {
+    "name": "Sonos Soundbar · Beam Ultra",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 750,
+    "renderedDepthMm": 104.99999999998788,
+    "widthMm": 750,
+    "depthMm": 105
+  },
+  {
+    "name": "Sonos Soundbar · Beam Gen 2",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 650.9999999999991,
+    "renderedDepthMm": 100,
+    "widthMm": 651,
+    "depthMm": 100
+  },
+  {
+    "name": "Sonos Soundbar · Ray",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 558.9999999999994,
+    "renderedDepthMm": 95.00000000001214,
+    "widthMm": 559,
+    "depthMm": 95
+  },
+  {
+    "name": "Sonos Speaker · Era 100",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 119.99999999999697,
+    "renderedDepthMm": 131.00000000000972,
+    "widthMm": 120,
+    "depthMm": 131
+  },
+  {
+    "name": "Sonos Speaker · Era 300",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 259.9999999999985,
+    "renderedDepthMm": 185.00000000000608,
+    "widthMm": 260,
+    "depthMm": 185
+  },
+  {
+    "name": "Sonos Speaker · Five",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 364.00000000000244,
+    "renderedDepthMm": 153.99999999999636,
+    "widthMm": 364,
+    "depthMm": 154
+  },
+  {
+    "name": "Sonos Speaker · Move 2",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 160.00000000000608,
+    "renderedDepthMm": 125.99999999999152,
+    "widthMm": 160,
+    "depthMm": 126
+  },
+  {
+    "name": "Sonos Speaker · Sonos Play",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 112.99999999999577,
+    "renderedDepthMm": 77.00000000001334,
+    "widthMm": 113,
+    "depthMm": 77
+  },
+  {
+    "name": "Sonos Speaker · Roam 2",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 62.00000000000425,
+    "renderedDepthMm": 60.00000000000607,
+    "widthMm": 62,
+    "depthMm": 60
+  },
+  {
+    "name": "Sonos Subwoofer · Sub 4",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 401.9999999999982,
+    "renderedDepthMm": 157.99999999999272,
+    "widthMm": 402,
+    "depthMm": 158
+  },
+  {
+    "name": "Sonos Subwoofer · Sub Mini",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 229.99999999999926,
+    "renderedDepthMm": 229.9999999999879,
+    "widthMm": 230,
+    "depthMm": 230
+  },
+  {
+    "name": "Sonos Component · Amp",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 216.99999999999972,
+    "renderedDepthMm": 217.00000000000728,
+    "widthMm": 217,
+    "depthMm": 217
+  },
+  {
+    "name": "Sonos Component · Amp Multi",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 437.00000000000045,
+    "renderedDepthMm": 264.999999999994,
+    "widthMm": 437,
+    "depthMm": 265
+  },
+  {
+    "name": "Sonos Component · Port",
+    "scale": 0.12,
+    "rotation": 0,
+    "renderedWidthMm": 138.00000000000335,
+    "renderedDepthMm": 138.0000000000109,
+    "widthMm": 138,
+    "depthMm": 138
+  },
+  {
+    "name": "Square",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 1000,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Triangle",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 1000,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Rectangle",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 800,
+    "widthMm": 1200,
+    "depthMm": 800
+  },
+  {
+    "name": "Circle",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 1000,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Oval",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 800,
+    "widthMm": 1200,
+    "depthMm": 800
+  },
+  {
+    "name": "Polygon",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 1000,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Straight Stairs",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 3000,
+    "widthMm": 1000,
+    "depthMm": 3000
+  },
+  {
+    "name": "Corner Stairs",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 2500,
+    "renderedDepthMm": 2500,
+    "widthMm": 2500,
+    "depthMm": 2500
+  },
+  {
+    "name": "U-shaped Stairs",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 2200,
+    "renderedDepthMm": 3200,
+    "widthMm": 2200,
+    "depthMm": 3200
+  },
+  {
+    "name": "Door",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 900,
+    "renderedDepthMm": 900,
+    "widthMm": 900,
+    "depthMm": 900
+  },
+  {
+    "name": "Double Door",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1600,
+    "renderedDepthMm": 800,
+    "widthMm": 1600,
+    "depthMm": 800
+  },
+  {
+    "name": "Window",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 120,
+    "widthMm": 1200,
+    "depthMm": 120
+  },
+  {
+    "name": "Base Cabinet / Worktop · Straight",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Base Cabinet / Worktop · Corner",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 1000,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Wall Cabinet",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 350,
+    "widthMm": 600,
+    "depthMm": 350
+  },
+  {
+    "name": "Tall Pantry Cabinet",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Kitchen Island",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1800,
+    "renderedDepthMm": 900,
+    "widthMm": 1800,
+    "depthMm": 900
+  },
+  {
+    "name": "Kitchen Sink",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 500,
+    "widthMm": 600,
+    "depthMm": 500
+  },
+  {
+    "name": "Oven",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 550,
+    "widthMm": 600,
+    "depthMm": 550
+  },
+  {
+    "name": "Cooker / Range",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Refrigerator · Standard",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 650,
+    "widthMm": 600,
+    "depthMm": 650
+  },
+  {
+    "name": "Refrigerator · Side-by-side",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 910,
+    "renderedDepthMm": 720,
+    "widthMm": 910,
+    "depthMm": 720
+  },
+  {
+    "name": "Dishwasher",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Microwave",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 490,
+    "renderedDepthMm": 380,
+    "widthMm": 490,
+    "depthMm": 380
+  },
+  {
+    "name": "Coffee Machine",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 250,
+    "renderedDepthMm": 400,
+    "widthMm": 250,
+    "depthMm": 400
+  },
+  {
+    "name": "Kettle",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 220,
+    "renderedDepthMm": 240,
+    "widthMm": 220,
+    "depthMm": 240
+  },
+  {
+    "name": "Toaster",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 300,
+    "renderedDepthMm": 180,
+    "widthMm": 300,
+    "depthMm": 180
+  },
+  {
+    "name": "Waste Bin",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 300,
+    "renderedDepthMm": 350,
+    "widthMm": 300,
+    "depthMm": 350
+  },
+  {
+    "name": "Bar Stool",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 420,
+    "renderedDepthMm": 420,
+    "widthMm": 420,
+    "depthMm": 420
+  },
+  {
+    "name": "Toilet",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 380,
+    "renderedDepthMm": 670,
+    "widthMm": 380,
+    "depthMm": 670
+  },
+  {
+    "name": "Sink",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 500,
+    "widthMm": 800,
+    "depthMm": 500
+  },
+  {
+    "name": "Bathtub",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 750,
+    "renderedDepthMm": 1700,
+    "widthMm": 750,
+    "depthMm": 1700
+  },
+  {
+    "name": "Shower",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 900,
+    "renderedDepthMm": 900,
+    "widthMm": 900,
+    "depthMm": 900
+  },
+  {
+    "name": "Bidet",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 360,
+    "renderedDepthMm": 550,
+    "widthMm": 360,
+    "depthMm": 550
+  },
+  {
+    "name": "Bathroom Storage Cabinet",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 400,
+    "renderedDepthMm": 350,
+    "widthMm": 400,
+    "depthMm": 350
+  },
+  {
+    "name": "Washing Machine",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Tumble Dryer",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 650,
+    "widthMm": 600,
+    "depthMm": 650
+  },
+  {
+    "name": "Towel Rail",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 500,
+    "renderedDepthMm": 100,
+    "widthMm": 500,
+    "depthMm": 100
+  },
+  {
+    "name": "Sofa · Straight",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 2100,
+    "renderedDepthMm": 900,
+    "widthMm": 2100,
+    "depthMm": 900
+  },
+  {
+    "name": "Sofa · L-shaped",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 2800,
+    "renderedDepthMm": 1800,
+    "widthMm": 2800,
+    "depthMm": 1800
+  },
+  {
+    "name": "Sofa · U-shaped",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 3400,
+    "renderedDepthMm": 2000,
+    "widthMm": 3400,
+    "depthMm": 2000
+  },
+  {
+    "name": "Armchair",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 850,
+    "renderedDepthMm": 900,
+    "widthMm": 850,
+    "depthMm": 900
+  },
+  {
+    "name": "Coffee Table · Rectangular",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1100,
+    "renderedDepthMm": 600,
+    "widthMm": 1100,
+    "depthMm": 600
+  },
+  {
+    "name": "Coffee Table · Round",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 1000,
+    "widthMm": 1000,
+    "depthMm": 1000
+  },
+  {
+    "name": "Side Table",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 450,
+    "renderedDepthMm": 450,
+    "widthMm": 450,
+    "depthMm": 450
+  },
+  {
+    "name": "TV with Stand · 32″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 728.0000000000018,
+    "renderedDepthMm": 243.99999999999636,
+    "widthMm": 728,
+    "depthMm": 244
+  },
+  {
+    "name": "Wall-mounted TV · 32″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 728.0000000000018,
+    "renderedDepthMm": 70,
+    "widthMm": 728,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 43″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 971.9999999999982,
+    "renderedDepthMm": 266.00000000000364,
+    "widthMm": 972,
+    "depthMm": 266
+  },
+  {
+    "name": "Wall-mounted TV · 43″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 972.0000000000073,
+    "renderedDepthMm": 70,
+    "widthMm": 972,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 50″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1127.0000000000073,
+    "renderedDepthMm": 280,
+    "widthMm": 1127,
+    "depthMm": 280
+  },
+  {
+    "name": "Wall-mounted TV · 50″",
+    "scale": 0.8,
+    "rotation": -90,
+    "renderedWidthMm": 70,
+    "renderedDepthMm": 1126.9999999999982,
+    "widthMm": 1127,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 55″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1237.9999999999995,
+    "renderedDepthMm": 290,
+    "widthMm": 1238,
+    "depthMm": 290
+  },
+  {
+    "name": "Wall-mounted TV · 55″",
+    "scale": 0.8,
+    "rotation": -90,
+    "renderedWidthMm": 70.00000000000014,
+    "renderedDepthMm": 1238.0000000000018,
+    "widthMm": 1238,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 65″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1459.000000000001,
+    "renderedDepthMm": 310,
+    "widthMm": 1459,
+    "depthMm": 310
+  },
+  {
+    "name": "Wall-mounted TV · 65″",
+    "scale": 0.8,
+    "rotation": -90,
+    "renderedWidthMm": 70.00000000000014,
+    "renderedDepthMm": 1458.9999999999964,
+    "widthMm": 1459,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 75″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1680,
+    "renderedDepthMm": 330,
+    "widthMm": 1680,
+    "depthMm": 330
+  },
+  {
+    "name": "Wall-mounted TV · 75″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1680,
+    "renderedDepthMm": 70,
+    "widthMm": 1680,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 85″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1901.9999999999982,
+    "renderedDepthMm": 350,
+    "widthMm": 1902,
+    "depthMm": 350
+  },
+  {
+    "name": "Wall-mounted TV · 85″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1902.0000000000073,
+    "renderedDepthMm": 70,
+    "widthMm": 1902,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 98″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 2190,
+    "renderedDepthMm": 376.00000000000364,
+    "widthMm": 2190,
+    "depthMm": 376
+  },
+  {
+    "name": "Wall-mounted TV · 98″",
+    "scale": 0.8,
+    "rotation": -90,
+    "renderedWidthMm": 70.00000000000014,
+    "renderedDepthMm": 2190,
+    "widthMm": 2190,
+    "depthMm": 70
+  },
+  {
+    "name": "TV with Stand · 100″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 2234.000000000001,
+    "renderedDepthMm": 380,
+    "widthMm": 2234,
+    "depthMm": 380
+  },
+  {
+    "name": "Wall-mounted TV · 100″",
+    "scale": 0.8,
+    "rotation": -90,
+    "renderedWidthMm": 70.00000000000014,
+    "renderedDepthMm": 2233.9999999999964,
+    "widthMm": 2234,
+    "depthMm": 70
+  },
+  {
+    "name": "TV / Media Cabinet",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1800,
+    "renderedDepthMm": 400,
+    "widthMm": 1800,
+    "depthMm": 400
+  },
+  {
+    "name": "Sideboard",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1600,
+    "renderedDepthMm": 450,
+    "widthMm": 1600,
+    "depthMm": 450
+  },
+  {
+    "name": "Bookcase",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 300,
+    "widthMm": 800,
+    "depthMm": 300
+  },
+  {
+    "name": "Display Cabinet",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 400,
+    "widthMm": 800,
+    "depthMm": 400
+  },
+  {
+    "name": "Floor Lamp",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 450,
+    "renderedDepthMm": 450,
+    "widthMm": 450,
+    "depthMm": 450
+  },
+  {
+    "name": "Plant · Desk Succulent",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 160,
+    "renderedDepthMm": 160,
+    "widthMm": 160,
+    "depthMm": 160
+  },
+  {
+    "name": "Plant · Small Desk Plant",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 240,
+    "renderedDepthMm": 240,
+    "widthMm": 240,
+    "depthMm": 240
+  },
+  {
+    "name": "Plant · Compact Floor Plant",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 400,
+    "renderedDepthMm": 400,
+    "widthMm": 400,
+    "depthMm": 400
+  },
+  {
+    "name": "Plant · Large Leafy Plant",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 600,
+    "widthMm": 600,
+    "depthMm": 600
+  },
+  {
+    "name": "Plant · Small Palm",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 800,
+    "widthMm": 800,
+    "depthMm": 800
+  },
+  {
+    "name": "Plant · Large Palm",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 1200,
+    "widthMm": 1200,
+    "depthMm": 1200
+  },
+  {
+    "name": "Dining Table · Rectangular",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1800,
+    "renderedDepthMm": 900,
+    "widthMm": 1800,
+    "depthMm": 900
+  },
+  {
+    "name": "Dining Table · Round",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 1200,
+    "widthMm": 1200,
+    "depthMm": 1200
+  },
+  {
+    "name": "Dining Chair",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 480,
+    "renderedDepthMm": 540,
+    "widthMm": 480,
+    "depthMm": 540
+  },
+  {
+    "name": "Bed · Twin",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1065,
+    "renderedDepthMm": 2055,
+    "widthMm": 1065,
+    "depthMm": 2055
+  },
+  {
+    "name": "Bed · Twin XL",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1065,
+    "renderedDepthMm": 2181.999999999998,
+    "widthMm": 1065,
+    "depthMm": 2182
+  },
+  {
+    "name": "Bed · Full / Double",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1446.0000000000036,
+    "renderedDepthMm": 2055,
+    "widthMm": 1446,
+    "depthMm": 2055
+  },
+  {
+    "name": "Bed · Queen",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1623.9999999999998,
+    "renderedDepthMm": 2182.0000000000073,
+    "widthMm": 1624,
+    "depthMm": 2182
+  },
+  {
+    "name": "Bed · King",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 2030,
+    "renderedDepthMm": 2182.0000000000073,
+    "widthMm": 2030,
+    "depthMm": 2182
+  },
+  {
+    "name": "Bed · California King",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1929.000000000001,
+    "renderedDepthMm": 2283.9999999999964,
+    "widthMm": 1929,
+    "depthMm": 2284
+  },
+  {
+    "name": "Bedside Table",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 400,
+    "renderedDepthMm": 480,
+    "widthMm": 400,
+    "depthMm": 480
+  },
+  {
+    "name": "Wardrobe",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1170,
+    "renderedDepthMm": 550,
+    "widthMm": 1170,
+    "depthMm": 550
+  },
+  {
+    "name": "Chest of Drawers",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 480,
+    "widthMm": 800,
+    "depthMm": 480
+  },
+  {
+    "name": "Dresser / Vanity",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 500,
+    "widthMm": 1000,
+    "depthMm": 500
+  },
+  {
+    "name": "Stool / Pouf",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 450,
+    "renderedDepthMm": 450,
+    "widthMm": 450,
+    "depthMm": 450
+  },
+  {
+    "name": "Bedroom Bench",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 400,
+    "widthMm": 1200,
+    "depthMm": 400
+  },
+  {
+    "name": "Bedside Lamp",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 250,
+    "renderedDepthMm": 250,
+    "widthMm": 250,
+    "depthMm": 250
+  },
+  {
+    "name": "Rug",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1600,
+    "renderedDepthMm": 2300,
+    "widthMm": 1600,
+    "depthMm": 2300
+  },
+  {
+    "name": "Laundry Basket",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 400,
+    "renderedDepthMm": 300,
+    "widthMm": 400,
+    "depthMm": 300
+  },
+  {
+    "name": "Clothes Rail",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 990,
+    "renderedDepthMm": 460,
+    "widthMm": 990,
+    "depthMm": 460
+  },
+  {
+    "name": "Table · 120 × 60 cm",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 600,
+    "widthMm": 1200,
+    "depthMm": 600
+  },
+  {
+    "name": "Table · 140 × 70 cm",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1400,
+    "renderedDepthMm": 700,
+    "widthMm": 1400,
+    "depthMm": 700
+  },
+  {
+    "name": "Table · 160 × 80 cm",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1600,
+    "renderedDepthMm": 800,
+    "widthMm": 1600,
+    "depthMm": 800
+  },
+  {
+    "name": "Table · 180 × 80 cm",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1800,
+    "renderedDepthMm": 800,
+    "widthMm": 1800,
+    "depthMm": 800
+  },
+  {
+    "name": "Table · 200 × 80 cm",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 2000,
+    "renderedDepthMm": 800,
+    "widthMm": 2000,
+    "depthMm": 800
+  },
+  {
+    "name": "Ergonomic Chair",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 700,
+    "renderedDepthMm": 700,
+    "widthMm": 700,
+    "depthMm": 700
+  },
+  {
+    "name": "Normal Chair",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 390,
+    "renderedDepthMm": 470,
+    "widthMm": 390,
+    "depthMm": 470
+  },
+  {
+    "name": "Desk Lamp",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 180,
+    "renderedDepthMm": 280,
+    "widthMm": 180,
+    "depthMm": 280
+  },
+  {
+    "name": "Keyboard · Compact 60%",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 292.99999999999955,
+    "renderedDepthMm": 102.99999999999272,
+    "widthMm": 293,
+    "depthMm": 103
+  },
+  {
+    "name": "Keyboard · 75%",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 313.0000000000018,
+    "renderedDepthMm": 122.99999999999272,
+    "widthMm": 313,
+    "depthMm": 123
+  },
+  {
+    "name": "Keyboard · Tenkeyless",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 359.0000000000009,
+    "renderedDepthMm": 127.00000000000728,
+    "widthMm": 359,
+    "depthMm": 127
+  },
+  {
+    "name": "Keyboard · Full size",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 436.00000000000364,
+    "renderedDepthMm": 130,
+    "widthMm": 436,
+    "depthMm": 130
+  },
+  {
+    "name": "Monitor · 19″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 445,
+    "renderedDepthMm": 171.00000000000364,
+    "widthMm": 445,
+    "depthMm": 171
+  },
+  {
+    "name": "Monitor · 22″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 486.9999999999982,
+    "renderedDepthMm": 180,
+    "widthMm": 487,
+    "depthMm": 180
+  },
+  {
+    "name": "Monitor · 24″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 538.0000000000018,
+    "renderedDepthMm": 180,
+    "widthMm": 538,
+    "depthMm": 180
+  },
+  {
+    "name": "Monitor · 25″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 567.9999999999927,
+    "renderedDepthMm": 185,
+    "widthMm": 568,
+    "depthMm": 185
+  },
+  {
+    "name": "Monitor · 27″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 610,
+    "renderedDepthMm": 190,
+    "widthMm": 610,
+    "depthMm": 190
+  },
+  {
+    "name": "Monitor · 28″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 638.9999999999998,
+    "renderedDepthMm": 251.00000000000364,
+    "widthMm": 639,
+    "depthMm": 251
+  },
+  {
+    "name": "Monitor · 32″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 712.9999999999995,
+    "renderedDepthMm": 232.99999999999272,
+    "widthMm": 713,
+    "depthMm": 233
+  },
+  {
+    "name": "Monitor · 43″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 966.9999999999982,
+    "renderedDepthMm": 256.00000000000364,
+    "widthMm": 967,
+    "depthMm": 256
+  },
+  {
+    "name": "Ultrawide Monitor · 29″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 689.0000000000009,
+    "renderedDepthMm": 223.99999999999636,
+    "widthMm": 689,
+    "depthMm": 224
+  },
+  {
+    "name": "Ultrawide Monitor · 30″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 703.0000000000018,
+    "renderedDepthMm": 287.0000000000073,
+    "widthMm": 703,
+    "depthMm": 287
+  },
+  {
+    "name": "Ultrawide Monitor · 34″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 808.0000000000018,
+    "renderedDepthMm": 237.99999999999272,
+    "widthMm": 808,
+    "depthMm": 238
+  },
+  {
+    "name": "Ultrawide Monitor · 35″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 831.9999999999982,
+    "renderedDepthMm": 251.00000000000364,
+    "widthMm": 832,
+    "depthMm": 251
+  },
+  {
+    "name": "Ultrawide Monitor · 38″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 893.9999999999964,
+    "renderedDepthMm": 251.00000000000364,
+    "widthMm": 894,
+    "depthMm": 251
+  },
+  {
+    "name": "Ultrawide Monitor · 39″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 887.9999999999927,
+    "renderedDepthMm": 310,
+    "widthMm": 888,
+    "depthMm": 310
+  },
+  {
+    "name": "Ultrawide Monitor · 40″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 947.0000000000073,
+    "renderedDepthMm": 252.99999999999272,
+    "widthMm": 947,
+    "depthMm": 253
+  },
+  {
+    "name": "Ultrawide Monitor · 45″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 992.9999999999995,
+    "renderedDepthMm": 335,
+    "widthMm": 993,
+    "depthMm": 335
+  },
+  {
+    "name": "Ultrawide Monitor · 49″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1147.9999999999995,
+    "renderedDepthMm": 421.00000000000364,
+    "widthMm": 1148,
+    "depthMm": 421
+  },
+  {
+    "name": "Ultrawide Monitor · 57″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1328.0000000000018,
+    "renderedDepthMm": 500,
+    "widthMm": 1328,
+    "depthMm": 500
+  },
+  {
+    "name": "Mouse",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 60,
+    "renderedDepthMm": 98.99999999999636,
+    "widthMm": 60,
+    "depthMm": 99
+  },
+  {
+    "name": "Deskmat · Small",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 300,
+    "renderedDepthMm": 250,
+    "widthMm": 300,
+    "depthMm": 250
+  },
+  {
+    "name": "Deskmat · Medium",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 450,
+    "renderedDepthMm": 400,
+    "widthMm": 450,
+    "depthMm": 400
+  },
+  {
+    "name": "Deskmat · Large",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 800,
+    "renderedDepthMm": 300,
+    "widthMm": 800,
+    "depthMm": 300
+  },
+  {
+    "name": "Deskmat · XL",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 900,
+    "renderedDepthMm": 400,
+    "widthMm": 900,
+    "depthMm": 400
+  },
+  {
+    "name": "Deskmat · XXL",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1000,
+    "renderedDepthMm": 500,
+    "widthMm": 1000,
+    "depthMm": 500
+  },
+  {
+    "name": "Deskmat · Full desk",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1200,
+    "renderedDepthMm": 600,
+    "widthMm": 1200,
+    "depthMm": 600
+  },
+  {
+    "name": "Desktop PC · SFF / Mini-ITX",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 185,
+    "renderedDepthMm": 376.00000000000364,
+    "widthMm": 185,
+    "depthMm": 376
+  },
+  {
+    "name": "Desktop PC · Mini tower / mATX",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 215,
+    "renderedDepthMm": 432.0000000000073,
+    "widthMm": 215,
+    "depthMm": 432
+  },
+  {
+    "name": "Desktop PC · Mid tower / ATX",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 215,
+    "renderedDepthMm": 473.99999999999636,
+    "widthMm": 215,
+    "depthMm": 474
+  },
+  {
+    "name": "Desktop PC · Full tower",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 240,
+    "renderedDepthMm": 600,
+    "widthMm": 240,
+    "depthMm": 600
+  },
+  {
+    "name": "Desktop Speaker · Small",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 85,
+    "renderedDepthMm": 105,
+    "widthMm": 85,
+    "depthMm": 105
+  },
+  {
+    "name": "Desktop Speaker · Bookshelf",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 146.00000000000364,
+    "renderedDepthMm": 196.00000000000364,
+    "widthMm": 146,
+    "depthMm": 196
+  },
+  {
+    "name": "Desktop Speaker · Studio 5″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 170,
+    "renderedDepthMm": 222.00000000000728,
+    "widthMm": 170,
+    "depthMm": 222
+  },
+  {
+    "name": "Desktop Speaker · Studio 6.5″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 210,
+    "renderedDepthMm": 283.99999999999636,
+    "widthMm": 210,
+    "depthMm": 284
+  },
+  {
+    "name": "Desktop Speaker · Studio 8″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 250,
+    "renderedDepthMm": 333.99999999999636,
+    "widthMm": 250,
+    "depthMm": 334
+  },
+  {
+    "name": "Apple Laptop · Closed 14″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 312.9999999999927,
+    "renderedDepthMm": 221.00000000000364,
+    "widthMm": 313,
+    "depthMm": 221
+  },
+  {
+    "name": "Apple Laptop · Closed 16″",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 356.0000000000002,
+    "renderedDepthMm": 247.99999999999272,
+    "widthMm": 356,
+    "depthMm": 248
+  },
+  {
+    "name": "Apple Mac mini",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 127.00000000000045,
+    "renderedDepthMm": 127.00000000000728,
+    "widthMm": 127,
+    "depthMm": 127
+  },
+  {
+    "name": "Projector Screen · 80″ Fixed frame",
+    "scale": 0.8,
+    "rotation": -90,
+    "renderedWidthMm": 50.00000000000014,
+    "renderedDepthMm": 1871.0000000000036,
+    "widthMm": 1871,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 80″ Retractable",
+    "scale": 0.8,
+    "rotation": -90,
+    "renderedWidthMm": 110.00000000000014,
+    "renderedDepthMm": 1931.0000000000036,
+    "widthMm": 1931,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 92″ Fixed frame",
+    "scale": 0.8,
+    "rotation": -90,
+    "renderedWidthMm": 50.00000000000014,
+    "renderedDepthMm": 2137.0000000000073,
+    "widthMm": 2137,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 92″ Retractable",
+    "scale": 0.8,
+    "rotation": 180,
+    "renderedWidthMm": 2196.999999999998,
+    "renderedDepthMm": 110,
+    "widthMm": 2197,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 100″ Fixed frame",
+    "scale": 0.8,
+    "rotation": 180,
+    "renderedWidthMm": 2313.9999999999964,
+    "renderedDepthMm": 50,
+    "widthMm": 2314,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 100″ Retractable",
+    "scale": 0.8,
+    "rotation": 180,
+    "renderedWidthMm": 2373.9999999999964,
+    "renderedDepthMm": 110,
+    "widthMm": 2374,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 110″ Fixed frame",
+    "scale": 0.8,
+    "rotation": 180,
+    "renderedWidthMm": 2535,
+    "renderedDepthMm": 50,
+    "widthMm": 2535,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 110″ Retractable",
+    "scale": 0.8,
+    "rotation": 180,
+    "renderedWidthMm": 2595,
+    "renderedDepthMm": 110,
+    "widthMm": 2595,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 120″ Fixed frame",
+    "scale": 0.8,
+    "rotation": -90,
+    "renderedWidthMm": 50.00000000000014,
+    "renderedDepthMm": 2757.0000000000073,
+    "widthMm": 2757,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 120″ Retractable",
+    "scale": 0.8,
+    "rotation": -90,
+    "renderedWidthMm": 110.00000000000014,
+    "renderedDepthMm": 2817.0000000000073,
+    "widthMm": 2817,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 135″ Fixed frame",
+    "scale": 0.8,
+    "rotation": -90,
+    "renderedWidthMm": 50.00000000000014,
+    "renderedDepthMm": 3088.9999999999964,
+    "widthMm": 3089,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 135″ Retractable",
+    "scale": 0.8,
+    "rotation": -90,
+    "renderedWidthMm": 110.00000000000014,
+    "renderedDepthMm": 3148.9999999999964,
+    "widthMm": 3149,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 150″ Fixed frame",
+    "scale": 0.8,
+    "rotation": 180,
+    "renderedWidthMm": 3421.0000000000036,
+    "renderedDepthMm": 50,
+    "widthMm": 3421,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 150″ Retractable",
+    "scale": 0.8,
+    "rotation": 180,
+    "renderedWidthMm": 3481.0000000000036,
+    "renderedDepthMm": 110,
+    "widthMm": 3481,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 180″ Fixed frame",
+    "scale": 0.8,
+    "rotation": 180,
+    "renderedWidthMm": 4085,
+    "renderedDepthMm": 50,
+    "widthMm": 4085,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 180″ Retractable",
+    "scale": 0.8,
+    "rotation": 180,
+    "renderedWidthMm": 4145,
+    "renderedDepthMm": 110,
+    "widthMm": 4145,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector Screen · 200″ Fixed frame",
+    "scale": 0.8,
+    "rotation": 180,
+    "renderedWidthMm": 4527.999999999993,
+    "renderedDepthMm": 50,
+    "widthMm": 4528,
+    "depthMm": 50
+  },
+  {
+    "name": "Projector Screen · 200″ Retractable",
+    "scale": 0.8,
+    "rotation": 180,
+    "renderedWidthMm": 4587.999999999993,
+    "renderedDepthMm": 110,
+    "widthMm": 4588,
+    "depthMm": 110
+  },
+  {
+    "name": "Projector · Standard throw",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 410,
+    "renderedDepthMm": 310,
+    "widthMm": 410,
+    "depthMm": 310
+  },
+  {
+    "name": "Projector · Ultra-short throw",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 550,
+    "renderedDepthMm": 350,
+    "widthMm": 550,
+    "depthMm": 350
+  },
+  {
+    "name": "Floorstanding Speaker",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 250,
+    "renderedDepthMm": 350,
+    "widthMm": 250,
+    "depthMm": 350
+  },
+  {
+    "name": "Centre Speaker",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 500,
+    "renderedDepthMm": 250,
+    "widthMm": 500,
+    "depthMm": 250
+  },
+  {
+    "name": "AV Receiver",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 435,
+    "renderedDepthMm": 380,
+    "widthMm": 435,
+    "depthMm": 380
+  },
+  {
+    "name": "Speaker Stand",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 300,
+    "renderedDepthMm": 300,
+    "widthMm": 300,
+    "depthMm": 300
+  },
+  {
+    "name": "Cinema Seat",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 950,
+    "renderedDepthMm": 1000,
+    "widthMm": 950,
+    "depthMm": 1000
+  },
+  {
+    "name": "Acoustic Wall Panel",
+    "scale": 0.8,
+    "rotation": 180,
+    "renderedWidthMm": 600,
+    "renderedDepthMm": 100,
+    "widthMm": 600,
+    "depthMm": 100
+  },
+  {
+    "name": "Corner Bass Trap",
+    "scale": 0.8,
+    "rotation": -90,
+    "renderedWidthMm": 400,
+    "renderedDepthMm": 400,
+    "widthMm": 400,
+    "depthMm": 400
+  },
+  {
+    "name": "Sonos Soundbar · Arc Ultra",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 1177.9999999999927,
+    "renderedDepthMm": 110.99999999998545,
+    "widthMm": 1178,
+    "depthMm": 111
+  },
+  {
+    "name": "Sonos Soundbar · Beam Ultra",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 750,
+    "renderedDepthMm": 105,
+    "widthMm": 750,
+    "depthMm": 105
+  },
+  {
+    "name": "Sonos Soundbar · Beam Gen 2",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 650.9999999999991,
+    "renderedDepthMm": 100,
+    "widthMm": 651,
+    "depthMm": 100
+  },
+  {
+    "name": "Sonos Soundbar · Ray",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 559.0000000000009,
+    "renderedDepthMm": 95,
+    "widthMm": 559,
+    "depthMm": 95
+  },
+  {
+    "name": "Sonos Speaker · Era 100",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 120,
+    "renderedDepthMm": 130.99999999998545,
+    "widthMm": 120,
+    "depthMm": 131
+  },
+  {
+    "name": "Sonos Speaker · Era 300",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 260,
+    "renderedDepthMm": 185,
+    "widthMm": 260,
+    "depthMm": 185
+  },
+  {
+    "name": "Sonos Speaker · Five",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 363.99999999999636,
+    "renderedDepthMm": 154.00000000001455,
+    "widthMm": 364,
+    "depthMm": 154
+  },
+  {
+    "name": "Sonos Speaker · Move 2",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 160,
+    "renderedDepthMm": 125.99999999998545,
+    "widthMm": 160,
+    "depthMm": 126
+  },
+  {
+    "name": "Sonos Speaker · Sonos Play",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 113.00000000000182,
+    "renderedDepthMm": 77.00000000000728,
+    "widthMm": 113,
+    "depthMm": 77
+  },
+  {
+    "name": "Sonos Speaker · Roam 2",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 62.000000000007276,
+    "renderedDepthMm": 60,
+    "widthMm": 62,
+    "depthMm": 60
+  },
+  {
+    "name": "Sonos Subwoofer · Sub 4",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 402.0000000000073,
+    "renderedDepthMm": 157.99999999999272,
+    "widthMm": 402,
+    "depthMm": 158
+  },
+  {
+    "name": "Sonos Subwoofer · Sub Mini",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 230,
+    "renderedDepthMm": 230,
+    "widthMm": 230,
+    "depthMm": 230
+  },
+  {
+    "name": "Sonos Component · Amp",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 217.00000000000045,
+    "renderedDepthMm": 217.00000000000728,
+    "widthMm": 217,
+    "depthMm": 217
+  },
+  {
+    "name": "Sonos Component · Amp Multi",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 436.9999999999982,
+    "renderedDepthMm": 265,
+    "widthMm": 437,
+    "depthMm": 265
+  },
+  {
+    "name": "Sonos Component · Port",
+    "scale": 0.8,
+    "rotation": 0,
+    "renderedWidthMm": 138.00000000000182,
+    "renderedDepthMm": 137.99999999999272,
+    "widthMm": 138,
+    "depthMm": 138
+  }
+]

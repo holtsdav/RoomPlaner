@@ -23,6 +23,8 @@
     "typeCheck": true
   },
   "ignorePatterns": [
+    ".agents/skills/**",
+    ".github/skills/**",
     "components/ui/**",
     "hooks/use-mobile.ts",
     ".next/**",

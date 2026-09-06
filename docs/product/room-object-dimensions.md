@@ -1,0 +1,52 @@
+# Room object dimensions and sources
+
+Checked 5 September 2026. Width × **floor depth** × height is used throughout. Values are rounded to whole millimetres for the document schema. Internal lines are schematic top-down cues, not product replicas. Objects remain resizable.
+
+## Generic objects
+
+Bathroom fixtures, kitchen units/appliances, living furniture, cinema seating, projectors, acoustic treatment, and generic audio components use representative planning envelopes in `room-catalog.ts`. They are not sold as exact replicas of a named manufacturer product. Cabinet tops hide front details; speaker cones on vertical faces are not drawn on their tops. No claimed sound-isolation or audio-compatibility simulation is attached to these footprints.
+
+TVs use 16:9 image width = diagonal × 25.4 × 16 / √337. Their generic chassis adds 20 mm across the width; panel depth is 60 mm, wall-mounted envelope 70 mm, and stand depth is a representative 180 + 2 × diagonal(in) mm. The image height is stored separately and never used as floor depth.
+
+Projector screens use the same 16:9 image calculation. Fixed-frame models add a generic 50 mm border on each side, with 50 mm mounting depth. Retractable cases add 160 mm overall width and use 110 mm depth. These are generic housings, not a claim that all screens of a diagonal have identical cases. Presets: 80, 92, 100, 110, 120, 135, 150, 180 and 200 inches.
+
+Surface/ceiling mounting heights are editable defaults. Wall items use the interior wall face, windows the wall centre line, shower screens attach perpendicular to a wall, and bass traps snap to a corner. Widths are limited to wall lengths where relevant. Attachment survives moves, duplication, resize and room edits.
+
+## Sonos dimension references (including retired presets)
+
+The current catalog excludes legacy Sonos, Era 100 SL/Pro, Playbase and all SYMFONISK models. Their source rows remain here as historical dimension references for existing saved plans.
+
+All measurements below are width × depth × height in mm. Colour editions are not additional objects. Bundles are decomposed into their physical components.
+
+| Models                        | Dimensions                      | Source                                                                                                                                                                                                 |
+| ----------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Arc Ultra                     | 1178 × 110.6 × 75               | [Sonos fact sheet](https://assets.sonos.com/media-kits/hardware/sonos-arc-ultra/sonos-arc-ultrafactsheet.pdf)                                                                                          |
+| Arc / Arc SL                  | 1141.7 × 115.7 × 87             | [Sonos user guide](https://www.sonos.com/pdfs/productguides/en-us/sonos-user-guide.pdf), pp. 63, 76                                                                                                    |
+| Beam Ultra                    | 750 × 105 × 63                  | [Sonos product specification](https://www.sonos.com/en-us/shop/beam-ultra-white); preorder at verification time                                                                                        |
+| Beam Gen 1 / Gen 2            | 651 × 100 × 68 / 68.6           | Sonos user guide, pp. 106, 91                                                                                                                                                                          |
+| Ray                           | 559 × 95 × 71                   | [Sonos guide](https://www.sonos.com/en-us/guides/ray)                                                                                                                                                  |
+| Playbar                       | 900 × 140 × 85                  | Sonos user guide, p. 144; horizontal tabletop orientation                                                                                                                                              |
+| Playbase                      | 720 × 380 × 56                  | Sonos user guide, p. 152                                                                                                                                                                               |
+| Era 100 / SL / Pro            | 120 × 130.5 × 182.5             | [Era 100 fact sheet](https://assets.sonos.com/media-kits/hardware/era-100/era100factsheet.pdf), [SL](https://www.sonos.com/en-us/shop/era-100-sl), [Pro](https://www.sonos.com/en-us/shop/era-100-pro) |
+| Era 300                       | 260 × 185 × 160                 | [Sonos fact sheet](https://assets.sonos.com/media-kits/hardware/era-300/GB_era300factsheet.pdf)                                                                                                        |
+| Five / Play:5 Gen 2           | 364 × 154 × 203                 | Sonos user guide, pp. 50, 135; horizontal orientation                                                                                                                                                  |
+| One Gen 1/2 / One SL / Play:1 | 119.7 × 119.7 × 161.45          | Sonos user guide pp. 40, 44; [Play:1 guide](https://www.sonos.com/support/help/10.6/en-us/sonos-user-guide/play1/play1.htm)                                                                            |
+| Play:3                        | 268 × 160 × 132                 | [Sonos guide](https://www.sonos.com/pdfs/productguides/en-us/play3guide.pdf), horizontal orientation                                                                                                   |
+| Play:5 Gen 1                  | 365 × 123 × 217                 | [Sonos legacy specification](https://www.sonos.com/support/productguide/en/play5-gen1/PLAY5-gen1-specifications.htm)                                                                                   |
+| Move                          | 160 × 126 × 240                 | Sonos user guide, p. 34                                                                                                                                                                                |
+| Move 2                        | 160 × 126 × 242                 | [Sonos guide](https://www.sonos.com/en-us/guides/move2)                                                                                                                                                |
+| Sonos Play                    | 112.5 × 76.7 × 192.3            | [Sonos specification](https://www.sonos.com/en-us/shop/sonos-play-white)                                                                                                                               |
+| Roam / Roam SL / Roam 2       | 62 × 60 × 168                   | Sonos user guide pp. 20, 27; [Roam 2](https://www.sonos.com/en-us/shop/roam-2)                                                                                                                         |
+| Sub Gen 1/2/3 / Sub 4         | 402 × 158 × 389                 | Sonos user guide p. 125; [Sub 4](https://www.sonos.com/en-us/shop/sub-4); upright orientation, the side opening is not visible from above                                                              |
+| Sub Mini                      | 230 diameter × 305 high         | [Sonos fact sheet](https://assets.sonos.com/media-kits/hardware/sub-mini/subminifactsheet.pdf)                                                                                                         |
+| Amp / Port                    | 217 × 217 × 64 / 138 × 138 × 41 | Sonos user guide pp. 113, 118                                                                                                                                                                          |
+| Amp Multi                     | 436.8 × 265.2 × 64.5            | [Sonos specification](https://www.sonos.com/en-us/shop/amp-multi); single unit without rack ears                                                                                                       |
+| Connect / Connect:Amp         | 136 × 140 × 74 / 185 × 207 × 89 | [Sonos legacy guide](https://www.sonos.com/support/en/pdfs/sonos-user-guide.pdf)                                                                                                                       |
+| ZP100                         | 260 × 209.5 × 113               | [Archived Sonos manufacturer data sheet](https://www.rolec.net/images/downloads/zp100.pdf)                                                                                                             |
+| SYMFONISK Bookshelf Gen 1/2   | 100 × 150 × 310                 | [IKEA audio catalog](https://www.ikea.com.hk/en/products/electronics-and-accessories/speakers-and-sound-accessories), upright orientation                                                              |
+| SYMFONISK Table Lamp Gen 1    | 216 diameter × 401 high         | [Archived IKEA article 503.575.92 data](https://manuals.plus/ikea/manual/symfonisk-50357592)                                                                                                           |
+| SYMFONISK Table Lamp Gen 2    | 220 diameter × 450 high         | [IKEA glass-shade combination 994.309.25](https://www.ikea.com.tr/en/product/symfonisk-white-white-glass-45x22-cm-speaker-lamp-with-wi-fi-99430925); shade is the widest part                          |
+| SYMFONISK Floor Lamp          | 370 × 370 × 1360                | [IKEA assembled measurements](https://www.ikea.com/gb/en/p/symfonisk-floor-lamp-with-wifi-speaker-bamboo-smart-20528289/)                                                                              |
+| SYMFONISK Picture Frame       | 410 × 60 × 570                  | IKEA audio catalog above; wall-mounted top edge                                                                                                                                                        |
+
+Generic fixture dimensions and screen housings can differ from a user's actual products. Exact project fit requires entering their measured envelope. Existing objects retain their saved dimensions; choosing a new variant applies its catalog dimensions and profile.

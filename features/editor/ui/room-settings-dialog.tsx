@@ -14,158 +14,173 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { getRoomBounds } from '../domain/plan-document';
+import {
+  getMeasurementSystem,
+  millimetresToUnit,
+  unitToMillimetres,
+} from '../domain/plan-document';
 import { usePlannerStore } from '../state/planner-store';
+import { insideRoomBounds } from '../domain/room-measurements';
+import { RoomMeasurementHelp } from './room-measurement-help';
+import { ScrubbableNumberInput } from './scrubbable-number-input';
 
-type DraftSettings = {
-  name: string;
-  widthMm: string;
-  depthMm: string;
-  wallThicknessMm: string;
-};
+function readableInput(value: number): string {
+  return String(Math.round(value * 1000) / 1000);
+}
 
-export function RoomSettingsDialog() {
-  const [open, setOpen] = useState(false);
+export function RoomSettingsDialog({
+  open: controlledOpen,
+  onOpenChange,
+  showTrigger = true,
+}: {
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  showTrigger?: boolean;
+} = {}) {
+  const [internalOpen, setInternalOpen] = useState(false);
+  const open = controlledOpen ?? internalOpen;
+  const setOpen = onOpenChange ?? setInternalOpen;
   const document = usePlannerStore((state) => state.document);
   const updateRoomSettings = usePlannerStore(
     (state) => state.updateRoomSettings,
   );
-  const bounds = getRoomBounds(document.room);
-  const [draft, setDraft] = useState<DraftSettings>({
-    name: document.room.name,
-    widthMm: String(bounds.width),
-    depthMm: String(bounds.height),
-    wallThicknessMm: String(document.room.wallThicknessMm),
-  });
-
-  const resetDraft = () => {
-    const currentBounds = getRoomBounds(document.room);
-    setDraft({
+  const bounds = insideRoomBounds(document.room);
+  const imperial = getMeasurementSystem(document.units) === 'imperial';
+  const roomUnit = imperial ? 'ft' : 'cm';
+  const detailUnit = imperial ? 'in' : 'cm';
+  const applyRoomChange = (
+    patch: Partial<{
+      name: string;
+      widthMm: number;
+      depthMm: number;
+      wallThicknessMm: number;
+    }>,
+  ) =>
+    updateRoomSettings({
+      inside: true,
       name: document.room.name,
-      widthMm: String(currentBounds.width),
-      depthMm: String(currentBounds.height),
-      wallThicknessMm: String(document.room.wallThicknessMm),
+      widthMm: bounds.width,
+      depthMm: bounds.height,
+      wallThicknessMm: document.room.wallThicknessMm,
+      ...patch,
     });
-  };
-
-  const numbers = {
-    widthMm: Math.round(Number(draft.widthMm)),
-    depthMm: Math.round(Number(draft.depthMm)),
-    wallThicknessMm: Math.round(Number(draft.wallThicknessMm)),
-  };
-  const valid =
-    draft.name.trim().length > 0 &&
-    Number.isFinite(numbers.widthMm) &&
-    Number.isFinite(numbers.depthMm) &&
-    Number.isFinite(numbers.wallThicknessMm) &&
-    numbers.widthMm >= 500 &&
-    numbers.depthMm >= 500 &&
-    numbers.wallThicknessMm >= 50 &&
-    numbers.wallThicknessMm <= 500;
 
   return (
     <Dialog
       open={open}
       onOpenChange={(nextOpen) => {
-        if (nextOpen) resetDraft();
         setOpen(nextOpen);
       }}
     >
-      <DialogTrigger render={<Button variant="outline" size="sm" />}>
-        <ScanLine aria-hidden="true" />
-        <span className="hidden sm:inline">Room setup</span>
-      </DialogTrigger>
-      <DialogContent>
+      {showTrigger && (
+        <DialogTrigger
+          render={
+            <Button
+              variant="outline"
+              size="sm"
+              className="size-11 p-0 lg:h-7 sm:w-auto sm:px-2.5"
+              aria-label="Room setup"
+              title="Room setup"
+            />
+          }
+        >
+          <ScanLine aria-hidden="true" />
+          <span className="hidden sm:inline">Room setup</span>
+        </DialogTrigger>
+      )}
+      <DialogContent className="max-h-[90dvh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Room setup</DialogTitle>
           <DialogDescription>
-            Changing width or depth scales every corner proportionally. Objects
-            keep their current size and position.
+            Set the room size and wall thickness. Changes appear immediately;
+            furniture keeps its physical size.
           </DialogDescription>
         </DialogHeader>
 
-        <form
-          id="room-settings-form"
-          className="grid grid-cols-2 gap-4 py-1"
-          onSubmit={(event) => {
-            event.preventDefault();
-            if (!valid) return;
-            if (updateRoomSettings({ name: draft.name, ...numbers })) {
-              setOpen(false);
-            }
-          }}
-        >
+        <RoomMeasurementHelp document={document} />
+
+        <div className="grid grid-cols-2 gap-4 py-1">
           <div className="col-span-2 space-y-1.5">
             <Label htmlFor="room-name">Room name</Label>
             <Input
               id="room-name"
-              value={draft.name}
-              onChange={(event) =>
-                setDraft((current) => ({
-                  ...current,
-                  name: event.target.value,
-                }))
-              }
+              key={`${open}:${document.id}:${document.room.name}`}
+              defaultValue={document.room.name}
+              maxLength={120}
+              onBlur={(event) => {
+                const name = event.currentTarget.value.trim();
+                if (name && name !== document.room.name)
+                  applyRoomChange({ name });
+                else event.currentTarget.value = document.room.name;
+              }}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') event.currentTarget.blur();
+              }}
             />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="room-width">Bounding width</Label>
-            <Input
+            <Label htmlFor="room-width">Inside width</Label>
+            <ScrubbableNumberInput
               id="room-width"
-              type="number"
-              min={500}
-              step={10}
-              value={draft.widthMm}
-              onChange={(event) =>
-                setDraft((current) => ({
-                  ...current,
-                  widthMm: event.target.value,
-                }))
-              }
+              aria-label={`Room width in ${imperial ? 'feet' : 'centimetres'}`}
+              value={millimetresToUnit(bounds.width, roomUnit)}
+              min={imperial ? 1.64 : 50}
+              step={imperial ? 0.1 : 1}
+              suffix={roomUnit}
+              formatValue={readableInput}
+              onValueChange={(value) => {
+                const widthMm = unitToMillimetres(value, roomUnit);
+                if (widthMm === bounds.width) return true;
+                return applyRoomChange({ widthMm });
+              }}
             />
-            <p className="text-xs text-muted-foreground">millimetres</p>
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="room-depth">Bounding depth</Label>
-            <Input
+            <Label htmlFor="room-depth">Inside depth</Label>
+            <ScrubbableNumberInput
               id="room-depth"
-              type="number"
-              min={500}
-              step={10}
-              value={draft.depthMm}
-              onChange={(event) =>
-                setDraft((current) => ({
-                  ...current,
-                  depthMm: event.target.value,
-                }))
-              }
+              aria-label={`Room depth in ${imperial ? 'feet' : 'centimetres'}`}
+              value={millimetresToUnit(bounds.height, roomUnit)}
+              min={imperial ? 1.64 : 50}
+              step={imperial ? 0.1 : 1}
+              suffix={roomUnit}
+              formatValue={readableInput}
+              onValueChange={(value) => {
+                const depthMm = unitToMillimetres(value, roomUnit);
+                if (depthMm === bounds.height) return true;
+                return applyRoomChange({ depthMm });
+              }}
             />
-            <p className="text-xs text-muted-foreground">millimetres</p>
           </div>
           <div className="col-span-2 space-y-1.5">
             <Label htmlFor="wall-thickness">Wall thickness</Label>
-            <Input
+            <ScrubbableNumberInput
               id="wall-thickness"
-              type="number"
-              min={50}
-              max={500}
-              step={10}
-              value={draft.wallThicknessMm}
-              onChange={(event) =>
-                setDraft((current) => ({
-                  ...current,
-                  wallThicknessMm: event.target.value,
-                }))
-              }
+              aria-label={`Wall thickness in ${imperial ? 'inches' : 'centimetres'}`}
+              value={millimetresToUnit(
+                document.room.wallThicknessMm,
+                detailUnit,
+              )}
+              min={imperial ? 1.97 : 5}
+              max={imperial ? 19.69 : 50}
+              step={0.1}
+              suffix={imperial ? 'in' : 'cm'}
+              formatValue={readableInput}
+              onValueChange={(value) => {
+                const wallThicknessMm = unitToMillimetres(value, detailUnit);
+                if (wallThicknessMm === document.room.wallThicknessMm) {
+                  return true;
+                }
+                return applyRoomChange({ wallThicknessMm });
+              }}
             />
           </div>
-        </form>
+          <p className="col-span-2 text-xs text-muted-foreground">
+            Type a value or drag a number left and right to adjust it.
+          </p>
+        </div>
 
-        <DialogFooter showCloseButton>
-          <Button type="submit" form="room-settings-form" disabled={!valid}>
-            Apply dimensions
-          </Button>
-        </DialogFooter>
+        <DialogFooter showCloseButton />
       </DialogContent>
     </Dialog>
   );

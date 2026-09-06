@@ -3,6 +3,12 @@ import type { PointMm } from './plan-document';
 const MIN_EDGE_LENGTH_MM = 100;
 const MIN_AREA_SQUARE_MM = 10_000;
 
+export type WallMeasurement = {
+  lengthMm: number;
+  center: PointMm;
+  angleDeg: number;
+};
+
 function orientation(a: PointMm, b: PointMm, c: PointMm) {
   const value = (b.y - a.y) * (c.x - b.x) - (b.x - a.x) * (c.y - b.y);
   if (value === 0) return 0;
@@ -31,15 +37,17 @@ function segmentsIntersect(a1: PointMm, a2: PointMm, b1: PointMm, b2: PointMm) {
   return o4 === 0 && onSegment(b1, a2, b2);
 }
 
-export function polygonArea(points: PointMm[]) {
+export function signedPolygonArea(points: PointMm[]) {
   return (
-    Math.abs(
-      points.reduce((sum, point, index) => {
-        const next = points[(index + 1) % points.length];
-        return sum + point.x * next.y - next.x * point.y;
-      }, 0),
-    ) / 2
+    points.reduce((sum, point, index) => {
+      const next = points[(index + 1) % points.length];
+      return sum + point.x * next.y - next.x * point.y;
+    }, 0) / 2
   );
+}
+
+export function polygonArea(points: PointMm[]) {
+  return Math.abs(signedPolygonArea(points));
 }
 
 export function edgeLength(a: PointMm, b: PointMm) {
@@ -88,4 +96,49 @@ export function midpoint(a: PointMm, b: PointMm): PointMm {
     x: Math.round((a.x + b.x) / 2),
     y: Math.round((a.y + b.y) / 2),
   };
+}
+
+export function getWallMeasurements(
+  points: PointMm[],
+  offsetMm: number,
+): WallMeasurement[] {
+  const orientationSign = signedPolygonArea(points) >= 0 ? 1 : -1;
+
+  return points.map((start, index) => {
+    const end = points[(index + 1) % points.length];
+    const delta = { x: end.x - start.x, y: end.y - start.y };
+    const lengthMm = Math.hypot(delta.x, delta.y);
+    const tangent = {
+      x: lengthMm === 0 ? 0 : delta.x / lengthMm,
+      y: lengthMm === 0 ? 0 : delta.y / lengthMm,
+    };
+    const outwardNormal = {
+      x: tangent.y * orientationSign,
+      y: -tangent.x * orientationSign,
+    };
+    let angleDeg = (Math.atan2(delta.y, delta.x) * 180) / Math.PI;
+    if (angleDeg >= 90) angleDeg -= 180;
+    if (angleDeg < -90) angleDeg += 180;
+
+    return {
+      lengthMm,
+      center: {
+        x: (start.x + end.x) / 2 + outwardNormal.x * offsetMm,
+        y: (start.y + end.y) / 2 + outwardNormal.y * offsetMm,
+      },
+      angleDeg,
+    };
+  });
+}
+
+export function intersectLines(
+  a: PointMm,
+  u: PointMm,
+  b: PointMm,
+  v: PointMm,
+): PointMm | null {
+  const cross = u.x * v.y - u.y * v.x;
+  if (Math.abs(cross) < 1e-8) return null;
+  const t = ((b.x - a.x) * v.y - (b.y - a.y) * v.x) / cross;
+  return { x: a.x + u.x * t, y: a.y + u.y * t };
 }
