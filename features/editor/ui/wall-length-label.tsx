@@ -23,7 +23,7 @@ export function WallLengthLabel({
   return (
     <span
       aria-label={`Wall ${wallIndex + 1} inside length: ${formatWallMeasurement(lengthMm, units)}`}
-      className="pointer-events-none absolute z-10 flex min-h-7 min-w-16 items-center justify-center rounded bg-[#fcfdff] px-1 font-mono text-xs font-medium whitespace-nowrap text-[#294b68]"
+      className="pointer-events-none absolute z-10 flex h-7 items-center justify-center rounded bg-[#fcfdff] px-2 font-mono text-xs font-medium whitespace-nowrap text-[#294b68]"
       style={{
         left,
         top,

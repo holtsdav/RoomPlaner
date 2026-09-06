@@ -41,6 +41,7 @@ export function ObjectFootprint({
   return (
     <Group
       id={object.id}
+      name="touch-object"
       x={object.positionMm.x}
       y={object.positionMm.y}
       rotation={object.rotationDeg}

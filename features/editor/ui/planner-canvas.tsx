@@ -11,7 +11,7 @@ import {
 
 import type Konva from 'konva';
 import type { KonvaEventObject } from 'konva/lib/Node';
-import { Hand, LocateFixed, Minus, PanelLeftOpen, Plus } from 'lucide-react';
+import { LocateFixed, Minus, PanelLeftOpen, Plus } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Circle, Group, Layer, Line, Rect, Stage } from 'react-konva';
 import { Button } from '@/components/ui/button';
@@ -38,6 +38,7 @@ import {
 import { resizeViewport } from '../domain/viewport';
 import { usePlannerStore } from '../state/planner-store';
 import { useTouchInput } from './use-touch-input';
+import { useCanvasTouch } from './use-canvas-touch';
 import { ObjectFootprint } from './object-footprint';
 import { WallLengthLabel } from './wall-length-label';
 import { CanvasSpacingControls } from './canvas-spacing-controls';
@@ -249,9 +250,6 @@ export function PlannerCanvas({
   });
   const [spacePressed, setSpacePressed] = useState(false);
   const touchInput = useTouchInput();
-  const [mousePanMode, setMousePanMode] = useState(false);
-  const [touchPanMode, setTouchPanMode] = useState(true);
-  const panMode = touchInput ? touchPanMode : mousePanMode;
   const [middleMousePanning, setMiddleMousePanning] = useState(false);
   const [cornerDrag, setCornerDrag] = useState<CornerDrag | null>(null);
   const [draggedObject, setDraggedObject] = useState<{
@@ -263,6 +261,21 @@ export function PlannerCanvas({
   const [marquee, setMarquee] = useState<MarqueeSelection | null>(null);
   const cornerDragRef = useRef<CornerDrag | null>(null);
   const marqueeRef = useRef<MarqueeSelection | null>(null);
+  useCanvasTouch({
+    containerRef,
+    stageRef,
+    ready: size.width > 0 && size.height > 0,
+    roomId: document.id,
+    setViewport,
+    minScale: MIN_SCALE,
+    maxScale: MAX_SCALE,
+    cancelEdit: () => {
+      cornerDragRef.current = null;
+      setCornerDrag(null);
+      setDraggedObject(null);
+      setAlignmentGuides([]);
+    },
+  });
   const roomBounds = getRoomBounds(document.room);
 
   const fitRoom = useCallback(() => {
@@ -735,7 +748,7 @@ export function PlannerCanvas({
     );
   };
 
-  const isPanning = spacePressed || panMode;
+  const isPanning = spacePressed;
   const isActivelyPanning = isPanning || middleMousePanning;
   const zoomPercent = Math.round((viewport.scale / 0.12) * 100);
   const displayBoundary = document.room.boundary.map((point, index) =>
@@ -843,7 +856,7 @@ export function PlannerCanvas({
       }}
       aria-labelledby="room-plan-canvas-title"
       aria-describedby="room-plan-canvas-summary room-plan-canvas-help"
-      className={`relative min-h-0 overflow-hidden bg-[#eaf1f6] outline-none [&:focus-visible:not([data-pointer-focus])]:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600 ${isActivelyPanning ? 'cursor-grabbing' : marqueeActive ? 'cursor-crosshair' : 'cursor-default'}`}
+      className={`relative min-h-0 overflow-hidden overscroll-none [&_.konvajs-content]:touch-none [&_.konvajs-content]:select-none [&_.konvajs-content]:[-webkit-touch-callout:none] bg-[#eaf1f6] outline-none [&:focus-visible:not([data-pointer-focus])]:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600 ${isActivelyPanning ? 'cursor-grabbing' : marqueeActive ? 'cursor-crosshair' : 'cursor-default'}`}
     >
       <h2 id="room-plan-canvas-title" className="sr-only">
         Room plan canvas
@@ -861,17 +874,18 @@ export function PlannerCanvas({
         {document.objects.length} objects placed. {selectedSummary}
       </p>
       <p id="room-plan-canvas-help" className="sr-only">
-        On touch screens, swipe to pan and tap to select. Turn off Pan canvas to
-        drag objects. With a mouse, drag from empty canvas space to select
-        multiple objects. Hold Shift while dragging to add to the selection.
-        When snapping is on, objects show guides for nearby walls, object edges
-        and centres. Room corners also align to object edges, object centres and
-        other room corners. Use arrow keys to move the selection by the snap
-        distance. Hold Shift with an arrow key to move by the grid distance.
-        Press Delete to remove a selection, or use the Pan canvas button or hold
-        Space and drag to pan. Wall labels display inside measurements. Walls
-        under one metre use millimetre precision; longer walls use centimetres,
-        even when snapping is off.
+        On touch screens, drag empty space to pan, tap an object to select it,
+        and drag objects or room corners to move them. Use two fingers anywhere
+        to pan and pinch to zoom. With a mouse, drag from empty canvas space to
+        select multiple objects. Hold Shift while dragging to add to the
+        selection. When snapping is on, objects show guides for nearby walls,
+        object edges and centres. Room corners also align to object edges,
+        object centres and other room corners. Use arrow keys to move the
+        selection by the snap distance. Hold Shift with an arrow key to move by
+        the grid distance. Press Delete to remove a selection, or hold Space and
+        drag to pan. Wall labels display inside measurements. Walls under one
+        metre use millimetre precision; longer walls use centimetres, even when
+        snapping is off.
       </p>
       <div
         className={`absolute left-4 top-4 z-10 flex items-center rounded-[10px] border border-slate-200 bg-white p-1 shadow-[0_5px_18px_rgb(31_55_81/0.1)] ${sidebarOpen ? 'lg:hidden' : ''}`}
@@ -889,27 +903,6 @@ export function PlannerCanvas({
       </div>
 
       <div className="absolute right-4 top-4 z-10 flex items-center gap-1 rounded-[10px] border border-slate-200 bg-white p-1 shadow-[0_5px_18px_rgb(31_55_81/0.1)]">
-        <Button
-          variant={panMode ? 'secondary' : 'ghost'}
-          size="icon-sm"
-          className="size-11 lg:size-7"
-          aria-label="Pan canvas"
-          aria-pressed={panMode}
-          title={
-            touchInput
-              ? panMode
-                ? 'Swipe to pan. Turn off to move objects.'
-                : 'Drag to move objects. Turn on to pan.'
-              : 'Pan canvas'
-          }
-          onClick={() =>
-            touchInput
-              ? setTouchPanMode((value) => !value)
-              : setMousePanMode((value) => !value)
-          }
-        >
-          <Hand aria-hidden="true" />
-        </Button>
         <Button
           variant="ghost"
           size="icon-sm"
@@ -944,7 +937,7 @@ export function PlannerCanvas({
 
       {touchInput && (
         <p className="pointer-events-none absolute right-4 top-[76px] z-10 rounded bg-white/95 px-2 py-1 text-[11px] text-slate-600">
-          {panMode ? 'Swipe to pan · Tap to select' : 'Drag to move objects'}
+          Drag to move · Pinch to zoom
         </p>
       )}
       {selectionBounds && (
@@ -1304,6 +1297,7 @@ export function PlannerCanvas({
               {displayBoundary.map((point, index) => (
                 <Circle
                   key={`corner-${index}`}
+                  name="touch-corner"
                   x={point.x}
                   y={point.y}
                   radius={
