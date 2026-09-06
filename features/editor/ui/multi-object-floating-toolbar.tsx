@@ -17,6 +17,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import type { PlanObject } from '../domain/plan-document';
 import { usePlannerStore } from '../state/planner-store';
 import { ObjectColorMenu } from './object-color-menu';
+import type { ToolbarSelectionBounds } from './toolbar-placement';
 import { FloatingToolbarFrame } from './floating-toolbar-frame';
 import { PositionMenu } from './position-menu';
 import { ScrubbableNumberInput } from './scrubbable-number-input';
@@ -24,14 +25,12 @@ import { ToolbarTooltip } from './toolbar-tooltip';
 
 type MultiObjectFloatingToolbarProps = {
   objects: PlanObject[];
-  left: number;
-  top: number;
+  selectionBounds: ToolbarSelectionBounds;
 };
 
 export function MultiObjectFloatingToolbar({
   objects,
-  left,
-  top,
+  selectionBounds,
 }: MultiObjectFloatingToolbarProps) {
   const [scalePercent, setScalePercent] = useState(100);
   const [rotationDelta, setRotationDelta] = useState(0);
@@ -148,8 +147,8 @@ export function MultiObjectFloatingToolbar({
             ? `${objects.length} objects in group`
             : 'Edit size, rotation and color together'
         }
-        className="planner-object-toolbar absolute z-20 w-[448px] max-w-[calc(100%-16px)] -translate-x-1/2 -translate-y-full rounded-[14px] bg-white p-2 shadow-[0_12px_32px_rgb(15_35_60/0.16)] ring-1 ring-slate-200"
-        style={{ left, top }}
+        className="planner-object-toolbar absolute z-20 w-[448px] max-w-[calc(100%-16px)] rounded-[14px] bg-white p-2 shadow-[0_12px_32px_rgb(15_35_60/0.16)] ring-1 ring-slate-200"
+        selectionBounds={selectionBounds}
         role="toolbar"
         aria-label={`Actions for ${objects.length} selected objects`}
       >
