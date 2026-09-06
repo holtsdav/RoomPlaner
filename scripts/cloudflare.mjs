@@ -17,6 +17,9 @@ const env = {
   CLOUDFLARE_ENV: target === 'develop' ? 'develop' : '',
 };
 if (action === 'deploy') {
+  // Vite already resolved the environment in this generated config. Reapplying
+  // it makes Wrangler append the environment to the Worker name a second time.
+  delete env.CLOUDFLARE_ENV;
   const built = JSON.parse(readFileSync('dist/server/wrangler.json', 'utf8'));
   const expected = target === 'develop' ? 'roomplaner-develop' : 'roomplaner';
   if (built.name !== expected)
