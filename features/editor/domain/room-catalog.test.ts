@@ -66,8 +66,8 @@ describe('Expanded room catalogs', () => {
     expect(plants.map((preset) => preset.widthMm)).toEqual([
       160, 240, 400, 600, 800, 1200,
     ]);
-    expect(plants.map((preset) => preset.heightMm)).toEqual([
-      200, 350, 800, 1300, 1700, 2400,
+    expect(plants.map((preset) => preset.depthMm)).toEqual([
+      160, 240, 400, 600, 800, 1200,
     ]);
   });
   it('saves all profiles and renders every native and extreme aspect ratio within bounds', () => {
@@ -105,17 +105,17 @@ describe('Expanded room catalogs', () => {
       }
     }
   });
-  it('keeps screen image height separate from physical floor depth', () => {
+  it('derives screen width from the diagonal and keeps a shallow footprint', () => {
     for (const p of added.filter(
       (p) => p.blueprint === 'tv' || p.blueprint === 'projector-screen',
     )) {
       const profile = p.blueprintProfile!;
-      expect(profile.imageWidthMm! / profile.imageHeightMm!).toBeCloseTo(
-        16 / 9,
-        2,
+      expect(profile.imageWidthMm).toBeCloseTo(
+        (profile.imageDiagonalIn! * 25.4 * 16) / Math.hypot(16, 9),
+        0,
       );
       expect(p.widthMm).toBeGreaterThan(profile.imageWidthMm!);
-      expect(p.depthMm).toBeLessThan(profile.imageHeightMm!);
+      expect(p.depthMm).toBeLessThan(profile.imageWidthMm!);
     }
     const tv = added.find((p) => p.name === 'TV with Stand · 100″')!;
     const parts = officeBlueprint('tv', 100, 20, tv.blueprintProfile);

@@ -24,7 +24,6 @@ it('changes a variant as one undoable edit, preserving placement and updating re
     name: next.name,
     widthMm: next.widthMm,
     depthMm: next.depthMm,
-    heightMm: next.heightMm,
     defaultSizeMm: { widthMm: next.widthMm, depthMm: next.depthMm },
   });
   expect(usePlannerStore.getState().document.objects[0]).toMatchObject({

@@ -56,7 +56,6 @@ type ObjectPatch = Partial<
     | 'rotationDeg'
     | 'widthMm'
     | 'depthMm'
-    | 'heightMm'
     | 'color'
     | 'defaultSizeMm'
     | 'blueprintProfile'

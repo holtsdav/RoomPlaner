@@ -32,7 +32,6 @@ export const planObjectSchema = z.object({
   rotationDeg: z.number().min(-360_000).max(360_000),
   widthMm: dimension,
   depthMm: dimension,
-  heightMm: dimension.optional(),
   color: z
     .string()
     .regex(/^#[0-9a-fA-F]{6}$/)

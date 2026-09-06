@@ -104,7 +104,6 @@ export function ObjectFloatingToolbar({
                   shape: preset.shape,
                   widthMm: preset.widthMm,
                   depthMm: preset.depthMm,
-                  heightMm: preset.heightMm,
                   blueprintProfile: {
                     referenceWidthMm: preset.widthMm,
                     referenceDepthMm: preset.depthMm,
@@ -343,80 +342,12 @@ export function ObjectFloatingToolbar({
             </ToolbarTooltip>
           </span>
         </div>
-        <details
-          data-object-metadata
-          className="mt-2 border-t border-slate-100"
-        >
-          <summary className="flex min-h-11 cursor-pointer flex-wrap items-center gap-x-2 rounded-md px-1 text-[11px] text-slate-600 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-blue-600">
-            <span>
-              Height{' '}
-              {object.heightMm === undefined
-                ? 'not set'
-                : formatMeasurement(object.heightMm, units)}
-            </span>
-            {object.blueprintProfile?.mountingHeightMm !== undefined && (
-              <span>
-                · Above floor{' '}
-                {formatMeasurement(
-                  object.blueprintProfile.mountingHeightMm,
-                  units,
-                )}
-              </span>
-            )}
+        <details className="mt-2 border-t border-slate-100">
+          <summary className="flex min-h-11 cursor-pointer items-center gap-2 rounded-md px-1 text-[11px] text-slate-600 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-blue-600">
+            Dimension reference
             <ChevronDown className="ml-auto size-3" aria-hidden="true" />
           </summary>
           <DimensionProvenance object={object} />
-          <label className="mt-2 flex items-center gap-2 border-t border-slate-100 pt-2 text-xs text-slate-600">
-            <span>Object height</span>
-            <ScrubbableNumberInput
-              aria-label={`Object height in ${inputUnit}`}
-              value={millimetresToUnit(object.heightMm ?? 0, inputUnit)}
-              min={0}
-              step={0.1}
-              suffix={inputUnit}
-              formatValue={readable}
-              disabled={object.locked}
-              onValueChange={(value) =>
-                updateObject({
-                  heightMm:
-                    value === 0
-                      ? undefined
-                      : unitToMillimetres(value, inputUnit),
-                })
-              }
-              className="h-8 w-28 rounded-md border-slate-200 bg-slate-50 px-2 pr-7 font-mono text-xs"
-            />
-            {object.heightMm === undefined && <span>Not set</span>}
-          </label>
-          {object.blueprintProfile?.mountingHeightMm !== undefined && (
-            <label
-              htmlFor="object-mounting-height"
-              className="mt-2 flex items-center gap-2 border-t border-slate-100 pt-2 text-[11px] text-slate-600"
-            >
-              <span>Height above floor</span>
-              <ScrubbableNumberInput
-                id="object-mounting-height"
-                aria-label={`Mounting height above floor in ${inputUnit}`}
-                value={millimetresToUnit(
-                  object.blueprintProfile.mountingHeightMm,
-                  inputUnit,
-                )}
-                min={0}
-                step={1}
-                suffix={inputUnit}
-                disabled={object.locked}
-                onValueChange={(value) =>
-                  updateObject({
-                    blueprintProfile: {
-                      ...object.blueprintProfile!,
-                      mountingHeightMm: unitToMillimetres(value, inputUnit),
-                    },
-                  })
-                }
-                className="h-7 w-24 rounded-md border-slate-200 bg-slate-50 px-2 pr-7 font-mono text-xs"
-              />
-            </label>
-          )}
         </details>
       </FloatingToolbarFrame>
     </TooltipProvider>

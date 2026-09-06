@@ -13,10 +13,8 @@ export const blueprintProfileSchema = z.object({
       'corner',
     ])
     .optional(),
-  mountingHeightMm: z.number().nonnegative().max(1_000_000).optional(),
   imageDiagonalIn: z.number().positive().max(1_000_000).optional(),
   imageWidthMm: z.number().positive().max(1_000_000).optional(),
-  imageHeightMm: z.number().positive().max(1_000_000).optional(),
   referenceWidthMm: z.number().positive().max(1_000_000),
   referenceDepthMm: z.number().positive().max(1_000_000),
   mattressWidthMm: z.number().positive().max(1_000_000).optional(),

@@ -2,7 +2,7 @@
 
 A precise, blueprint-style 2D room planner for real furniture and devices. The
 local editor supports polygonal rooms, 207 object presets, openings, exact
-footprint dimensions and height, groups, object colors, undo/redo, and multiple
+2D footprint dimensions, groups, object colors, undo/redo, and multiple
 rooms saved in IndexedDB. Standing and wall-mounted TVs have separate library
 entries. PNG exports include an optional grid and wall dimensions plus a scale
 legend; JSON backups remain editable.
