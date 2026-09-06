@@ -1,5 +1,5 @@
+import { createPopulatedPlan } from '../../../tests/fixtures/populated-plan';
 import { describe, expect, it } from 'vitest';
-import { createStarterPlan } from './plan-document';
 import {
   boundsFromPoints,
   getObjectSelectionBounds,
@@ -20,7 +20,7 @@ describe('marquee selection geometry', () => {
 
   it('accounts for object rotation when finding its bounds', () => {
     const object = {
-      ...createStarterPlan().objects[0],
+      ...createPopulatedPlan().objects[0],
       widthMm: 1000,
       depthMm: 400,
       positionMm: { x: 1000, y: 1000 },
@@ -36,7 +36,7 @@ describe('marquee selection geometry', () => {
   });
 
   it('selects every object touched by the marquee', () => {
-    const objects = createStarterPlan().objects;
+    const objects = createPopulatedPlan().objects;
 
     expect(
       objectsIntersectingBounds(objects, {
@@ -49,7 +49,7 @@ describe('marquee selection geometry', () => {
   });
 
   it('combines object bounds into one selection outline', () => {
-    expect(getObjectsSelectionBounds(createStarterPlan().objects)).toEqual({
+    expect(getObjectsSelectionBounds(createPopulatedPlan().objects)).toEqual({
       minX: 400,
       minY: 550,
       maxX: 3950,
@@ -58,9 +58,9 @@ describe('marquee selection geometry', () => {
   });
 
   it('detects visual footprint overlap without treating touching edges as overlap', () => {
-    const source = createStarterPlan().objects[0];
+    const source = createPopulatedPlan().objects[0];
     const overlapping = {
-      ...createStarterPlan().objects[1],
+      ...createPopulatedPlan().objects[1],
       positionMm: { x: source.positionMm.x + 1200, y: source.positionMm.y },
     };
     const touching = {

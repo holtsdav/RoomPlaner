@@ -1,3 +1,4 @@
+import { createPopulatedPlan } from '../fixtures/populated-plan';
 import type { Page } from '@playwright/test';
 import { test, expect } from './fixtures';
 
@@ -77,6 +78,7 @@ test('hydrates the real app, persists the starter, and supports JSON and PNG exp
   page.on('pageerror', (error) => errors.push(error.message));
   await openPlan(page);
   await expect.poll(async () => (await savedPlans(page)).length).toBe(1);
+  expect((await savedPlans(page))[0].objects).toEqual([]);
   await rename(page, 'Release verification');
   await expect
     .poll(async () => (await savedPlans(page))[0].room.name)
@@ -85,6 +87,7 @@ test('hydrates the real app, persists the starter, and supports JSON and PNG exp
   await expect(
     page.getByRole('button', { name: 'Room menu for Release verification' }),
   ).toBeVisible();
+  expect((await savedPlans(page))[0].objects).toEqual([]);
   for (const format of ['JSON data', 'PNG image']) {
     await roomMenu(page);
     await page
@@ -180,6 +183,12 @@ test('selects separate objects without a modifier and groups them', async ({
 }, info) => {
   const mobile = info.project.name === 'mobile';
   await openPlan(page);
+  await page.getByLabel('Import room files').setInputFiles({
+    name: 'furniture.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(JSON.stringify(createPopulatedPlan())),
+  });
+  await expect.poll(async () => (await savedPlans(page)).length).toBe(2);
   await placed(page, mobile);
   const action = async (name: string) => {
     const button = page.getByRole('button', { name, exact: true });
@@ -206,7 +215,12 @@ test('selects separate objects without a modifier and groups them', async ({
   }
   await action('Group selected objects');
   await expect
-    .poll(async () => (await savedPlans(page))[0].groups.length)
+    .poll(async () =>
+      (await savedPlans(page)).reduce(
+        (count, plan) => count + plan.groups.length,
+        0,
+      ),
+    )
     .toBe(1);
 });
 

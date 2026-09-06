@@ -1,5 +1,5 @@
+import { createPopulatedPlan } from '../../../tests/fixtures/populated-plan';
 import { describe, expect, it } from 'vitest';
-import { createStarterPlan } from './plan-document';
 import {
   createObjectGroup,
   deleteObjects,
@@ -13,7 +13,7 @@ import {
 
 describe('editor commands', () => {
   it('moves selected objects in millimetres without mutating the source', () => {
-    const source = createStarterPlan();
+    const source = createPopulatedPlan();
     const originalPosition = source.objects[0].positionMm;
     const moved = moveObjects(source, ['sofa-1'], { x: 40, y: -10 });
 
@@ -23,7 +23,7 @@ describe('editor commands', () => {
   });
 
   it('duplicates selected objects with deterministic new identities', () => {
-    const source = createStarterPlan();
+    const source = createPopulatedPlan();
     const result = duplicateObjects(source, ['table-1'], () => 'table-copy');
 
     expect(result.duplicatedIds).toEqual(['table-copy']);
@@ -36,7 +36,7 @@ describe('editor commands', () => {
   });
 
   it('preserves locked objects when deleting a selection', () => {
-    const source = createStarterPlan();
+    const source = createPopulatedPlan();
     const locked = {
       ...source,
       objects: source.objects.map((object) => ({ ...object, locked: true })),
@@ -47,7 +47,7 @@ describe('editor commands', () => {
   });
 
   it('positions an object forward and backward among overlapping objects', () => {
-    const source = createStarterPlan();
+    const source = createPopulatedPlan();
     const overlapping = {
       ...source,
       objects: source.objects.map((object) =>
@@ -76,7 +76,7 @@ describe('editor commands', () => {
   });
 
   it('moves multiple objects to an extreme without changing their relative order', () => {
-    const source = createStarterPlan();
+    const source = createPopulatedPlan();
     const thirdObject = {
       ...source.objects[0],
       id: 'chair-1',
@@ -111,7 +111,7 @@ describe('editor commands', () => {
   });
 
   it('ignores position changes when objects do not overlap', () => {
-    const source = createStarterPlan();
+    const source = createPopulatedPlan();
 
     expect(
       positionOverlappingObjects(source, ['sofa-1'], 'bring-to-front'),
@@ -119,7 +119,7 @@ describe('editor commands', () => {
   });
 
   it('skips unrelated objects when moving to the next overlapping object', () => {
-    const source = createStarterPlan();
+    const source = createPopulatedPlan();
     const overlappingChair = {
       ...source.objects[0],
       id: 'chair-1',
@@ -140,7 +140,11 @@ describe('editor commands', () => {
   });
 
   it('scales a selection around its shared bounds', () => {
-    const scaled = scaleObjects(createStarterPlan(), ['sofa-1', 'table-1'], 2);
+    const scaled = scaleObjects(
+      createPopulatedPlan(),
+      ['sofa-1', 'table-1'],
+      2,
+    );
 
     expect(scaled.objects[0]).toMatchObject({
       positionMm: { x: 725, y: 300 },
@@ -152,7 +156,7 @@ describe('editor commands', () => {
 
   it('rotates a selection as a unit around its shared bounds', () => {
     const rotated = rotateObjects(
-      createStarterPlan(),
+      createPopulatedPlan(),
       ['sofa-1', 'table-1'],
       180,
     );
@@ -166,7 +170,7 @@ describe('editor commands', () => {
 
   it('mirrors the arrangement and each object across a shared axis', () => {
     const mirrored = mirrorObjects(
-      createStarterPlan(),
+      createPopulatedPlan(),
       ['sofa-1', 'table-1'],
       'horizontal',
     );
@@ -181,7 +185,7 @@ describe('editor commands', () => {
 
   it('persists group membership and carries it into a duplicated group', () => {
     const grouped = createObjectGroup(
-      createStarterPlan(),
+      createPopulatedPlan(),
       ['sofa-1', 'table-1'],
       'group-1',
       'Group 1',
@@ -217,7 +221,7 @@ describe('editor commands', () => {
 
   it('removes invalid group remnants when an object is deleted', () => {
     const grouped = createObjectGroup(
-      createStarterPlan(),
+      createPopulatedPlan(),
       ['sofa-1', 'table-1'],
       'group-1',
       'Group 1',

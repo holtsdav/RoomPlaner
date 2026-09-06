@@ -1,3 +1,4 @@
+import { createPopulatedPlan } from '../../../tests/fixtures/populated-plan';
 import { describe, expect, it } from 'vitest';
 import {
   createStarterPlan,
@@ -89,7 +90,7 @@ describe('plan integrity', () => {
   });
 
   it('rejects duplicate objects and invalid group membership', () => {
-    const plan = createStarterPlan();
+    const plan = createPopulatedPlan();
     plan.objects.push({ ...plan.objects[0] });
     expect(planDocumentSchema.safeParse(plan).success).toBe(false);
     plan.objects.pop();

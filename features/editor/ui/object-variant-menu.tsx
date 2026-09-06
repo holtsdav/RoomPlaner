@@ -71,9 +71,6 @@ export function ObjectVariantMenu({
                   {preset.blueprint === 'bed' ? 'Frame ' : ''}
                   {formatMeasurement(preset.widthMm, units)} ×{' '}
                   {formatMeasurement(preset.depthMm, units)}
-                  {preset.heightMm !== undefined && (
-                    <> × {formatMeasurement(preset.heightMm, units)} H</>
-                  )}
                 </span>
               </span>
               {currentId === preset.id && (

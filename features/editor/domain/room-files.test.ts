@@ -1,5 +1,5 @@
+import { createPopulatedPlan } from '../../../tests/fixtures/populated-plan';
 import { describe, expect, it } from 'vitest';
-import { createStarterPlan } from './plan-document';
 import {
   parseRoomFile,
   roomFileName,
@@ -9,13 +9,13 @@ import {
 
 describe('room files', () => {
   it('round-trips a validated room document', () => {
-    const document = createStarterPlan();
+    const document = createPopulatedPlan();
     expect(parseRoomFile(serializeRoom(document))).toEqual([document]);
   });
 
   it('accepts a bundle of rooms', () => {
-    const first = createStarterPlan();
-    const second = { ...createStarterPlan(), id: 'office-plan' };
+    const first = createPopulatedPlan();
+    const second = { ...createPopulatedPlan(), id: 'office-plan' };
     expect(parseRoomFile(JSON.stringify([first, second]))).toHaveLength(2);
   });
 
@@ -28,7 +28,7 @@ describe('room files', () => {
 
 it('imports independent copies and remaps group references', async () => {
   const { copyImportedRoom } = await import('./room-files');
-  const original = createStarterPlan();
+  const original = createPopulatedPlan();
   original.groups = [
     {
       id: 'group',

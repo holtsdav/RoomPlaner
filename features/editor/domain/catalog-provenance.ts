@@ -11,14 +11,22 @@ export function catalogProvenance(object: CatalogPreset | PlanObject) {
             candidate.name === object.name.replace(/(?: copy)+$/, ''),
         )
       : object;
+  const references = preset
+    ? sources.filter(
+        (source) =>
+          source.size[0] === preset.widthMm &&
+          source.size[1] === preset.depthMm,
+      )
+    : [];
+  // Different models can share a footprint. Resolve those by model name.
+  const modelName = preset?.name.split(' · ').at(-1)?.toLowerCase();
   const reference =
-    preset &&
-    sources.find(
-      (source) =>
-        source.size[0] === preset.widthMm &&
-        source.size[1] === preset.depthMm &&
-        source.size[2] === preset.heightMm,
-    );
+    references.length === 1
+      ? references[0]
+      : references.find(
+          (source) =>
+            modelName && source.model.toLowerCase().endsWith(modelName),
+        );
   return {
     label: reference
       ? 'Manufacturer reference'

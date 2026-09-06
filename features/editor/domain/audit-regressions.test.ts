@@ -1,3 +1,4 @@
+import { createPopulatedPlan } from '../../../tests/fixtures/populated-plan';
 import { describe, expect, it } from 'vitest';
 import { Path } from 'konva/lib/shapes/Path';
 import {
@@ -10,7 +11,6 @@ import {
 } from './catalog';
 import { officeBlueprint } from './office-blueprints';
 import {
-  createStarterPlan,
   formatMeasurement,
   formatWallMeasurement,
   planDocumentSchema,
@@ -112,7 +112,7 @@ describe('audit regressions', () => {
     ).toBe('Cinema screen');
   });
   it('preserves a TV too large for a wall and respects adjacent interior faces', () => {
-    const plan = createStarterPlan();
+    const plan = createPopulatedPlan();
     const tv = objectFromPreset(
       objectCatalog.find(
         (p) =>
@@ -145,7 +145,7 @@ describe('audit regressions', () => {
     );
   });
   it('mounts near a concave inside corner in either boundary direction', () => {
-    const plan = createStarterPlan();
+    const plan = createPopulatedPlan();
     const panel = objectFromPreset(
       objectCatalog.find((p) => p.blueprint === 'acoustic-panel')!,
       'panel',
@@ -176,7 +176,7 @@ describe('audit regressions', () => {
     }
   });
   it('preserves physical sizes on diagonal walls with acute and obtuse corners', () => {
-    const plan = createStarterPlan();
+    const plan = createPopulatedPlan();
     const panel = objectFromPreset(
       objectCatalog.find((p) => p.blueprint === 'acoustic-panel')!,
       'panel',
@@ -202,7 +202,7 @@ describe('audit regressions', () => {
     }
   });
   it('restores tiny scaled objects exactly and mirrors an asymmetric local point correctly', () => {
-    const plan = createStarterPlan();
+    const plan = createPopulatedPlan();
     plan.objects[0].widthMm = 127;
     plan.objects[0].rotationDeg = 31;
     const ids = plan.objects.map((o) => o.id);
@@ -215,7 +215,7 @@ describe('audit regressions', () => {
     expect(twice.objects).toEqual(plan.objects);
   });
   it('validates colors and persists them through the document schema', () => {
-    const plan = createStarterPlan();
+    const plan = createPopulatedPlan();
     plan.objects[0].color = '#93c5fd';
     expect(planDocumentSchema.parse(plan).objects[0].color).toBe('#93c5fd');
     plan.objects[0].color = 'url(https://example.com)';
