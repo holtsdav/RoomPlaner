@@ -32,6 +32,19 @@ function segmentHitsBox(a: PointMm, b: PointMm, box: Box) {
   return true;
 }
 
+const candidates = Array.from({ length: 161 }, (_, lane) =>
+  Array.from({ length: 21 }, (_, index) =>
+    index % 2 === 0 ? index / 2 : -(index + 1) / 2,
+  ).map((shift) => ({
+    outward: lane * 4,
+    along: shift * 16,
+  })),
+)
+  .flat()
+  .sort(
+    (a, b) => Math.hypot(a.outward, a.along) - Math.hypot(b.outward, b.along),
+  );
+
 /** Screen-space collision layout, returned in room coordinates for canvas and export. */
 export function layoutWallLabels(
   room: PlanDocument['room'],
@@ -44,6 +57,7 @@ export function layoutWallLabels(
     room.wallThicknessMm / 2 + 22 / scale,
   );
   const boxes: Box[] = [];
+  const leaders: { start: PointMm; end: PointMm }[] = [];
   return base.map((wall, index) => {
     const a = room.boundary[index],
       b = room.boundary[(index + 1) % base.length];
@@ -57,11 +71,12 @@ export function layoutWallLabels(
       y: (wall.center.y - anchor.y) / normalLength,
     };
     const width = Math.max(
-      64,
-      formatWallMeasurement(lengths[index], units).length * 8 + 8,
+      44,
+      formatWallMeasurement(lengths[index], units).length * 7.25 + 16,
     );
     const short = wall.lengthMm * scale < width + 16;
-    const angleDeg = short ? 0 : wall.angleDeg;
+    // Keep orientation independent of zoom so short returns never flip.
+    const angleDeg = wall.angleDeg;
     const radians = (angleDeg * Math.PI) / 180;
     const halfW =
       (Math.abs(Math.cos(radians)) * width + Math.abs(Math.sin(radians)) * 28) /
@@ -69,13 +84,23 @@ export function layoutWallLabels(
     const halfH =
       (Math.abs(Math.sin(radians)) * width + Math.abs(Math.cos(radians)) * 28) /
       2;
+    const edgeAnchor = {
+      x: anchor.x + (normal.x * room.wallThicknessMm) / 2,
+      y: anchor.y + (normal.y * room.wallThicknessMm) / 2,
+    };
+    const leaderStart = { x: edgeAnchor.x * scale, y: edgeAnchor.y * scale };
     let center = wall.center;
-    let box: Box;
+    let box!: Box;
     let moved = short;
-    for (let lane = 0; ; lane++) {
+    let best: { center: PointMm; box: Box; moved: boolean } | undefined;
+    let bestScore = Infinity;
+    for (let lane = 0; lane < candidates.length; lane++) {
+      const { outward, along } = candidates[lane];
+      const distance = Math.hypot(outward, along);
+      if (distance > bestScore) break;
       center = {
-        x: wall.center.x + (normal.x * lane * 32) / scale,
-        y: wall.center.y + (normal.y * lane * 32) / scale,
+        x: wall.center.x + (normal.x * outward - normal.y * along) / scale,
+        y: wall.center.y + (normal.y * outward + normal.x * along) / scale,
       };
       box = {
         left: center.x * scale - halfW - 4,
@@ -98,21 +123,39 @@ export function layoutWallLabels(
           wallBox,
         );
       });
-      if (
-        (!hitsWall && !boxes.some((other) => overlaps(box, other))) ||
-        lane === 100
-      ) {
-        moved ||= lane > 0;
-        break;
+      if (hitsWall || boxes.some((other) => overlaps(box, other))) continue;
+      // Prefer clear leaders, but never exile a label when a dense corner
+      // makes a crossing unavoidable. Opaque labels mask lines behind them.
+      const crossings =
+        leaders.filter((leader) =>
+          segmentHitsBox(leader.start, leader.end, box),
+        ).length +
+        boxes.filter((other) =>
+          segmentHitsBox(
+            leaderStart,
+            { x: center.x * scale, y: center.y * scale },
+            other,
+          ),
+        ).length;
+      const score = distance + crossings * 80;
+      if (score < bestScore) {
+        bestScore = score;
+        best = { center, box, moved: short || lane > 0 };
       }
     }
+    if (best) ({ center, box, moved } = best);
     boxes.push(box);
+    if (moved)
+      leaders.push({
+        start: leaderStart,
+        end: { x: center.x * scale, y: center.y * scale },
+      });
     return {
       lengthMm: lengths[index],
       center,
       angleDeg,
       widthPx: width,
-      anchor: moved ? anchor : null,
+      anchor: moved ? edgeAnchor : null,
       box,
     };
   });

@@ -14,7 +14,7 @@ import {
   Trash2,
   Upload,
 } from 'lucide-react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -101,15 +101,40 @@ export function RoomActions() {
   const [deleting, setDeleting] = useState(false);
   const [newRoomName, setNewRoomName] = useState('Untitled room');
   const [renameDraft, setRenameDraft] = useState(document.room.name);
-  const [message, setMessage] = useState<string | null>(null);
+  const [notice, setNotice] = useState<{ text: string } | null>(null);
+  const message = notice?.text ?? null;
+  const setMessage = useCallback((text: string | null) => {
+    setNotice(text === null ? null : { text });
+  }, []);
+  const errorNotice = useMemo(
+    () => ({ status: saveStatus, error: saveError }),
+    [saveStatus, saveError],
+  );
+  const [dismissedError, setDismissedError] = useState<
+    typeof errorNotice | null
+  >(null);
+  const errorNoticeVisible =
+    saveStatus === 'error' && dismissedError !== errorNotice;
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (message !== 'Room saved on this device.') return;
+    if (!notice) return;
 
-    const timeout = window.setTimeout(() => setMessage(null), 3000);
+    const timeout = window.setTimeout(
+      () => setNotice(null),
+      saveStatus === 'error' ? 8000 : 5000,
+    );
     return () => window.clearTimeout(timeout);
-  }, [message]);
+  }, [notice, saveStatus]);
+
+  useEffect(() => {
+    if (errorNotice.status !== 'error') return;
+    const timeout = window.setTimeout(
+      () => setDismissedError(errorNotice),
+      8000,
+    );
+    return () => window.clearTimeout(timeout);
+  }, [errorNotice]);
 
   const refreshRooms = useCallback(async () => {
     try {
@@ -117,7 +142,7 @@ export function RoomActions() {
     } catch {
       setMessage('Saved rooms could not be loaded.');
     }
-  }, []);
+  }, [setMessage]);
 
   const saveNow = async () => {
     setSaveStatus('saving');
@@ -555,7 +580,7 @@ export function RoomActions() {
         onChange={(event) => void importRooms(event.currentTarget.files)}
       />
 
-      {(message || saveStatus === 'error') && (
+      {(message || errorNoticeVisible) && (
         <output className="fixed inset-x-3 bottom-24 z-50 mx-auto flex max-w-xl flex-wrap items-center gap-2 rounded-lg border bg-background p-3 text-sm shadow-lg">
           <p className="min-w-0 flex-1">
             {saveStatus === 'error'
@@ -610,15 +635,16 @@ export function RoomActions() {
               </Button>
             </>
           )}
-          {saveStatus !== 'error' && (
-            <Button
-              variant="ghost"
-              className="h-11"
-              onClick={() => setMessage(null)}
-            >
-              Dismiss
-            </Button>
-          )}
+          <Button
+            variant="ghost"
+            className="h-11"
+            onClick={() => {
+              setMessage(null);
+              setDismissedError(errorNotice);
+            }}
+          >
+            Dismiss
+          </Button>
         </output>
       )}
     </>
