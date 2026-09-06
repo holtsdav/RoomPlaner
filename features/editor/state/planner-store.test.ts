@@ -1,11 +1,11 @@
+import { createPopulatedPlan } from '../../../tests/fixtures/populated-plan';
 import { insideRoomBounds } from '../domain/room-measurements';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { createStarterPlan } from '../domain/plan-document';
 import { usePlannerStore } from './planner-store';
 
 function resetStore() {
   usePlannerStore.setState({
-    document: createStarterPlan(),
+    document: createPopulatedPlan(),
     selectedIds: [],
     selectedCornerIndex: null,
     past: [],
@@ -207,7 +207,7 @@ describe('polygon room editor state', () => {
     expect(office.objects).toEqual([]);
     expect(usePlannerStore.getState().past).toEqual([]);
 
-    usePlannerStore.getState().openRoom(createStarterPlan());
+    usePlannerStore.getState().openRoom(createPopulatedPlan());
     expect(usePlannerStore.getState().document.room.name).toBe('Living room');
     expect(usePlannerStore.getState().past).toEqual([]);
   });
@@ -221,7 +221,7 @@ describe('polygon room editor state', () => {
 
     expect(usePlannerStore.getState().document.objects).toEqual([]);
     expect(usePlannerStore.getState().document.room.boundary).toEqual(
-      createStarterPlan().room.boundary,
+      createPopulatedPlan().room.boundary,
     );
 
     usePlannerStore.getState().undo();
@@ -246,7 +246,7 @@ describe('polygon room editor state', () => {
   });
 
   it('positions an overlapping selected object as one undoable change', () => {
-    const source = createStarterPlan();
+    const source = createPopulatedPlan();
     usePlannerStore.setState({
       document: {
         ...source,

@@ -49,3 +49,12 @@ it('preserves an unreadable stored plan and uses a separate recovery id', async 
   expect(usePlannerStore.getState().document.id).toMatch(/^recovery-plan-/);
   expect(usePlannerStore.getState().saveStatus).toBe('error');
 });
+
+it('starts and persists a blank canvas on the first visit', async () => {
+  expect(usePlannerStore.getState().document.objects).toEqual([]);
+  await usePlannerStore.getState().hydrate();
+  expect(usePlannerStore.getState().document.objects).toEqual([]);
+  expect(save).toHaveBeenCalledWith(
+    expect.objectContaining({ objects: [], groups: [] }),
+  );
+});

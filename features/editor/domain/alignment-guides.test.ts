@@ -1,5 +1,6 @@
+import { createPopulatedPlan } from '../../../tests/fixtures/populated-plan';
 import { describe, expect, it } from 'vitest';
-import { createStarterPlan, type PlanObject } from './plan-document';
+import { type PlanObject } from './plan-document';
 import {
   getCornerAlignmentSnap,
   getObjectAlignmentSnap,
@@ -11,7 +12,7 @@ function rectangle(
   overrides: Partial<PlanObject> = {},
 ): PlanObject {
   return {
-    ...createStarterPlan().objects[0],
+    ...createPopulatedPlan().objects[0],
     id,
     widthMm: 200,
     depthMm: 100,
@@ -110,7 +111,7 @@ describe('object alignment snapping', () => {
   });
 
   it('snaps the object footprint to the inside edges of room walls', () => {
-    const plan = createStarterPlan();
+    const plan = createPopulatedPlan();
     const movingObject = rectangle('moving', { x: 0, y: 0 });
 
     expect(
@@ -132,7 +133,7 @@ describe('object alignment snapping', () => {
   });
 
   it('snaps an object centre to both room centre axes', () => {
-    const plan = createStarterPlan();
+    const plan = createPopulatedPlan();
     const movingObject = rectangle('moving', { x: 0, y: 0 });
 
     expect(
@@ -156,7 +157,7 @@ describe('object alignment snapping', () => {
   it('snaps perpendicular to an angled wall and returns its guide line', () => {
     const movingObject = rectangle('moving', { x: 0, y: 0 });
     const room = {
-      ...createStarterPlan().room,
+      ...createPopulatedPlan().room,
       wallThicknessMm: 100,
       boundary: [
         { x: 0, y: 500 },
@@ -182,7 +183,7 @@ describe('object alignment snapping', () => {
 
 describe('room corner alignment snapping', () => {
   it('snaps a corner to another corner on each axis', () => {
-    const boundary = createStarterPlan().room.boundary;
+    const boundary = createPopulatedPlan().room.boundary;
 
     expect(
       getCornerAlignmentSnap({
@@ -205,7 +206,7 @@ describe('room corner alignment snapping', () => {
   it('prefers room corners over a closer furniture edge', () => {
     const result = getCornerAlignmentSnap({
       proposedPosition: { x: 4794, y: 3608 },
-      boundary: createStarterPlan().room.boundary,
+      boundary: createPopulatedPlan().room.boundary,
       cornerIndex: 2,
       objects: [rectangle('near-wall', { x: 4700, y: 3559 })],
       thresholdMm: 10,
