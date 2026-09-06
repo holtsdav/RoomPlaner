@@ -11,8 +11,11 @@ two Workers. Path routes take precedence over Pages for RoomPlaner only.
 
 In Cloudflare Workers Builds, connect each Worker to the **RoomPlaner** repository
 and select its corresponding production branch from the table. Disable
-non-production branch builds for both Workers. Use the repository root and Node
-version from `.nvmrc`. The build/deploy commands set the base path and environment
+non-production branch builds for both Workers. Use the repository root, `NODE_VERSION=24.18.0`, and
+`SKIP_DEPENDENCY_INSTALL=true`. Prefix each build command with
+`npm ci --no-audit --fund=false &&`. The npm lockfile remains authoritative;
+the build uses the npm bundled with Node instead of asking Cloudflare to
+bootstrap a separately pinned npm version. The build/deploy commands set the base path and environment
 explicitly, so the two applications do not share asset URLs. GitHub CI continues
 to validate both branches. Pushes automatically trigger the connected Worker.
 
