@@ -29,6 +29,7 @@ import {
 } from '../domain/plan-document';
 import { usePlannerStore } from '../state/planner-store';
 import { ObjectColorMenu } from './object-color-menu';
+import type { ToolbarSelectionBounds } from './toolbar-placement';
 import { FloatingToolbarFrame } from './floating-toolbar-frame';
 import { PositionMenu } from './position-menu';
 import { ScrubbableNumberInput } from './scrubbable-number-input';
@@ -36,8 +37,7 @@ import { ToolbarTooltip } from './toolbar-tooltip';
 
 type ObjectFloatingToolbarProps = {
   object: PlanObject;
-  left: number;
-  top: number;
+  selectionBounds: ToolbarSelectionBounds;
 };
 
 function readable(value: number) {
@@ -46,8 +46,7 @@ function readable(value: number) {
 
 export function ObjectFloatingToolbar({
   object,
-  left,
-  top,
+  selectionBounds,
 }: ObjectFloatingToolbarProps) {
   const units = usePlannerStore((state) => state.document.units);
   const updateObject = usePlannerStore((state) => state.updateSelectedObject);
@@ -68,8 +67,8 @@ export function ObjectFloatingToolbar({
       <FloatingToolbarFrame
         compactTitle={object.name}
         compactSummary={`${formatMeasurement(object.widthMm, units)} × ${formatMeasurement(object.depthMm, units)}${object.locked ? ' · Locked' : ''}`}
-        className="planner-object-toolbar absolute z-20 w-[448px] max-w-[calc(100%-16px)] -translate-x-1/2 -translate-y-full rounded-[14px] border border-slate-200 bg-white p-2 shadow-[0_12px_32px_rgb(15_35_60/0.16)]"
-        style={{ left, top }}
+        className="planner-object-toolbar absolute z-20 w-[448px] max-w-[calc(100%-16px)] rounded-[14px] border border-slate-200 bg-white p-2 shadow-[0_12px_32px_rgb(15_35_60/0.16)]"
+        selectionBounds={selectionBounds}
         role="toolbar"
         aria-label={`Actions for ${object.name}`}
       >

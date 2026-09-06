@@ -47,11 +47,6 @@ import { MultiObjectFloatingToolbar } from './multi-object-floating-toolbar';
 
 const MIN_SCALE = 0.00001;
 const MAX_SCALE = 0.8;
-const OBJECT_TOOLBAR_WIDTH_PX = 448;
-const MULTI_OBJECT_TOOLBAR_WIDTH_PX = 448;
-const OBJECT_TOOLBAR_HEIGHT_PX = 92;
-const OBJECT_TOOLBAR_GAP_PX = 12;
-const CANVAS_EDGE_INSET_PX = 8;
 const HANDLE_TO_WALL_RADIUS_RATIO = 0.6;
 const WALL_HIT_PADDING_PX = 6;
 const ALIGNMENT_SNAP_THRESHOLD_PX = 6;
@@ -796,32 +791,12 @@ export function PlannerCanvas({
       ? displayedSelectedObjects[0]
       : undefined;
   const selectionBounds = getObjectsSelectionBounds(displayedSelectedObjects);
-  const requestedToolbarWidth = selectedObject
-    ? OBJECT_TOOLBAR_WIDTH_PX
-    : MULTI_OBJECT_TOOLBAR_WIDTH_PX;
-  const floatingToolbarWidth = Math.min(
-    requestedToolbarWidth,
-    Math.max(0, size.width - CANVAS_EDGE_INSET_PX * 2),
-  );
-  const floatingToolbarPosition = selectionBounds
+  const screenSelectionBounds = selectionBounds
     ? {
-        left: clamp(
-          viewport.x +
-            ((selectionBounds.minX + selectionBounds.maxX) / 2) *
-              viewport.scale,
-          floatingToolbarWidth / 2 + CANVAS_EDGE_INSET_PX,
-          Math.max(
-            floatingToolbarWidth / 2 + CANVAS_EDGE_INSET_PX,
-            size.width - floatingToolbarWidth / 2 - CANVAS_EDGE_INSET_PX,
-          ),
-        ),
-        top: Math.max(
-          (size.width < 1024 ? 330 : OBJECT_TOOLBAR_HEIGHT_PX) +
-            CANVAS_EDGE_INSET_PX,
-          viewport.y +
-            selectionBounds.minY * viewport.scale -
-            OBJECT_TOOLBAR_GAP_PX,
-        ),
+        minX: viewport.x + selectionBounds.minX * viewport.scale,
+        maxX: viewport.x + selectionBounds.maxX * viewport.scale,
+        minY: viewport.y + selectionBounds.minY * viewport.scale,
+        maxY: viewport.y + selectionBounds.maxY * viewport.scale,
       }
     : null;
   const selectedSummary = selectedObject
@@ -1415,20 +1390,18 @@ export function PlannerCanvas({
           {roomGeometryError || mountingWarning}
         </output>
       )}
-      {selectedObject && floatingToolbarPosition && (
+      {selectedObject && screenSelectionBounds && (
         <ObjectFloatingToolbar
           key={selectedObject.id}
           object={selectedObject}
-          left={floatingToolbarPosition.left}
-          top={floatingToolbarPosition.top}
+          selectionBounds={screenSelectionBounds}
         />
       )}
-      {displayedSelectedObjects.length > 1 && floatingToolbarPosition && (
+      {displayedSelectedObjects.length > 1 && screenSelectionBounds && (
         <MultiObjectFloatingToolbar
           key={displayedSelectedObjects.map((object) => object.id).join(':')}
           objects={displayedSelectedObjects}
-          left={floatingToolbarPosition.left}
-          top={floatingToolbarPosition.top}
+          selectionBounds={screenSelectionBounds}
         />
       )}
       <CanvasSpacingControls />
