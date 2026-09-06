@@ -68,6 +68,7 @@ import {
 } from './planner-settings-dialog';
 import { RoomActions } from './room-actions';
 import { useLocalPlan } from './use-local-plan';
+import { useKeyboardViewportRecovery } from './use-keyboard-viewport-recovery';
 
 const saveCopy = {
   loading: { label: 'Opening local plan', icon: LoaderCircle },
@@ -343,6 +344,7 @@ export function PlannerWorkspace() {
     (state) => state.roomOperationPending,
   );
   useLocalPlan();
+  useKeyboardViewportRecovery();
   const [query, setQuery] = useState('');
   const [libraryOpen, setLibraryOpen] = useState(true);
   const [mobileLibraryOpen, setMobileLibraryOpen] = useState(false);
