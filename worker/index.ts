@@ -6,7 +6,7 @@ const privateHeaders = {
   'Cache-Control': 'private, no-store',
   'X-Robots-Tag': 'noindex, nofollow, noarchive',
   'X-Content-Type-Options': 'nosniff',
-  'Referrer-Policy': 'no-referrer',
+  'Referrer-Policy': 'same-origin',
 };
 
 function loginPage(base: string, status = 401) {
