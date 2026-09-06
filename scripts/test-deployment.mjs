@@ -18,7 +18,10 @@ const login = (password, ip = '192.0.2.1', requestOrigin = origin) =>
     },
     body: new URLSearchParams({ password }),
   });
-assert.equal((await get()).status, 401);
+const loginResponse = await get();
+assert.equal(loginResponse.status, 401);
+// no-referrer makes native form POSTs send Origin: null in browsers.
+assert.equal(loginResponse.headers.get('referrer-policy'), 'same-origin');
 assert.equal((await get('/planner')).status, 401);
 assert.equal((await get('/assets/not-real.js')).status, 401);
 assert.equal((await get('', '__Secure-roomplaner-dev=forged')).status, 401);
