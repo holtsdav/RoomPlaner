@@ -62,3 +62,6 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+
+# Worker secrets
+.dev.vars*
