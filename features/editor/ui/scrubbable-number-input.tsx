@@ -236,6 +236,7 @@ export function ScrubbableNumberInput({
         onKeyDown={(event) => {
           if (event.key === 'Escape') {
             event.preventDefault();
+            event.stopPropagation();
             const original = originalValueRef.current ?? value;
             // Reset local relative controls before restoring the exact document snapshot.
             if (originalValueRef.current !== null) onValueChange(original);
