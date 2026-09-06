@@ -17,7 +17,11 @@
     "format:check": "oxfmt --check .",
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build"
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build",
+    "build:production": "node scripts/cloudflare.mjs build production",
+    "build:develop": "node scripts/cloudflare.mjs build develop",
+    "deploy:production": "node scripts/cloudflare.mjs deploy production",
+    "deploy:develop": "node scripts/cloudflare.mjs deploy develop"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",
