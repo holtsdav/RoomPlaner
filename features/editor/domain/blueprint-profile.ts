@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
 export const blueprintProfileSchema = z.object({
-  presetId: z.string().optional(),
-  form: z.string().optional(),
+  presetId: z.string().max(160).optional(),
+  form: z.string().max(160).optional(),
   mounting: z
     .enum([
       'floor',
@@ -13,17 +13,17 @@ export const blueprintProfileSchema = z.object({
       'corner',
     ])
     .optional(),
-  mountingHeightMm: z.number().nonnegative().optional(),
-  imageDiagonalIn: z.number().positive().optional(),
-  imageWidthMm: z.number().positive().optional(),
-  imageHeightMm: z.number().positive().optional(),
-  referenceWidthMm: z.number().positive(),
-  referenceDepthMm: z.number().positive(),
-  mattressWidthMm: z.number().positive().optional(),
-  mattressDepthMm: z.number().positive().optional(),
-  panelDepthMm: z.number().positive().optional(),
-  curveRadiusMm: z.number().nonnegative().optional(),
-  standWidthMm: z.number().positive().optional(),
+  mountingHeightMm: z.number().nonnegative().max(1_000_000).optional(),
+  imageDiagonalIn: z.number().positive().max(1_000_000).optional(),
+  imageWidthMm: z.number().positive().max(1_000_000).optional(),
+  imageHeightMm: z.number().positive().max(1_000_000).optional(),
+  referenceWidthMm: z.number().positive().max(1_000_000),
+  referenceDepthMm: z.number().positive().max(1_000_000),
+  mattressWidthMm: z.number().positive().max(1_000_000).optional(),
+  mattressDepthMm: z.number().positive().max(1_000_000).optional(),
+  panelDepthMm: z.number().positive().max(1_000_000).optional(),
+  curveRadiusMm: z.number().nonnegative().max(1_000_000).optional(),
+  standWidthMm: z.number().positive().max(1_000_000).optional(),
   standStyle: z.enum(['plate', 'feet']).optional(),
   keyboardLayout: z.enum(['compact', '75', 'tkl', 'full']).optional(),
 });

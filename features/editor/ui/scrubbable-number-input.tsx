@@ -2,6 +2,7 @@
 
 import {
   useCallback,
+  useId,
   useEffect,
   useRef,
   useState,
@@ -53,8 +54,9 @@ function clamp(value: number, min?: number, max?: number) {
 }
 
 function parseDraft(value: string) {
-  if (value.trim() === '') return null;
-  const parsed = Number(value);
+  const normalized = value.trim().replace(',', '.');
+  if (!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(normalized)) return null;
+  const parsed = Number(normalized);
   return Number.isFinite(parsed) ? parsed : null;
 }
 
@@ -72,6 +74,8 @@ export function ScrubbableNumberInput({
   disabled,
   ...props
 }: ScrubbableNumberInputProps) {
+  const errorId = useId();
+  const invalidRef = useRef(false);
   const originalValueRef = useRef<number | null>(null);
   const cancelBlurRef = useRef(false);
   const beginEdit = () => {
@@ -84,7 +88,11 @@ export function ScrubbableNumberInput({
     usePlannerStore.getState().finishEdit();
   };
   const [draft, setDraft] = useState(() => formatValue(value));
-  const [invalid, setInvalid] = useState(false);
+  const [invalid, updateInvalid] = useState(false);
+  const setInvalid = (next: boolean) => {
+    invalidRef.current = next;
+    updateInvalid(next);
+  };
   const [scrubbing, setScrubbing] = useState(false);
   const focusedRef = useRef(false);
   const dragRef = useRef<DragState | null>(null);
@@ -92,7 +100,7 @@ export function ScrubbableNumberInput({
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (!focusedRef.current && !dragRef.current) {
+    if (!focusedRef.current && !dragRef.current && !invalidRef.current) {
       setDraft(formatValue(value));
       setInvalid(false);
     }
@@ -184,6 +192,11 @@ export function ScrubbableNumberInput({
         value={draft}
         disabled={disabled}
         aria-invalid={invalid || undefined}
+        aria-describedby={
+          [props['aria-describedby'], invalid ? errorId : null]
+            .filter(Boolean)
+            .join(' ') || undefined
+        }
         title={props.title ?? 'Type a value or drag left and right to adjust'}
         className={cn(
           'cursor-ew-resize select-none tabular-nums',
@@ -199,7 +212,7 @@ export function ScrubbableNumberInput({
           setDraft(nextDraft);
           const nextValue = parseDraft(nextDraft);
           if (nextValue === null) {
-            setInvalid(false);
+            setInvalid(true);
             return;
           }
           apply(nextValue);
@@ -213,8 +226,7 @@ export function ScrubbableNumberInput({
           if (dragRef.current?.moved) return;
           const nextValue = parseDraft(draft);
           if (nextValue === null || !apply(nextValue)) {
-            setDraft(formatValue(value));
-            setInvalid(false);
+            setInvalid(true);
             commitEdit();
             return;
           }
@@ -304,10 +316,17 @@ export function ScrubbableNumberInput({
           event.currentTarget.blur();
         }}
       />
+      {invalid && (
+        <output id={errorId} className="mt-1 block text-xs text-destructive">
+          Enter a valid number{min !== undefined ? `, at least ${min}` : ''}
+          {max !== undefined ? `, at most ${max}` : ''}. The last valid value is
+          kept. Escape restores it.
+        </output>
+      )}
       {suffix && (
         <span
           className={cn(
-            'pointer-events-none absolute inset-y-0 right-3 grid place-items-center text-xs text-muted-foreground',
+            'pointer-events-none absolute top-0 h-9 right-3 grid place-items-center text-xs text-muted-foreground',
             suffixClassName,
           )}
         >

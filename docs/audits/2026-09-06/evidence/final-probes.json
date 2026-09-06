@@ -1,0 +1,21 @@
+{
+  "parse": {
+    "vertices": 30000,
+    "bytes": 806564,
+    "ms": 3568.9000000059605,
+    "accepted": true
+  },
+  "rotatableFit": {
+    "roomInside": "1000 x 2000",
+    "preset": "1500 x 800",
+    "result": null
+  },
+  "commaDuring": {
+    "aria": null,
+    "value": "1,5"
+  },
+  "commaAfter": {
+    "value": "210",
+    "width": 2100
+  }
+}

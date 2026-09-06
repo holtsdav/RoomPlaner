@@ -1,0 +1,40 @@
+{
+  "storageDenied": {
+    "errors": [],
+    "canvas": 0,
+    "body": "This page couldn’t load\n\nReload to try again, or go back.\n\nReload\nBack"
+  },
+  "schema": {
+    "huge": true,
+    "collapsedInside": true,
+    "collapsedBounds": {
+      "minX": -200,
+      "minY": -1400,
+      "maxX": 5000,
+      "maxY": 5000,
+      "width": 5200,
+      "height": 6400
+    },
+    "longNames": true
+  },
+  "exactFit": {
+    "roomInside": 2000,
+    "objectWidth": 2000,
+    "position": null
+  },
+  "undoBefore": {
+    "x": 1500,
+    "past": 1
+  },
+  "undoAfter": {
+    "x": 1450,
+    "past": 0,
+    "text": "Draft renamed room"
+  },
+  "errorInitially": 1,
+  "errorAfter8s": {
+    "buttons": 0,
+    "status": "saved"
+  },
+  "notPersistedFresh": true
+}

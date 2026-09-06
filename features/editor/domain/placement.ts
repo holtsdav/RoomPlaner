@@ -10,6 +10,15 @@ export function pointInRoom(point: PointMm, boundary: PointMm[]): boolean {
   for (let i = 0, j = boundary.length - 1; i < boundary.length; j = i++) {
     const a = boundary[i];
     const b = boundary[j];
+    const cross = (point.x - a.x) * (b.y - a.y) - (point.y - a.y) * (b.x - a.x);
+    if (
+      Math.abs(cross) < 1e-7 &&
+      point.x >= Math.min(a.x, b.x) &&
+      point.x <= Math.max(a.x, b.x) &&
+      point.y >= Math.min(a.y, b.y) &&
+      point.y <= Math.max(a.y, b.y)
+    )
+      return true;
     if (
       a.y > point.y !== b.y > point.y &&
       point.x < ((b.x - a.x) * (point.y - a.y)) / (b.y - a.y) + a.x
@@ -25,7 +34,7 @@ export function findPresetPosition(
   preset: CatalogPreset,
 ): PointMm | null {
   const bounds = getRoomBounds(plan.room);
-  const clearance = plan.room.wallThicknessMm / 2 + 1;
+  const clearance = plan.room.wallThicknessMm / 2;
   const halfWidth = preset.widthMm / 2 + clearance;
   const halfDepth = preset.depthMm / 2 + clearance;
   const minX = Math.ceil(bounds.minX + halfWidth);

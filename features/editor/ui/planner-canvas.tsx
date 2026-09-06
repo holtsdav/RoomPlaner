@@ -393,8 +393,15 @@ export function PlannerCanvas({
     (event: KeyboardEvent) => {
       if (event.defaultPrevented || event.isComposing) return;
 
-      // History belongs to the plan, even while a sidebar input has focus.
-      // Prevent native text undo even when there are no canvas edits to undo.
+      // Native text history belongs to the focused field, including in dialogs.
+      const focused = event.target;
+      if (
+        focused instanceof Element &&
+        focused.closest(
+          'input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="dialog"], [role="alertdialog"]',
+        )
+      )
+        return;
       const command = event.metaKey || event.ctrlKey;
       const key = event.key.toLowerCase();
       if (command && (key === 'z' || key === 'y')) {

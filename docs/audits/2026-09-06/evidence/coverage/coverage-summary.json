@@ -1,0 +1,206 @@
+{
+  "total": {
+    "lines": { "total": 2037, "covered": 1613, "skipped": 0, "pct": 79.18 },
+    "statements": {
+      "total": 2221,
+      "covered": 1729,
+      "skipped": 0,
+      "pct": 77.84
+    },
+    "functions": { "total": 401, "covered": 326, "skipped": 0, "pct": 81.29 },
+    "branches": { "total": 1279, "covered": 929, "skipped": 0, "pct": 72.63 },
+    "branchesTrue": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/alignment-guides.ts": {
+    "lines": { "total": 126, "covered": 123, "skipped": 0, "pct": 97.61 },
+    "functions": { "total": 15, "covered": 15, "skipped": 0, "pct": 100 },
+    "statements": { "total": 143, "covered": 138, "skipped": 0, "pct": 96.5 },
+    "branches": { "total": 123, "covered": 110, "skipped": 0, "pct": 89.43 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/apple-logo.ts": {
+    "lines": { "total": 5, "covered": 5, "skipped": 0, "pct": 100 },
+    "functions": { "total": 3, "covered": 3, "skipped": 0, "pct": 100 },
+    "statements": { "total": 5, "covered": 5, "skipped": 0, "pct": 100 },
+    "branches": { "total": 4, "covered": 4, "skipped": 0, "pct": 100 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/blueprint-bounds.ts": {
+    "lines": { "total": 47, "covered": 40, "skipped": 0, "pct": 85.1 },
+    "functions": { "total": 11, "covered": 11, "skipped": 0, "pct": 100 },
+    "statements": { "total": 56, "covered": 49, "skipped": 0, "pct": 87.5 },
+    "branches": { "total": 20, "covered": 18, "skipped": 0, "pct": 90 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/blueprint-profile.ts": {
+    "lines": { "total": 7, "covered": 7, "skipped": 0, "pct": 100 },
+    "functions": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 },
+    "statements": { "total": 7, "covered": 7, "skipped": 0, "pct": 100 },
+    "branches": { "total": 10, "covered": 10, "skipped": 0, "pct": 100 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/catalog.ts": {
+    "lines": { "total": 43, "covered": 41, "skipped": 0, "pct": 95.34 },
+    "functions": { "total": 16, "covered": 15, "skipped": 0, "pct": 93.75 },
+    "statements": { "total": 44, "covered": 42, "skipped": 0, "pct": 95.45 },
+    "branches": { "total": 47, "covered": 38, "skipped": 0, "pct": 80.85 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/commands.ts": {
+    "lines": { "total": 116, "covered": 110, "skipped": 0, "pct": 94.82 },
+    "functions": { "total": 59, "covered": 56, "skipped": 0, "pct": 94.91 },
+    "statements": { "total": 140, "covered": 123, "skipped": 0, "pct": 87.85 },
+    "branches": { "total": 85, "covered": 64, "skipped": 0, "pct": 75.29 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/homepod-catalog.ts": {
+    "lines": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 },
+    "functions": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 },
+    "statements": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 },
+    "branches": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/office-blueprints.ts": {
+    "lines": { "total": 242, "covered": 232, "skipped": 0, "pct": 95.86 },
+    "functions": { "total": 9, "covered": 9, "skipped": 0, "pct": 100 },
+    "statements": { "total": 249, "covered": 239, "skipped": 0, "pct": 95.98 },
+    "branches": { "total": 105, "covered": 103, "skipped": 0, "pct": 98.09 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/placement.ts": {
+    "lines": { "total": 45, "covered": 44, "skipped": 0, "pct": 97.77 },
+    "functions": { "total": 9, "covered": 9, "skipped": 0, "pct": 100 },
+    "statements": { "total": 51, "covered": 50, "skipped": 0, "pct": 98.03 },
+    "branches": { "total": 20, "covered": 19, "skipped": 0, "pct": 95 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/plan-document.ts": {
+    "lines": { "total": 57, "covered": 48, "skipped": 0, "pct": 84.21 },
+    "functions": { "total": 14, "covered": 12, "skipped": 0, "pct": 85.71 },
+    "statements": { "total": 67, "covered": 52, "skipped": 0, "pct": 77.61 },
+    "branches": { "total": 38, "covered": 23, "skipped": 0, "pct": 60.52 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/polygon.ts": {
+    "lines": { "total": 49, "covered": 49, "skipped": 0, "pct": 100 },
+    "functions": { "total": 12, "covered": 12, "skipped": 0, "pct": 100 },
+    "statements": { "total": 60, "covered": 55, "skipped": 0, "pct": 91.66 },
+    "branches": { "total": 49, "covered": 40, "skipped": 0, "pct": 81.63 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/room-blueprints.ts": {
+    "lines": { "total": 364, "covered": 349, "skipped": 0, "pct": 95.87 },
+    "functions": { "total": 15, "covered": 15, "skipped": 0, "pct": 100 },
+    "statements": { "total": 383, "covered": 367, "skipped": 0, "pct": 95.82 },
+    "branches": { "total": 199, "covered": 174, "skipped": 0, "pct": 87.43 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/room-catalog.ts": {
+    "lines": { "total": 17, "covered": 17, "skipped": 0, "pct": 100 },
+    "functions": { "total": 6, "covered": 6, "skipped": 0, "pct": 100 },
+    "statements": { "total": 18, "covered": 18, "skipped": 0, "pct": 100 },
+    "branches": { "total": 15, "covered": 15, "skipped": 0, "pct": 100 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/room-files.ts": {
+    "lines": { "total": 16, "covered": 16, "skipped": 0, "pct": 100 },
+    "functions": { "total": 11, "covered": 11, "skipped": 0, "pct": 100 },
+    "statements": { "total": 18, "covered": 17, "skipped": 0, "pct": 94.44 },
+    "branches": { "total": 7, "covered": 6, "skipped": 0, "pct": 85.71 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/room-measurements.ts": {
+    "lines": { "total": 34, "covered": 33, "skipped": 0, "pct": 97.05 },
+    "functions": { "total": 13, "covered": 13, "skipped": 0, "pct": 100 },
+    "statements": { "total": 36, "covered": 35, "skipped": 0, "pct": 97.22 },
+    "branches": { "total": 22, "covered": 20, "skipped": 0, "pct": 90.9 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/selection.ts": {
+    "lines": { "total": 38, "covered": 38, "skipped": 0, "pct": 100 },
+    "functions": { "total": 15, "covered": 15, "skipped": 0, "pct": 100 },
+    "statements": { "total": 40, "covered": 39, "skipped": 0, "pct": 97.5 },
+    "branches": { "total": 20, "covered": 16, "skipped": 0, "pct": 80 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/shape-points.ts": {
+    "lines": { "total": 2, "covered": 0, "skipped": 0, "pct": 0 },
+    "functions": { "total": 2, "covered": 0, "skipped": 0, "pct": 0 },
+    "statements": { "total": 3, "covered": 0, "skipped": 0, "pct": 0 },
+    "branches": { "total": 2, "covered": 0, "skipped": 0, "pct": 0 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/sonos-catalog.ts": {
+    "lines": { "total": 5, "covered": 5, "skipped": 0, "pct": 100 },
+    "functions": { "total": 4, "covered": 4, "skipped": 0, "pct": 100 },
+    "statements": { "total": 5, "covered": 5, "skipped": 0, "pct": 100 },
+    "branches": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/viewport.ts": {
+    "lines": { "total": 3, "covered": 3, "skipped": 0, "pct": 100 },
+    "functions": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 },
+    "statements": { "total": 3, "covered": 3, "skipped": 0, "pct": 100 },
+    "branches": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/wall-attachment.ts": {
+    "lines": { "total": 88, "covered": 86, "skipped": 0, "pct": 97.72 },
+    "functions": { "total": 21, "covered": 21, "skipped": 0, "pct": 100 },
+    "statements": { "total": 96, "covered": 91, "skipped": 0, "pct": 94.79 },
+    "branches": { "total": 65, "covered": 55, "skipped": 0, "pct": 84.61 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/wall-label-layout.ts": {
+    "lines": { "total": 48, "covered": 48, "skipped": 0, "pct": 100 },
+    "functions": { "total": 15, "covered": 15, "skipped": 0, "pct": 100 },
+    "statements": { "total": 51, "covered": 51, "skipped": 0, "pct": 100 },
+    "branches": { "total": 30, "covered": 29, "skipped": 0, "pct": 96.66 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/domain/wall-snap.ts": {
+    "lines": { "total": 9, "covered": 9, "skipped": 0, "pct": 100 },
+    "functions": { "total": 4, "covered": 4, "skipped": 0, "pct": 100 },
+    "statements": { "total": 9, "covered": 9, "skipped": 0, "pct": 100 },
+    "branches": { "total": 8, "covered": 8, "skipped": 0, "pct": 100 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/persistence/local-plan-repository.ts": {
+    "lines": { "total": 66, "covered": 3, "skipped": 0, "pct": 4.54 },
+    "functions": { "total": 17, "covered": 0, "skipped": 0, "pct": 0 },
+    "statements": { "total": 69, "covered": 3, "skipped": 0, "pct": 4.34 },
+    "branches": { "total": 23, "covered": 0, "skipped": 0, "pct": 0 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/persistence/save-queue.ts": {
+    "lines": { "total": 11, "covered": 11, "skipped": 0, "pct": 100 },
+    "functions": { "total": 4, "covered": 4, "skipped": 0, "pct": 100 },
+    "statements": { "total": 13, "covered": 13, "skipped": 0, "pct": 100 },
+    "branches": { "total": 6, "covered": 5, "skipped": 0, "pct": 83.33 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/state/planner-store.ts": {
+    "lines": { "total": 217, "covered": 154, "skipped": 0, "pct": 70.96 },
+    "functions": { "total": 62, "covered": 45, "skipped": 0, "pct": 72.58 },
+    "statements": { "total": 245, "covered": 162, "skipped": 0, "pct": 66.12 },
+    "branches": { "total": 184, "covered": 94, "skipped": 0, "pct": 51.08 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/ui/canvas-touch-controller.ts": {
+    "lines": { "total": 62, "covered": 47, "skipped": 0, "pct": 75.8 },
+    "functions": { "total": 18, "covered": 12, "skipped": 0, "pct": 66.66 },
+    "statements": { "total": 74, "covered": 55, "skipped": 0, "pct": 74.32 },
+    "branches": { "total": 49, "covered": 29, "skipped": 0, "pct": 59.18 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/ui/keyboard-viewport-recovery.ts": {
+    "lines": { "total": 39, "covered": 39, "skipped": 0, "pct": 100 },
+    "functions": { "total": 9, "covered": 9, "skipped": 0, "pct": 100 },
+    "statements": { "total": 44, "covered": 44, "skipped": 0, "pct": 100 },
+    "branches": { "total": 26, "covered": 26, "skipped": 0, "pct": 100 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/ui/number-scrub.ts": {
+    "lines": { "total": 5, "covered": 5, "skipped": 0, "pct": 100 },
+    "functions": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 },
+    "statements": { "total": 5, "covered": 5, "skipped": 0, "pct": 100 },
+    "branches": { "total": 4, "covered": 4, "skipped": 0, "pct": 100 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/ui/object-colors.ts": {
+    "lines": { "total": 12, "covered": 4, "skipped": 0, "pct": 33.33 },
+    "functions": { "total": 4, "covered": 0, "skipped": 0, "pct": 0 },
+    "statements": { "total": 12, "covered": 4, "skipped": 0, "pct": 33.33 },
+    "branches": { "total": 4, "covered": 0, "skipped": 0, "pct": 0 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/ui/room-image-export.ts": {
+    "lines": { "total": 184, "covered": 5, "skipped": 0, "pct": 2.71 },
+    "functions": { "total": 16, "covered": 1, "skipped": 0, "pct": 6.25 },
+    "statements": { "total": 190, "covered": 5, "skipped": 0, "pct": 2.63 },
+    "branches": { "total": 58, "covered": 0, "skipped": 0, "pct": 0 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/ui/toolbar-placement.ts": {
+    "lines": { "total": 12, "covered": 12, "skipped": 0, "pct": 100 },
+    "functions": { "total": 2, "covered": 2, "skipped": 0, "pct": 100 },
+    "statements": { "total": 13, "covered": 13, "skipped": 0, "pct": 100 },
+    "branches": { "total": 10, "covered": 10, "skipped": 0, "pct": 100 }
+  },
+  "/Users/holtsdav/Documents/Dev/RoomPlaner/features/editor/ui/use-local-plan.ts": {
+    "lines": { "total": 67, "covered": 29, "skipped": 0, "pct": 43.28 },
+    "functions": { "total": 12, "covered": 4, "skipped": 0, "pct": 33.33 },
+    "statements": { "total": 71, "covered": 29, "skipped": 0, "pct": 40.84 },
+    "branches": { "total": 46, "covered": 9, "skipped": 0, "pct": 19.56 }
+  }
+}

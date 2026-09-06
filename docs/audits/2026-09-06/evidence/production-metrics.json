@@ -1,0 +1,81 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+  "lcp": 312,
+  "cls": 0,
+  "longTasks": [],
+  "paint": [
+    {
+      "name": "first-paint",
+      "start": 132
+    },
+    {
+      "name": "first-contentful-paint",
+      "start": 132
+    }
+  ],
+  "resources": [
+    {
+      "url": "http://localhost:8788/RoomPlaner/_next/static/_vinext_fonts/geist-8ac0455e797f/geist-98bbbccb.woff2",
+      "bytes": 29288,
+      "transfer": 29588
+    },
+    {
+      "url": "http://localhost:8788/RoomPlaner/_next/static/_vinext_fonts/geist-mono-00e989178794/geist-mono-013b2f2f.woff2",
+      "bytes": 23108,
+      "transfer": 23408
+    },
+    {
+      "url": "http://localhost:8788/RoomPlaner/_next/static/chunks/rolldown-runtime-hePW80VL.js",
+      "bytes": 716,
+      "transfer": 728
+    },
+    {
+      "url": "http://localhost:8788/RoomPlaner/_next/static/css/index.BwU2yvxj.css",
+      "bytes": 218539,
+      "transfer": 33356
+    },
+    {
+      "url": "http://localhost:8788/RoomPlaner/_next/static/chunks/framework-C_b1QNvY.js",
+      "bytes": 190111,
+      "transfer": 59370
+    },
+    {
+      "url": "http://localhost:8788/RoomPlaner/_next/static/chunks/index-CSAkewRY.js",
+      "bytes": 109381,
+      "transfer": 32457
+    },
+    {
+      "url": "http://localhost:8788/RoomPlaner/_next/static/chunks/layout-segment-context-BveaFQTR.js",
+      "bytes": 496,
+      "transfer": 644
+    },
+    {
+      "url": "http://localhost:8788/RoomPlaner/_next/static/chunks/vinext-CJFzQxcy.js",
+      "bytes": 111804,
+      "transfer": 33345
+    },
+    {
+      "url": "http://localhost:8788/RoomPlaner/_next/static/chunks/planner-workspace-BqysMty2.js",
+      "bytes": 481646,
+      "transfer": 152550
+    },
+    {
+      "url": "http://localhost:8788/favicon.ico",
+      "bytes": 9,
+      "transfer": 329
+    },
+    {
+      "url": "http://localhost:8788/RoomPlaner/_next/static/chunks/planner-canvas-DVEZ-VVZ.js",
+      "bytes": 383688,
+      "transfer": 116277
+    }
+  ],
+  "navigation": [
+    {
+      "ttfb": 77,
+      "domInteractive": 108,
+      "load": 125.5
+    }
+  ],
+  "note": "Single unthrottled cold browser context against local production Worker. Not field Core Web Vitals or physical mobile CPU."
+}

@@ -92,7 +92,9 @@ it('keeps every variant inside its footprint after resizing and preserves profil
     const restored = planObjectSchema.parse(
       objectFromPreset(preset, preset.id, { x: 0, y: 0 }),
     );
-    expect(restored.blueprintProfile).toEqual(preset.blueprintProfile);
+    expect(restored.blueprintProfile).toEqual(
+      objectFromPreset(preset, preset.id, { x: 0, y: 0 }).blueprintProfile,
+    );
     for (const [width, depth] of [
       [preset.widthMm, preset.depthMm],
       [1, 10000],

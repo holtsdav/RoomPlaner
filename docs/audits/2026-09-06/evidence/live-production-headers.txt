@@ -1,0 +1,11 @@
+HTTP/2 200 
+date: Sun, 06 Sep 2026 12:09:42 GMT
+content-type: text/html; charset=utf-8
+link: </RoomPlaner/_next/static/_vinext_fonts/geist-8ac0455e797f/geist-98bbbccb.woff2>; rel=preload; as=font; type=font/woff2; crossorigin, </RoomPlaner/_next/static/_vinext_fonts/geist-mono-00e989178794/geist-mono-013b2f2f.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch, Next-Url, X-Vinext-Interception-Context, X-Vinext-Interception-Id, X-Vinext-Mounted-Slots, X-Vinext-Rsc-Render-Mode, X-Vinext-Rsc-State-Fingerprint
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ruDJu27L7eyfjGohgQdpI1YrhhV7MVgIA8r8el3iOEYht9w8oOjRMUMk14Gu7LBNbChsoBsHdtU4cziFPITX05zyPyyYT6WRGJVrDRZqKllHxFehpHpB83NOUR%2BROX0%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+server: cloudflare
+cf-ray: a36d5dc77f2668fe-MUC
+alt-svc: h3=":443"; ma=86400
+
