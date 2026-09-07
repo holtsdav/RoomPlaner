@@ -65,20 +65,24 @@ export default {
         });
       const guard = env.LOGIN_GUARD.getByName('shared-development-password');
       if (url.pathname === `${base}/__login` && request.method === 'POST') {
-        if (request.headers.get('Origin') !== url.origin)
+        if (request.headers.get('Origin') !== url.origin) {
+          await request.body?.cancel();
           return new Response('Forbidden', {
             status: 403,
             headers: privateHeaders,
           });
+        }
         if (
           !request.headers
             .get('Content-Type')
             ?.startsWith('application/x-www-form-urlencoded')
-        )
+        ) {
+          await request.body?.cancel();
           return new Response('Unsupported media type', {
             status: 415,
             headers: privateHeaders,
           });
+        }
         // Stream with a hard bound; Content-Length alone is not trustworthy.
         const reader = request.body?.getReader();
         if (!reader) return loginPage(base);

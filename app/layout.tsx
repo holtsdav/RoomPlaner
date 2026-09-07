@@ -12,10 +12,15 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const basePath = process.env.APP_BASE_PATH ?? '';
+
 export const metadata: Metadata = {
   title: 'Room Planner',
   description:
     'A precise, blueprint-style 2D room planner for real furniture and devices.',
+  icons: {
+    icon: [{ url: `${basePath}/favicon.svg`, type: 'image/svg+xml' }],
+  },
 };
 
 export default function RootLayout({
