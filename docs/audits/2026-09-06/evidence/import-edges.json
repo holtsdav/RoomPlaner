@@ -1,0 +1,22 @@
+{
+  "vertexPerformance": [
+    {
+      "vertices": 1000,
+      "bytes": 27660,
+      "ms": 5.199999988079071,
+      "accepted": true
+    },
+    {
+      "vertices": 5000,
+      "bytes": 135100,
+      "ms": 89,
+      "accepted": true
+    },
+    {
+      "vertices": 10000,
+      "bytes": 269388,
+      "ms": 329.09999999403954,
+      "accepted": true
+    }
+  ]
+}

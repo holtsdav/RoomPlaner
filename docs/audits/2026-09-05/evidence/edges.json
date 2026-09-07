@@ -1,0 +1,63 @@
+{
+  "width": 1234,
+  "undoWidth": 1200,
+  "cancelWidth": 1200,
+  "invalidWidth": 1200,
+  "commaInput": "120",
+  "roomNameInput": "Living room",
+  "offscreenToolbar": {
+    "x": 640,
+    "y": 3139.515625,
+    "width": 448,
+    "height": 97
+  },
+  "largeRoom": {
+    "scale": 0.04,
+    "canvas": {
+      "width": 1152,
+      "height": 836
+    },
+    "bounds": [
+      {
+        "x": 0,
+        "y": 0
+      },
+      {
+        "x": 100000,
+        "y": 0
+      },
+      {
+        "x": 100000,
+        "y": 100000
+      },
+      {
+        "x": 0,
+        "y": 100000
+      }
+    ]
+  },
+  "collapsed": {
+    "width": 0,
+    "childrenFocusable": 97,
+    "inert": false
+  },
+  "hiddenFocus": {
+    "name": "Search object library",
+    "rect": {
+      "x": -37,
+      "y": 128,
+      "width": 48,
+      "height": 40,
+      "top": 128,
+      "right": 11,
+      "bottom": 168,
+      "left": -37
+    }
+  },
+  "importedInUnits": "m",
+  "scaleDrift": [100, 100],
+  "persistence": {
+    "validRoundTrip": "valid-audit-room",
+    "listBlockedByOneCorruptRecord": true
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "wrong-content",
+    "status": 415
+  },
+  {
+    "name": "oversized",
+    "status": 413
+  },
+  {
+    "name": "null-origin",
+    "status": 403
+  }
+]

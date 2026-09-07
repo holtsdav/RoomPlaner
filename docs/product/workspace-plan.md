@@ -59,7 +59,7 @@ it, not a prerequisite for a useful planner.
 ### Navigation
 
 - Wheel or trackpad pinch zooms around the pointer.
-- Space + drag, middle mouse drag or the pan tool moves the viewport.
+- Space + drag or middle mouse drag moves the viewport on desktop; dragging empty canvas pans on touch screens.
 - `0` fits the room in view; `+` and `-` step the zoom level.
 - Zoom is clamped to a useful range and does not modify document geometry.
 
@@ -195,6 +195,8 @@ keyboard, undo every document mutation and refresh without console errors.
 ### Slice 2 — room setup and exact editing
 
 - Add a new-room dialog for width, depth, units and wall thickness.
+- Let users add, move and remove validated polygon corners for non-rectangular
+  rooms.
 - Make the inspector edit position, dimensions and rotation with validation.
 - Add configurable grid, object-edge and room-edge snapping with visible guides.
 - Add local autosave, recovery and document migrations.

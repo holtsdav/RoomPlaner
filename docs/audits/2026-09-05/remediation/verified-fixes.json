@@ -1,0 +1,15 @@
+{
+  "absoluteScaleReset": true,
+  "groupColorUndo": true,
+  "lockedColorsPreserved": true,
+  "separateTvFamilies": true,
+  "colorPersistence": true,
+  "exportOptions": true,
+  "toolbarAllViewports": true,
+  "touchPan": true,
+  "conflictAndCopyRecovery": true,
+  "corruptRecordIsolation": true,
+  "atomicDeleteWithCorruptRecord": true,
+  "delayedSaveCannotResurrectDeletion": true,
+  "errors": []
+}

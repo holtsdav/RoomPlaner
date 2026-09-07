@@ -1,0 +1,61 @@
+Downloading WebKit 26.6 (playwright webkit v2359)[2m from https://cdn.playwright.dev/dbazure/download/playwright/builds/webkit/2359/webkit-mac-26-arm64.zip[22m
+Error: Request to https://cdn.playwright.dev/dbazure/download/playwright/builds/webkit/2359/webkit-mac-26-arm64.zip timed out after 30000ms
+    at ClientRequest.<anonymous> (/private/tmp/roomplanner-audit-tools/node_modules/playwright-core/lib/coreBundle.js:8793:15)
+    at Object.onceWrapper (node:events:630:28)
+    at ClientRequest.emit (node:events:509:28)
+    at TLSSocket.emitRequestTimeout (node:_http_client:948:9)
+    at Object.onceWrapper (node:events:630:28)
+    at TLSSocket.emit (node:events:521:24)
+    at Socket._onTimeout (node:net:611:8)
+    at listOnTimeout (node:internal/timers:605:17)
+    at process.processTimers (node:internal/timers:541:7)
+Downloading WebKit 26.6 (playwright webkit v2359)[2m from https://playwright.download.prss.microsoft.com/dbazure/download/playwright/builds/webkit/2359/webkit-mac-26-arm64.zip[22m
+Error: Request to https://playwright.download.prss.microsoft.com/dbazure/download/playwright/builds/webkit/2359/webkit-mac-26-arm64.zip timed out after 30000ms
+    at ClientRequest.<anonymous> (/private/tmp/roomplanner-audit-tools/node_modules/playwright-core/lib/coreBundle.js:8793:15)
+    at Object.onceWrapper (node:events:630:28)
+    at ClientRequest.emit (node:events:509:28)
+    at TLSSocket.emitRequestTimeout (node:_http_client:948:9)
+    at Object.onceWrapper (node:events:630:28)
+    at TLSSocket.emit (node:events:521:24)
+    at Socket._onTimeout (node:net:611:8)
+    at listOnTimeout (node:internal/timers:605:17)
+    at process.processTimers (node:internal/timers:541:7)
+Downloading WebKit 26.6 (playwright webkit v2359)[2m from https://cdn.playwright.dev/builds/webkit/2359/webkit-mac-26-arm64.zip[22m
+Error: Request to https://cdn.playwright.dev/builds/webkit/2359/webkit-mac-26-arm64.zip timed out after 30000ms
+    at ClientRequest.<anonymous> (/private/tmp/roomplanner-audit-tools/node_modules/playwright-core/lib/coreBundle.js:8793:15)
+    at Object.onceWrapper (node:events:630:28)
+    at ClientRequest.emit (node:events:509:28)
+    at TLSSocket.emitRequestTimeout (node:_http_client:948:9)
+    at Object.onceWrapper (node:events:630:28)
+    at TLSSocket.emit (node:events:521:24)
+    at Socket._onTimeout (node:net:611:8)
+    at listOnTimeout (node:internal/timers:605:17)
+    at process.processTimers (node:internal/timers:541:7)
+Downloading WebKit 26.6 (playwright webkit v2359)[2m from https://cdn.playwright.dev/dbazure/download/playwright/builds/webkit/2359/webkit-mac-26-arm64.zip[22m
+Error: Request to https://cdn.playwright.dev/dbazure/download/playwright/builds/webkit/2359/webkit-mac-26-arm64.zip timed out after 30000ms
+    at ClientRequest.<anonymous> (/private/tmp/roomplanner-audit-tools/node_modules/playwright-core/lib/coreBundle.js:8793:15)
+    at Object.onceWrapper (node:events:630:28)
+    at ClientRequest.emit (node:events:509:28)
+    at TLSSocket.emitRequestTimeout (node:_http_client:948:9)
+    at Object.onceWrapper (node:events:630:28)
+    at TLSSocket.emit (node:events:521:24)
+    at Socket._onTimeout (node:net:611:8)
+    at listOnTimeout (node:internal/timers:605:17)
+    at process.processTimers (node:internal/timers:541:7)
+Downloading WebKit 26.6 (playwright webkit v2359)[2m from https://playwright.download.prss.microsoft.com/dbazure/download/playwright/builds/webkit/2359/webkit-mac-26-arm64.zip[22m
+Error: Request to https://playwright.download.prss.microsoft.com/dbazure/download/playwright/builds/webkit/2359/webkit-mac-26-arm64.zip timed out after 30000ms
+    at ClientRequest.<anonymous> (/private/tmp/roomplanner-audit-tools/node_modules/playwright-core/lib/coreBundle.js:8793:15)
+    at Object.onceWrapper (node:events:630:28)
+    at ClientRequest.emit (node:events:509:28)
+    at TLSSocket.emitRequestTimeout (node:_http_client:948:9)
+    at Object.onceWrapper (node:events:630:28)
+    at TLSSocket.emit (node:events:521:24)
+    at Socket._onTimeout (node:net:611:8)
+    at listOnTimeout (node:internal/timers:605:17)
+    at process.processTimers (node:internal/timers:541:7)
+Failed to install browsers
+Error: Failed to download WebKit 26.6 (playwright webkit v2359), caused by
+Error: Download failure, code=1
+    at ChildProcess.<anonymous> (/private/tmp/roomplanner-audit-tools/node_modules/playwright-core/lib/coreBundle.js:32428:32)
+    at ChildProcess.emit (node:events:509:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:295:12)

@@ -34,7 +34,7 @@ const localBindingConfig = {
     : [],
 };
 
-export default defineConfig(async () => {
+export default defineConfig(async ({ command }) => {
   // Keep Wrangler and Miniflare state project-local. These are non-secret tool
   // settings; application environment belongs in ignored `.env*` files.
   process.env.WRANGLER_WRITE_LOGS ??= 'false';
@@ -52,12 +52,15 @@ export default defineConfig(async () => {
     plugins: [
       vinext(),
       sites(),
-      cloudflare({
-        viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] },
-        ...(process.env.ROOMPLANER_DEPLOY === '1'
-          ? { configPath: 'wrangler.jsonc' }
-          : { config: localBindingConfig }),
-      }),
+      // Local editing uses Vinext's Node RSC server. Worker behavior is covered
+      // by the compiled production/develop smoke tests (including auth/assets).
+      (command === 'build' || d1 || r2) &&
+        cloudflare({
+          viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] },
+          ...(process.env.ROOMPLANER_DEPLOY === '1'
+            ? { configPath: 'wrangler.jsonc' }
+            : { config: localBindingConfig }),
+        }),
     ],
   };
 });

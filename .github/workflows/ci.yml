@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - develop
   pull_request:
     branches:
       - main
@@ -22,7 +21,7 @@ jobs:
   quality:
     name: quality
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
@@ -53,8 +52,23 @@ jobs:
       - name: Run unit tests
         run: npm test
 
-      - name: Build production bundle
-        run: npm run build
+      - name: Install browser test engine
+        run: npx playwright install --with-deps chromium
+
+      - name: Verify local development app
+        run: npm run test:browser
+
+      - name: Verify both deployed Workers and desktop/mobile flows
+        run: npm run test:release
 
       - name: Audit production dependencies
         run: npm audit --omit=dev --audit-level=high
+
+      - name: Keep browser failure evidence
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: browser-failure-evidence
+          path: test-results/
+          if-no-files-found: ignore
+          retention-days: 7
