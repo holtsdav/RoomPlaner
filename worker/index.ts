@@ -22,7 +22,7 @@ function loginPage(base: string, status = 401) {
       ? 'Too many attempts. Try again in 15 minutes.'
       : 'Enter the development password.';
   return new Response(
-    `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>RoomPlaner development</title><style>body{font:1rem system-ui;background:#101820;color:#fff;display:grid;place-items:center;min-height:95vh;margin:0}main{width:min(24rem,85vw)}input,button{box-sizing:border-box;width:100%;font:inherit;padding:.8rem;margin-top:.6rem;border-radius:.3rem}button{background:#99dcff;color:#101820;border:0;cursor:pointer}label{display:block;margin-top:1.5rem}</style><main><h1>RoomPlaner development</h1><p>${message}</p><form method="post" action="${base}/__login"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" maxlength="256" required><button type="submit">Continue</button></form></main></html>`,
+    `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Room Planner development</title><style>body{font:1rem system-ui;background:#101820;color:#fff;display:grid;place-items:center;min-height:95vh;margin:0}main{width:min(24rem,85vw)}input,button{box-sizing:border-box;width:100%;font:inherit;padding:.8rem;margin-top:.6rem;border-radius:.3rem}button{background:#99dcff;color:#101820;border:0;cursor:pointer}label{display:block;margin-top:1.5rem}</style><main><h1>Room Planner development</h1><p>${message}</p><form method="post" action="${base}/__login"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" maxlength="256" required><button type="submit">Continue</button></form></main></html>`,
     {
       status,
       headers: {
@@ -40,6 +40,17 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const base = env.APP_BASE_PATH;
+    const legacyBase = env.LEGACY_BASE_PATH;
+    if (
+      url.pathname === legacyBase ||
+      url.pathname.startsWith(`${legacyBase}/`)
+    ) {
+      url.pathname = `${base}${url.pathname.slice(legacyBase.length)}`;
+      return new Response(null, {
+        status: 308,
+        headers: { ...securityHeaders, Location: url.toString() },
+      });
+    }
     if (url.pathname !== base && !url.pathname.startsWith(`${base}/`))
       return new Response('Not found', {
         status: 404,

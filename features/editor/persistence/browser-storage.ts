@@ -2,9 +2,19 @@
 export function storageNamespace(
   pathname = globalThis.location?.pathname ?? '/',
 ) {
-  if (pathname === '/dev/RoomPlaner' || pathname.startsWith('/dev/RoomPlaner/'))
+  if (
+    pathname === '/dev/RoomPlanner' ||
+    pathname.startsWith('/dev/RoomPlanner/') ||
+    pathname === '/dev/RoomPlaner' ||
+    pathname.startsWith('/dev/RoomPlaner/')
+  )
     return 'room-planner-develop';
-  if (pathname === '/RoomPlaner' || pathname.startsWith('/RoomPlaner/'))
+  if (
+    pathname === '/RoomPlanner' ||
+    pathname.startsWith('/RoomPlanner/') ||
+    pathname === '/RoomPlaner' ||
+    pathname.startsWith('/RoomPlaner/')
+  )
     return 'room-planner';
   return 'room-planner-local';
 }

@@ -1,15 +1,18 @@
 # Cloudflare deployment
 
 The repositories remain separate. `holtsdav/holtsdav.com` builds Astro on its
-existing Cloudflare Pages project. `holtsdav/RoomPlaner` builds React/Vinext into
+existing Cloudflare Pages project. `holtsdav/RoomPlanner` builds React/Vinext into
 two Workers. Path routes take precedence over Pages for RoomPlaner only.
 
-| Git branch | Worker               | URL                                   | Build command              | Deploy command              |
-| ---------- | -------------------- | ------------------------------------- | -------------------------- | --------------------------- |
-| `main`     | `roomplaner`         | `https://holtsdav.com/RoomPlaner`     | `npm run build:production` | `npm run deploy:production` |
-| `develop`  | `roomplaner-develop` | `https://holtsdav.com/dev/RoomPlaner` | `npm run build:develop`    | `npm run deploy:develop`    |
+| Git branch | Worker               | URL                                    | Build command              | Deploy command              |
+| ---------- | -------------------- | -------------------------------------- | -------------------------- | --------------------------- |
+| `main`     | `roomplaner`         | `https://holtsdav.com/RoomPlanner`     | `npm run build:production` | `npm run deploy:production` |
+| `develop`  | `roomplaner-develop` | `https://holtsdav.com/dev/RoomPlanner` | `npm run build:develop`    | `npm run deploy:develop`    |
 
-In Cloudflare Workers Builds, connect each Worker to the **RoomPlaner** repository
+The former `/RoomPlaner` and `/dev/RoomPlaner` paths permanently redirect to
+their corrected equivalents, preserving subpaths and query strings.
+
+In Cloudflare Workers Builds, connect each Worker to the **RoomPlanner** repository
 and select its corresponding production branch from the table. Disable
 non-production branch builds for both Workers. Use the repository root, `NODE_VERSION=24.18.0`, and
 `SKIP_DEPENDENCY_INSTALL=true`. Prefix each build command with
@@ -29,7 +32,7 @@ and blocks access. Changing it invalidates existing sessions on their next reque
 
 The gate runs before every application and asset request. Sessions are random,
 stored server-side as hashes, expire after eight hours, and use an HttpOnly,
-Secure, SameSite=Strict cookie scoped to `/dev/RoomPlaner`. Login POSTs require a
+Secure, SameSite=Strict cookie scoped to `/dev/RoomPlanner`. Login POSTs require a
 matching Origin and a bounded form body. Development responses prohibit caching
 and indexing. Worker and version preview URLs are disabled in configuration.
 
@@ -62,7 +65,7 @@ production deploy command against an existing development build or vice versa.
 ## Storage isolation and browser verification
 
 The consumer path retains the existing `room-planner` IndexedDB database and
-preference keys. `/dev/RoomPlaner` uses `room-planner-develop`; local editing at `/`
+preference keys. `/dev/RoomPlanner` uses `room-planner-develop`; local editing at `/`
 uses `room-planner-local`. Development does not import, migrate, or delete the
 consumer database. These names prevent accidental mixing; they are not a security
 boundary between scripts on the same origin. Separate origins would provide that
