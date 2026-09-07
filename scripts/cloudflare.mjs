@@ -13,7 +13,7 @@ if (
 const env = {
   ...process.env,
   ROOMPLANER_DEPLOY: '1',
-  APP_BASE_PATH: target === 'develop' ? '/dev/RoomPlaner' : '/RoomPlaner',
+  APP_BASE_PATH: target === 'develop' ? '/dev/RoomPlanner' : '/RoomPlanner',
   CLOUDFLARE_ENV: target === 'develop' ? 'develop' : '',
 };
 if (action === 'deploy') {

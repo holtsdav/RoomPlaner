@@ -53,7 +53,8 @@ for (const target of ['production', 'develop']) {
     serverLog += data;
   });
   const origin = 'http://localhost:8791';
-  const base = target === 'develop' ? '/dev/RoomPlaner' : '/RoomPlaner';
+  const base = target === 'develop' ? '/dev/RoomPlanner' : '/RoomPlanner';
+  const legacyBase = target === 'develop' ? '/dev/RoomPlaner' : '/RoomPlaner';
   try {
     let response;
     for (let attempt = 0; attempt < 120; attempt++) {
@@ -69,6 +70,14 @@ for (const target of ['production', 'develop']) {
       response?.status,
       target === 'develop' ? 401 : 200,
       'Worker did not start',
+    );
+    const legacy = await fetch(`${origin}${legacyBase}/planner?from=old`, {
+      redirect: 'manual',
+    });
+    assert.equal(legacy.status, 308);
+    assert.equal(
+      legacy.headers.get('location'),
+      `${origin}${base}/planner?from=old`,
     );
     const cookie =
       target === 'develop'

@@ -14,10 +14,15 @@
     "enabled": true,
   },
   "vars": {
-    "APP_BASE_PATH": "/RoomPlaner",
+    "APP_BASE_PATH": "/RoomPlanner",
+    "LEGACY_BASE_PATH": "/RoomPlaner",
     "DEPLOYMENT": "production",
   },
   "routes": [
+    {
+      "pattern": "holtsdav.com/RoomPlanner*",
+      "zone_name": "holtsdav.com",
+    },
     {
       "pattern": "holtsdav.com/RoomPlaner*",
       "zone_name": "holtsdav.com",
@@ -29,10 +34,15 @@
       "workers_dev": false,
       "preview_urls": false,
       "vars": {
-        "APP_BASE_PATH": "/dev/RoomPlaner",
+        "APP_BASE_PATH": "/dev/RoomPlanner",
+        "LEGACY_BASE_PATH": "/dev/RoomPlaner",
         "DEPLOYMENT": "develop",
       },
       "routes": [
+        {
+          "pattern": "holtsdav.com/dev/RoomPlanner*",
+          "zone_name": "holtsdav.com",
+        },
         {
           "pattern": "holtsdav.com/dev/RoomPlaner*",
           "zone_name": "holtsdav.com",
