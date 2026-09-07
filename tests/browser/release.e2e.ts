@@ -3,9 +3,9 @@ import type { Page } from '@playwright/test';
 import { test, expect } from './fixtures';
 
 const namespace =
-  process.env.TEST_BASE_PATH === '/RoomPlaner'
+  process.env.TEST_BASE_PATH === '/RoomPlanner'
     ? 'room-planner'
-    : process.env.TEST_BASE_PATH === '/dev/RoomPlaner'
+    : process.env.TEST_BASE_PATH === '/dev/RoomPlanner'
       ? 'room-planner-develop'
       : 'room-planner-local';
 async function savedPlans(page: Page) {

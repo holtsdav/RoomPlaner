@@ -6,7 +6,8 @@ export async function testDevelopmentGate(
   testPassword = process.env.TEST_PASSWORD,
 ) {
   assert.ok(testPassword, 'Set TEST_PASSWORD to the local Worker password');
-  const base = '/dev/RoomPlaner';
+  const base = '/dev/RoomPlanner';
+  const legacyBase = '/dev/RoomPlaner';
   const url = `${origin}${base}`;
   const cookieName = '__Secure-roomplaner-dev';
   const get = (path = '', cookie = '') =>
@@ -33,6 +34,17 @@ export async function testDevelopmentGate(
   };
   const loginResponse = await get();
   assert.equal(loginResponse.status, 401);
+  const legacyResponse = await fetch(
+    `${origin}${legacyBase}/planner?from=old`,
+    {
+      redirect: 'manual',
+    },
+  );
+  assert.equal(legacyResponse.status, 308);
+  assert.equal(
+    legacyResponse.headers.get('location'),
+    `${origin}${base}/planner?from=old`,
+  );
   // no-referrer makes native form POSTs send Origin: null in browsers.
   assert.equal(loginResponse.headers.get('referrer-policy'), 'same-origin');
   assert.equal((await get('/planner')).status, 401);

@@ -6,8 +6,10 @@ import {
 } from './browser-storage';
 afterEach(() => vi.unstubAllGlobals());
 it('separates development and local state while preserving consumer keys', () => {
+  expect(storageNamespace('/RoomPlanner')).toBe('room-planner');
+  expect(storageNamespace('/RoomPlanner/planner')).toBe('room-planner');
+  expect(storageNamespace('/dev/RoomPlanner')).toBe('room-planner-develop');
   expect(storageNamespace('/RoomPlaner')).toBe('room-planner');
-  expect(storageNamespace('/RoomPlaner/planner')).toBe('room-planner');
   expect(storageNamespace('/dev/RoomPlaner')).toBe('room-planner-develop');
   expect(storageNamespace('/')).toBe('room-planner-local');
 });
