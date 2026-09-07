@@ -12,10 +12,12 @@ const digest = (value: string) => createHash('sha256').update(value).digest();
 export class LoginGuard extends DurableObject {
   constructor(ctx: DurableObjectState, env: Cloudflare.Env) {
     super(ctx, env);
-    ctx.storage.sql.exec(`
-      CREATE TABLE IF NOT EXISTS attempts (ip TEXT, expires INTEGER);
-      CREATE TABLE IF NOT EXISTS sessions (token TEXT PRIMARY KEY, password TEXT, expires INTEGER);
-    `);
+    void ctx.blockConcurrencyWhile(async () => {
+      ctx.storage.sql.exec(`
+        CREATE TABLE IF NOT EXISTS attempts (ip TEXT, expires INTEGER);
+        CREATE TABLE IF NOT EXISTS sessions (token TEXT PRIMARY KEY, password TEXT, expires INTEGER);
+      `);
+    });
   }
 
   login(ip: string, supplied: string, password: string) {

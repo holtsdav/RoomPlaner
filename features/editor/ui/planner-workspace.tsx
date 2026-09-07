@@ -10,6 +10,7 @@ import { BlueprintLibrary } from './blueprint-library';
 import {
   Check,
   ChevronRight,
+  House,
   LoaderCircle,
   PanelLeftClose,
   PanelLeftOpen,
@@ -457,6 +458,19 @@ export function PlannerWorkspace() {
 
         <div className="flex min-w-0 flex-1 items-center px-1 sm:px-3 lg:px-4">
           <div className="flex shrink-0 items-center gap-0.5">
+            <Button
+              render={
+                <a
+                  href="https://holtsdav.com"
+                  aria-label="Back to holtsdav.com"
+                />
+              }
+              variant="ghost"
+              size="icon"
+              className="size-11 text-slate-600 hover:bg-slate-100 hover:text-slate-900 lg:size-8"
+            >
+              <House aria-hidden="true" />
+            </Button>
             <PlannerSettingsDialog
               triggerClassName="text-slate-600 hover:bg-slate-100 hover:text-slate-900"
               sidebarShortcut={sidebarShortcut}
