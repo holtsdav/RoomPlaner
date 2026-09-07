@@ -8,6 +8,7 @@ export async function testDevelopmentGate(
   assert.ok(testPassword, 'Set TEST_PASSWORD to the local Worker password');
   const base = '/dev/RoomPlaner';
   const url = `${origin}${base}`;
+  const cookieName = '__Secure-roomplaner-dev';
   const get = (path = '', cookie = '') =>
     fetch(url + path, { headers: { Cookie: cookie }, redirect: 'manual' });
   const login = (password, ip = '192.0.2.1', requestOrigin = origin) =>
@@ -21,13 +22,22 @@ export async function testDevelopmentGate(
       },
       body: new URLSearchParams({ password }),
     });
+  const warmGuard = async () => {
+    let response;
+    for (let attempt = 0; attempt < 5; attempt++) {
+      response = await get('', `${cookieName}=${'0'.repeat(64)}`);
+      if (response.status !== 500) return response;
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+    return response;
+  };
   const loginResponse = await get();
   assert.equal(loginResponse.status, 401);
   // no-referrer makes native form POSTs send Origin: null in browsers.
   assert.equal(loginResponse.headers.get('referrer-policy'), 'same-origin');
   assert.equal((await get('/planner')).status, 401);
   assert.equal((await get('/assets/not-real.js')).status, 401);
-  assert.equal((await get('', '__Secure-roomplaner-dev=forged')).status, 401);
+  assert.equal((await warmGuard()).status, 401);
   assert.equal(
     (await login('wrong', undefined, 'https://evil.example')).status,
     403,
