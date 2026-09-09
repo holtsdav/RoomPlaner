@@ -65,3 +65,19 @@ next-env.d.ts
 
 # Worker secrets
 .dev.vars*
+
+# Local agent tooling and generated reviews
+/.agents/
+/.codex/
+/.impeccable/
+/.github/skills/
+/.github/agents/
+/.github/hooks/
+/skills-lock.json
+/docs/audits/
+
+# Logs and private credentials
+*.log
+*.key
+*.p12
+*.pfx

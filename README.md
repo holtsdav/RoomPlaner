@@ -19,9 +19,6 @@ addition and removal. In Placed in room, Select multiple works with touch or key
 
 - React, TypeScript, Vinext and Vite for the web application
 - Tailwind CSS and shadcn/Base UI primitives for a custom, accessible interface
-- A small Libraries.dev visual toolkit: Border Beam for the homepage transition;
-  Liquid Gooey, Image FX, Thinking Orbs and Metal FX reserved for matching future
-  interactions and loaded only where they are used
 - Konva/react-konva for the interactive 2D editor
 - A renderer-independent document model stored in millimetres
 - Zustand for editor state and command-based undo/redo
@@ -29,7 +26,7 @@ addition and removal. In Placed in room, Select multiple works with touch or key
 - Cloudflare Workers for server APIs; D1/R2/Queues can be added when persistence,
   assets and background product ingestion are needed
 - Vitest for unit tests and Playwright for interaction and visual regression
-  checks in `docs/audits/2026-09-05/scripts`
+  checks in `tests/browser`
 
 The full rationale, boundaries and product-link ingestion approach are recorded
 in [the architecture decision](docs/architecture/0001-technology-stack.md).

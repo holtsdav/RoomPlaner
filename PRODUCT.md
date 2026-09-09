@@ -43,7 +43,7 @@ A precise, no-bloat room planner that combines the approachability of a lightwei
 - `docs/product/workspace-plan.md` records the intended editor behavior and incremental delivery plan.
 - `docs/architecture/0001-technology-stack.md` records the current technical architecture and rationale.
 - `README.md` describes the implemented editor kernel and clearly distinguishes future capabilities.
-- Catalog dimensions include generic examples and explicitly branded Sonos/Apple presets; sourced dimensions and verification limits are documented in `docs/audits/2026-09-05/sources.md`. No testimonials, customer logos, or production usage claims are available.
+- Catalog dimensions include generic examples and explicitly branded Sonos/Apple presets; sourced dimensions and verification limits are documented in `docs/product/branded-dimension-checks.md`. No testimonials, customer logos, or production usage claims are available.
 
 ## Product Principles
 

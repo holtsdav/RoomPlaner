@@ -1,6 +1,6 @@
 # Fresh branded dimension checks
 
-Checked 5 September 2026 against primary manufacturer pages. All tuples below are **width × depth × height in millimetres**, reordered from the manufacturers’ differing axis conventions. The app rounds once to integer millimetres. These checks cover the 18 explicitly branded presets; generic furniture and generic reference-product presets retain the scope described in the [audit](audit.md).
+Checked 5 September 2026 against primary manufacturer pages. All tuples below are **width × depth × height in millimetres**, reordered from the manufacturers’ differing axis conventions. The app rounds once to integer millimetres. These checks cover the 18 explicitly branded presets; generic furniture and generic reference-product presets retain their generic planning-size scope.
 
 | Catalog object            | Manufacturer values (mm) | Stored values (mm) | Result and primary source                                                                                                                                                                                |
 | ------------------------- | ------------------------ | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
