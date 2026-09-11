@@ -58,7 +58,7 @@
     "zustand": "5.0.15"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "1.54.4",
+    "@cloudflare/vite-plugin": "1.54.7",
     "@cloudflare/workers-types": "5.20260904.1",
     "@openai/sites-vite-plugin": "0.2.0",
     "@playwright/test": "1.63.0",
@@ -76,7 +76,7 @@
     "typescript": "5.9.3",
     "vite": "8.2.2",
     "vitest": "5.0.0",
-    "wrangler": "4.129.0"
+    "wrangler": "4.131.0"
   },
   "type": "module"
 }
